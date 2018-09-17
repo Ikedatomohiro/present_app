@@ -1,0 +1,2 @@
+class PresentOpponent < ApplicationRecord
+end
