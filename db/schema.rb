@@ -10,29 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_17_020748) do
-
-  create_table "present_opponents", force: :cascade do |t|
-    t.integer "name"
-    t.integer "gender"
-    t.string "age_group"
-    t.string "mail_address"
-    t.integer "user"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "presents", force: :cascade do |t|
-    t.integer "user"
-    t.integer "present_opponent"
-    t.date "present_date"
-    t.string "purpose"
-    t.date "parchase_date"
-    t.integer "budget"
-    t.string "message"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 2018_09_14_091429) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
