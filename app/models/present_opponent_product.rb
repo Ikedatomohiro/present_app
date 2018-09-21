@@ -1,0 +1,2 @@
+class PresentOpponentProduct < ApplicationRecord
+end
