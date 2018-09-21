@@ -10,7 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_14_091429) do
+ActiveRecord::Schema.define(version: 2018_09_17_020748) do
+
+  create_table "present_opponents", force: :cascade do |t|
+    t.string "name"
+    t.integer "gender"
+    t.integer "age_group_number"
+    t.string "mail_address"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_present_opponents_on_user_id"
+  end
+
+  create_table "presents", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "present_opponent_id"
+    t.integer "purpose_number"
+    t.date "present_date"
+    t.date "parchase_date"
+    t.integer "budget"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["present_opponent_id"], name: "index_presents_on_present_opponent_id"
+    t.index ["user_id"], name: "index_presents_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"

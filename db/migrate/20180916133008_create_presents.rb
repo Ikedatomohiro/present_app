@@ -1,13 +1,13 @@
 class CreatePresents < ActiveRecord::Migration[5.2]
   def change
     create_table :presents do |t|
-      t.integer :user
-      t.integer :present_opponent
+      t.references :user, foreign_key: true
+      t.references :present_opponent, foreign_key: true
+      t.integer :purpose_number
       t.date :present_date
-      t.string :purpose
       t.date :parchase_date
       t.integer :budget
-      t.string :message
+      t.text :message
       t.timestamps
     end
   end
