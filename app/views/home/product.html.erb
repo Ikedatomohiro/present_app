@@ -1,0 +1,42 @@
+<h4>Product list</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Characteristic</th>
+      <th>Product_hp</th>
+      <th>Price</th>
+      <th>Purpose_number</th>
+      <th>Age_group_number</th>
+      <th>Image</th>
+      <th>Evaluation</th>
+
+    </tr>
+  </thead>
+ <%= @products.count %>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.id %></td>
+        <td><%= product.name %></td>
+        <td><%= product.characteristic %></td>
+        <td><%= product.product_hp %></td>
+        <td><%= product.price %></td>
+        <td><%= product.purpose_number %></td>
+        <td><%= product.age_group_number %></td>
+        <td><%= product.image %></td>
+        <td><%= product.evaluation %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
