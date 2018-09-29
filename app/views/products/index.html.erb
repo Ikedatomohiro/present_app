@@ -1,0 +1,50 @@
+<% @page_title = "商品リスト" %>
+<h1><%= @page_title %></h1>
+
+
+	<%= link_to "商品登録", new_product_path %>
+
+<% if @products.present? %>
+	<table class="product_list">
+		<thead>
+	    <tr>
+	      <th>Name</th>
+	      <th>Characteristic</th>
+	      <th>Product_hp</th>
+	      <th>Price</th>
+	      <th>Purpose_number</th>
+	      <th>Age_group_number</th>
+	      <th>Image</th>
+	      <th>Evaluation</th>
+	      <th>Operation</th>
+
+	    </tr>
+		</thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.id %></td>
+        <td><%= link_to product.name, product %></td>
+        <td><%= product.characteristic %></td>
+        <td><%= product.product_hp %></td>
+        <td><%= product.price %></td>
+        <td><%= product.purpose_number %></td>
+        <td><%= product.age_group_number %></td>
+        <td><%= product.image %></td>
+        <td><%= product.evaluation %></td>
+        <td>
+        	<%= link_to "edit", [:edit, product_path] %> |
+        	<%= link_to "delete", product_path, method: :delete,
+        	data: {confirm: "本当に削除しますか？"} %>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+<p>商品情報がありません。</p>
+<% end %>
+
+ <%= @products.count %>

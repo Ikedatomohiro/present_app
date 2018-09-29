@@ -4,9 +4,8 @@ Rails.application.routes.draw do
 devise_for :users
 root "home#index"
 
-get "home/product"
-get "home/registration"
+get "home/products"
 
-
+resources :products
 
 end

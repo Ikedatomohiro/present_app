@@ -2,13 +2,9 @@ class HomeController < ApplicationController
   def index
   end
 
-  def product
-  	@products = Product.all
+  def registration
+  	
   end
-
-	def registration
-	
-	end
 
 
 end
