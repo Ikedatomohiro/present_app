@@ -1,0 +1,14 @@
+<% @page_title = "商品登録" %>
+
+<h1><%= @page_title %></h1>
+
+<%= form_for @product do |form| %>
+
+<%= render "form", form: form %>
+
+
+
+<%= form.submit "商品登録"%>
+
+
+<% end %>

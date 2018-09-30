@@ -1,0 +1,13 @@
+<% @page_title = "商品情報の編集" %>
+
+<h1><%= @page_title %></h1>
+
+<%= link_to "商品情報に戻る", @product %>
+
+<%= form_for @product do |form| %>
+
+<%= render "form", form: form %>
+
+<%= form.submit "更新"%>
+
+<% end %>
