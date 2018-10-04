@@ -1,6 +1,6 @@
 <%= render "shared/header" %>
-<%= link_to("編集-1", "/products/#{@product.id}/edit") %>
-<%= link_to("削除", "/products/#{@product.id}/destroy", {method: "post"}) %>
+<%= link_to("編集", "/products/#{@product.id}/edit") %>
+<%= button_to("削除", "/products/#{@product.id}/destroy", {method: "post"}) %>
 <p><%= @product.id %></p>
 <p><%= @product.name %></p>
 <p><%= @product.characteristic %></p>
