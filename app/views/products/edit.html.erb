@@ -1,13 +1,16 @@
+<%= render "shared/header" %>
+
 <% @page_title = "商品情報の編集" %>
 
-<h1><%= @page_title %></h1>
+<h2><%= @page_title %></h2>
+<p><%= @product.id %></p>
 
-<%= link_to "商品情報に戻る", @product %>
-
-<%= form_for @product do |form| %>
-
-<%= render "form", form: form %>
-
-<%= form.submit "更新"%>
-
+<%= form_tag("/products/#{@product.id}/update", {multipart: true}) do %>
+<p>商品名</p><textarea name = "name"><%= @product.name %></textarea>
+<p>特徴</p><textarea name = "characteristic"><%= @product.characteristic %></textarea>
+<p>ホームページ</p><textarea name = "product_hp"><%= @product.product_hp %></textarea>
+<p>値段</p><textarea name = "price"><%= @product.price %></textarea><br>
+<img src= "<%= "/product_images/#{@product.image}" %>">
+	<input name="image" type="file"><br>
+	<input type="submit" value="保存">
 <% end %>

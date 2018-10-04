@@ -2,10 +2,17 @@ Rails.application.routes.draw do
   post 'home/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 devise_for :users
-root "home#index"
+get "/" => "home#index"
 
-get "home/products"
+get "products" => "products#index"
+get "products/new" => "products#new"
+post "products/create" => "products#create"
+get "products/:id/edit" => "products#edit"
+get "products/:id" => "products#show"
 
-resources :products
+post "products/:id/update" => "products#update"
+post "products/:id/destroy" => "products#destroy"
+
+
 
 end

@@ -1,39 +1,11 @@
-<%= link_to "トップページ", root_path %>
-<%= link_to "商品リスト", products_path %>
+<%= render "shared/header" %>
+<%= link_to("編集-1", "/products/#{@product.id}/edit") %>
+<%= link_to("削除", "/products/#{@product.id}/destroy", {method: "post"}) %>
+<p><%= @product.id %></p>
+<p><%= @product.name %></p>
+<p><%= @product.characteristic %></p>
+<p><%= @product.product_hp %></p>
+<p><%= @product.price %></p>
+<img src= "<%= "/product_images/#{@product.image}" %>"><br>
 
-	<table class="product_list">
-		<thead>
-	    <tr>
-          <th>ID</th>
-	      <th>Name</th>
-	      <th>Characteristic</th>
-	      <th>Product_hp</th>
-	      <th>Price</th>
-	      <th>Purpose_number</th>
-	      <th>Age_group_number</th>
-	      <th>Image</th>
-	      <th>Evaluation</th>
-	      <th>Operation</th>
-
-	    </tr>
-		</thead>
-
-  <tbody>
-      <tr>
-        <td></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td>
-        	<%= "edit" %>
-        	<%=  %>
-        </td>
-      </tr>
-  </tbody>
-</table>
 

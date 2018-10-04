@@ -1,14 +1,8 @@
+<%= render "shared/header" %>
+
 <h3>プレゼントを探そう！</h3>
 
 	<p>プレゼント提案アプリ</p>
-
-		<%= link_to "ログイン", new_user_session_path %>
-		<%= link_to "新規登録", new_user_registration_path %>
-		<%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
-		<%= link_to "Product", products_path %>
-
-	<%= link_to "商品登録", new_product_path %>
-
 
 
 		<%= current_user %>
