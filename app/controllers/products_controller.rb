@@ -13,17 +13,24 @@ class ProductsController < ApplicationController
 
   def edit
   	@product = Product.find_by(id: params[:id])
+    @purpose = Purpose.find_by(id: params[:id])
+
   end
 
   def create
   	@product = Product.new(
   		name: params[:name],
   		characteristic: params[:characteristic],
-  		image: "product_image.jpg"
+  		product_hp: params[:product_hp],
+  		price: params[:price],
+  		purpose_number: params[:purpose_number],
+  		age_group_number: params[:age_group_number],
+ 		image: "product_image.jpg"
+
   		)
 
       @product.save
-  		redirect_to("/products")
+  		redirect_to("/products/index")
 
   end
 
@@ -33,6 +40,8 @@ class ProductsController < ApplicationController
     @product.characteristic = params[:characteristic]
     @product.product_hp = params[:product_hp]
     @product.price = params[:price]
+    @product.purpose_number = params[:purpose_number]
+    @product.age_group_number = params[:age_group_number]
 
   	if params[:image]
   		@product.image = "#{@product.id}.jpg"
@@ -48,7 +57,11 @@ class ProductsController < ApplicationController
   def destroy
   	@product = Product.find_by(id: params[:id])
   	@product.destroy
+    redirect_to("/products/index")
   end
+
+ 
+
 
   def search
   end

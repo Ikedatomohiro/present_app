@@ -6,11 +6,32 @@
 <p><%= @product.id %></p>
 
 <%= form_tag("/products/#{@product.id}/update", {multipart: true}) do %>
-<p>商品名</p><textarea name = "name"><%= @product.name %></textarea>
-<p>特徴</p><textarea name = "characteristic"><%= @product.characteristic %></textarea>
-<p>ホームページ</p><textarea name = "product_hp"><%= @product.product_hp %></textarea>
-<p>値段</p><textarea name = "price"><%= @product.price %></textarea><br>
-<img src= "<%= "/product_images/#{@product.image}" %>">
-	<input name="image" type="file"><br>
-	<input type="submit" value="保存">
+
+<p>商品名</p>
+	<textarea name = "name"><%= @product.name %></textarea>
+
+<p>特徴</p>
+	<textarea name = "characteristic"><%= @product.characteristic %></textarea>
+
+<p>ホームページ</p>
+	<textarea name = "product_hp"><%= @product.product_hp %></textarea>
+
+<p>価格</p>
+	<textarea name = "price"><%= @product.price %></textarea><br>
+
+<p>目的</p>
+<select name="目的">
+<option value="0">誕生日</option>
+<option value="1">バレンタインデー</option>
+<option value="2">クリスマス</option>
+</select>
+<p>対象年齢</p>
+
+
+
+<p>画像</p>
+	<img src= "<%= "/product_images/#{@product.image}" %>"><br>
+		<input name="image" type="file"><br>
+		<input type="submit" value="保存">
+
 <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_21_145156) do
+ActiveRecord::Schema.define(version: 2018_10_05_133835) do
 
   create_table "present_opponent_products", force: :cascade do |t|
     t.integer "present_opponent_id"
@@ -76,6 +76,17 @@ ActiveRecord::Schema.define(version: 2018_09_21_145156) do
     t.float "evaluation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "purposes", force: :cascade do |t|
+    t.integer "present_id"
+    t.integer "product_id"
+    t.integer "purpose_number"
+    t.string "purpose"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["present_id"], name: "index_purposes_on_present_id"
+    t.index ["product_id"], name: "index_purposes_on_product_id"
   end
 
   create_table "shops", force: :cascade do |t|

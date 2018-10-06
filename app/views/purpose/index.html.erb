@@ -1,0 +1,22 @@
+<%= render "shared/header" %>
+
+<h2>目的リスト</h2>
+	<table>
+		<thead>
+	    <tr>
+        <th>ID</th>
+	      <th>Purpose_number</th>
+	      <th>Purpose</th>
+	    </tr>
+		</thead>
+
+  <tbody>
+    <% @purpose.each do |purpose| %>
+      <tr>
+        <td><%= link_to("#{purpose.id}", "/purpose/#{purpose.id}/edit")%></td>
+        <td><%= purpose.purpose_number %></td>
+        <td><%= purpose.purpose %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

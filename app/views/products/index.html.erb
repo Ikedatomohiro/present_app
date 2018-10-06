@@ -26,8 +26,8 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= product.id %></td>
-        <td><%= link_to(product.name, "products/#{product.id}") %></td>
+        <td><%= link_to(product.id, "/products/#{product.id}") %></td>
+        <td><%= product.name %></td>
         <td><%= product.characteristic %></td>
         <td><%= product.product_hp %></td>
         <td><%= product.price %></td>

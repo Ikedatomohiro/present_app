@@ -1,11 +1,12 @@
 <%= render "shared/header" %>
 <%= link_to("編集", "/products/#{@product.id}/edit") %>
 <%= button_to("削除", "/products/#{@product.id}/destroy", {method: "post"}) %>
-<p><%= @product.id %></p>
-<p><%= @product.name %></p>
-<p><%= @product.characteristic %></p>
-<p><%= @product.product_hp %></p>
-<p><%= @product.price %></p>
-<img src= "<%= "/product_images/#{@product.image}" %>"><br>
+<p>ID：<%= @product.id %></p>
+<p>商品名：<%= @product.name %></p>
+<p>特徴：<%= @product.characteristic %></p>
+<p>ホームページ：<%= @product.product_hp %></p>
+<p>価格：<%= @product.price %>　円</p>
+<p>目的：<%= @product.purpose_number %></p>
 
+<img src= "<%= "/product_images/#{@product.image}" %>"><br>
 

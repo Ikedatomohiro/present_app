@@ -4,15 +4,15 @@ Rails.application.routes.draw do
 devise_for :users
 get "/" => "home#index"
 
-get "products" => "products#index"
+get "products/index" => "products#index"
 get "products/new" => "products#new"
+get "products/:id" => "products#show"
 post "products/create" => "products#create"
 get "products/:id/edit" => "products#edit"
-get "products/:id" => "products#show"
-
 post "products/:id/update" => "products#update"
 post "products/:id/destroy" => "products#destroy"
 
+resources :purpose
 
 
 end

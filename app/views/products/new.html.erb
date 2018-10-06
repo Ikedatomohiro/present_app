@@ -2,13 +2,30 @@
 <% @page_title = "新規商品登録" %>
 <h2><%= @page_title %></h2>
 
-<%= form_tag("/products/create") do %>
+<%= form_tag("/products/create", {multipart: true}) do %>
 
-<p>商品名</p><textarea name = "name">商品名</textarea>
-<p>特徴</p><textarea name = "characteristic">特徴</textarea>
-<p>ホームページアドレス</p><textarea name = "product_hp">ホームページアドレス</textarea>
-<p>値段</p><textarea name = "price">値段</textarea>
+<p>商品名</p>
+	<textarea name = "name">商品名</textarea>
 
-<input type = "submit" value ="商品登録">
+<p>特徴</p>
+	<textarea name = "characteristic">特徴</textarea>
+
+<p>ホームページアドレス</p>
+	<textarea name = "product_hp">ホームページアドレス</textarea>
+
+<p>価格</p>
+	<textarea name = "price">価格</textarea>
+
+<p>目的</p>
+
+
+<p>対象年齢</p>
+
+
+
+<p>画像</p>
+<%= image_tag 'product_image.jpg', :size =>'120x100'%><br>
+	<input name="image" type="file"><br>
+	<input type = "submit" value ="商品登録">
 
 <% end %>
