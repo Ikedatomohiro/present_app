@@ -36,7 +36,7 @@ class PurposeController < ApplicationController
   def destroy
   	@purpose = Purpose.find_by(id: params[:id])
   	@purpose.destroy
-  	redirect_to purpose_index
+  	redirect_to :action => 'index'
   end
 
 

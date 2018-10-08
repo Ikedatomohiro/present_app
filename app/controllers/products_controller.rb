@@ -1,6 +1,13 @@
 class ProductsController < ApplicationController
   def index
   	@products = Product.all.order(created_at: :desc)
+
+    if params[:name].present?
+    @products = @products.get_by_name params[:name]
+    end
+    if params[:characteristic].present?
+    @products = @products.get_by_name params[:characteristic]
+    end
   end
 
   def show
@@ -59,8 +66,6 @@ class ProductsController < ApplicationController
   	@product.destroy
     redirect_to("/products/index")
   end
-
- 
 
 
   def search

@@ -6,10 +6,14 @@
 <%= form_tag("/purpose") do %>
 
 <p>目的番号</p>
-	<textarea name = "puepose_number">目的番号</textarea>
+	<textarea name = "purpose_number">目的番号</textarea>
 
 <p>目的</p>
-	<textarea name = "purpose">目的</textarea>
+<select name="purpose">
+<option value="1">誕生日</option>
+<option value="2">バレンタインデー</option>
+<option value="3">クリスマス</option>
+</select>
 
 <input type = "submit" value ="目的登録">
 

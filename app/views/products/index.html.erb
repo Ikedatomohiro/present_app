@@ -5,20 +5,27 @@
  <%= "登録商品数：" %>
  <%= @products.count %>
 
+<div>
+<%= form_tag(products_index_path, method: "get") do %>
+<%= label_tag :name, "" %><%= text_field_tag :name, params[:name] %>
+<%= submit_tag "検索" %>
+<% end %>
+</div>
+
 <% if @products.present? %>
 	<table class="product_list">
 		<thead>
 	    <tr>
           <th>ID</th>
-	      <th>Name</th>
-	      <th>Characteristic</th>
-	      <th>Product_hp</th>
-	      <th>Price</th>
-	      <th>Purpose_number</th>
-	      <th>Age_group_number</th>
-	      <th>Image</th>
-	      <th>Evaluation</th>
-	      <th>Operation</th>
+	      <th>商品名</th>
+	      <th>特徴</th>
+	      <th>Webサイト</th>
+	      <th>価格</th>
+	      <th>目的</th>
+	      <th>対象年齢</th>
+	      <th>画像</th>
+	      <th>評価</th>
+	      <th>操作</th>
 
 	    </tr>
 		</thead>
@@ -26,11 +33,11 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= link_to(product.id, "/products/#{product.id}") %></td>
-        <td><%= product.name %></td>
+        <td><%= product.id %></td>
+        <td><%= link_to(product.name, "/products/#{product.id}") %></td>
         <td><%= product.characteristic %></td>
         <td><%= product.product_hp %></td>
-        <td><%= product.price %></td>
+        <td><%= number_to_currency(product.price, :locale => 'jp') %></td>
         <td><%= product.purpose_number %></td>
         <td><%= product.age_group_number %></td>
         <td><%= product.image %></td>
