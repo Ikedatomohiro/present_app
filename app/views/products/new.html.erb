@@ -5,16 +5,16 @@
 <%= form_tag("/products/create", {multipart: true}) do %>
 
 <p>商品名</p>
-	<textarea name = "name">商品名</textarea>
+	<textarea name = "name" placeholder = "商品名"></textarea>
 
 <p>特徴</p>
-	<textarea name = "characteristic">特徴</textarea>
+	<textarea name = "characteristic" placeholder = "特徴"></textarea>
 
 <p>ホームページアドレス</p>
-	<textarea name = "product_hp">ホームページアドレス</textarea>
+	<textarea name = "product_hp" placeholder = "ホームページアドレス"></textarea>
 
 <p>価格</p>
-	<textarea name = "price">価格</textarea>
+	<input name = "price" placeholder = "価格">円
 
 <p>目的</p>
 	<textarea name = "purpose_number">目的</textarea>

@@ -5,9 +5,23 @@ class ProductsController < ApplicationController
     if params[:name].present?
     @products = @products.get_by_name params[:name]
     end
+
     if params[:characteristic].present?
-    @products = @products.get_by_name params[:characteristic]
+    @products = @products.get_by_characteristic params[:characteristic]
     end
+
+    if params[:purpose_number].present?
+    @products = @products.get_by_purpose_number params[:purpose_number]
+    end
+
+    if params[:price].present?
+    @products = @products.get_by_price params[:price]
+    end
+
+    if params[:age_group_number].present?
+    @products = @products.get_by_age_group_number params[:age_group_number]
+    end
+
   end
 
   def show
@@ -66,13 +80,5 @@ class ProductsController < ApplicationController
   	@product.destroy
     redirect_to("/products/index")
   end
-
-
-  def search
-  end
-
-  def results
-  end
-
 
 end

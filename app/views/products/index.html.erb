@@ -7,7 +7,19 @@
 
 <div>
 <%= form_tag(products_index_path, method: "get") do %>
-<%= label_tag :name, "" %><%= text_field_tag :name, params[:name] %>
+
+<%= label_tag :name, "商品名または特徴" %><%= text_field_tag :name, params[:name] %>
+<%= label_tag :purpose_number, "目的" %>
+<select name="purpose_number", params[:purpose_number]>
+<option value="0">誕生日</option>
+<option value="1">バレンタインデー</option>
+<option value="2">クリスマス</option>
+</select>
+
+
+<%= label_tag :price, "予算" %><%= text_field_tag :price, params[:price] %>
+<%= label_tag :age_group_number, "対象年齢" %><%= text_field_tag :age_group_number, params[:age_group_number] %>
+
 <%= submit_tag "検索" %>
 <% end %>
 </div>
