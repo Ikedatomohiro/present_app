@@ -2,12 +2,9 @@ class ProductsController < ApplicationController
   def index
   	@products = Product.all.order(created_at: :desc)
 
-    if params[:name].present?
-    @products = @products.get_by_name params[:name]
-    end
-
-    if params[:characteristic].present?
-    @products = @products.get_by_characteristic params[:characteristic]
+    if params[:name_or_characteristic].present?
+#    @products = @products.get_by_characteristic params[:characteristic]
+    @products = @products.get_by_name_or_characteristic params[:name_or_characteristic]
     end
 
     if params[:purpose_number].present?
@@ -21,6 +18,8 @@ class ProductsController < ApplicationController
     if params[:age_group_number].present?
     @products = @products.get_by_age_group_number params[:age_group_number]
     end
+
+    @purposes = Purpose.all
 
   end
 

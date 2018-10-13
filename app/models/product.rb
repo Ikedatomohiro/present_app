@@ -1,13 +1,11 @@
 class Product < ApplicationRecord
 	has_many :shops, through: :product_management
 
-	scope :get_by_name, ->(name) {
-	where("name like ?", "%#{name}%")
+	scope :get_by_name_or_characteristic, ->(name_or_characteristic) {
+	where("name like ? or characteristic like ?", "%#{name_or_characteristic}%", "%#{name_or_characteristic}%")
 	}
 
-	scope :get_by_characteristic, ->(characteristic) {
-	where("characteristic like ?", "%#{characteristic}%")
-	}
+
 
 	scope :get_by_price, ->(price) {
 	where("price like ?", "%#{price}%")
