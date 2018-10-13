@@ -19,14 +19,15 @@
 
 
 <% @purposes.each do |purpose| %>
-
 <%= check_box_tag "checkbox[#{purpose.id}]" %>
 <%= label_tag "checkbox[#{purpose.id}]", "#{purpose.purpose}" %>
 
 <% end %>
 
 
-<%= label_tag :price, "予算" %><%= text_field_tag :price, params[:price] %>
+<%= label_tag :budget_l, "予算" %><%= text_field_tag :budget_l, params[:budget_l] %>
+<%= label_tag :budget_u, "〜" %><%= text_field_tag :budget_u, params[:budget_u] %>
+
 <%= label_tag :age_group_number, "対象年齢" %><%= text_field_tag :age_group_number, params[:age_group_number] %>
 
 <%= submit_tag "検索" %>

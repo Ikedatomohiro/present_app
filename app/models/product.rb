@@ -5,10 +5,11 @@ class Product < ApplicationRecord
 	where("name like ? or characteristic like ?", "%#{name_or_characteristic}%", "%#{name_or_characteristic}%")
 	}
 
-
-
-	scope :get_by_price, ->(price) {
-	where("price like ?", "%#{price}%")
+#	scope :get_by_price, ->(budget_l) {
+#	where(["price >= ?", budget_l])
+#	}
+	scope :get_by_price, ->(budget_u) {
+	where(["price <= ?", budget_u])
 	}
 
 	scope :get_by_purpose_number, ->(purpose_number) {

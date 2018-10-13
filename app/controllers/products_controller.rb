@@ -11,8 +11,11 @@ class ProductsController < ApplicationController
     @products = @products.get_by_purpose_number params[:purpose_number]
     end
 
-    if params[:price].present?
-    @products = @products.get_by_price params[:price]
+    if params[:budget_l].present?
+    @products = @products.get_by_price params[:budget_l]
+    end
+    if params[:budget_u].present?
+    @products = @products.get_by_price params[:budget_u]
     end
 
     if params[:age_group_number].present?
