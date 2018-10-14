@@ -30,7 +30,7 @@ class PurposeController < ApplicationController
   	@purpose.purpose_number = params[:purpose_number]
   	@purpose.purpose = params[:purpose]
   	@purpose.save
-  	redirect_to purpose_index
+  	redirect_to :action => 'index'
   end
 
   def destroy

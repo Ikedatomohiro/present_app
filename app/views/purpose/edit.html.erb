@@ -3,17 +3,15 @@
 <% @page_title = "目的編集" %>
 <h2><%= @page_title %></h2>
 
-<%= form_tag("/purpose") do %>
+<%= form_tag("/purpose/#{@purpose.id}", {method: "put"}) do %>
 
-<p>目的ID：<%= @purpose.id %></p>
+	<p>目的ID：<%= @purpose.id %></p>
+	<p>目的番号</p>
+	  <textarea name = "purpose_number"><%= @purpose.purpose_number %></textarea>
 
+	<p>目的</p>
+	  <textarea name = "purpose"><%= @purpose.purpose %></textarea>
 
-<p>目的番号</p>
-  <textarea name = "purpose_number"><%= @purpose.purpose_number %></textarea>
-
-<p>目的</p>
-  <textarea name = "purpose"><%= @purpose.purpose %></textarea>
-
-<input type = "submit" value ="目的更新">
+	<input type = "submit" value ="目的更新">
 <% end %>
 <%= button_to("削除", "/purpose/#{@purpose.id}", {method: "delete"}) %>
