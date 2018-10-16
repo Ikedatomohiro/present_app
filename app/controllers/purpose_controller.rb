@@ -1,6 +1,6 @@
 class PurposeController < ApplicationController
   def index
-  	@purpose = Purpose.all.order(id: :asc)
+  	@purposes = Purpose.all.order(id: :asc)
   end
 
   def show
@@ -27,7 +27,6 @@ class PurposeController < ApplicationController
 
   def update
   	@purpose = Purpose.find_by(id: params[:id])
-  	@purpose.purpose_number = params[:purpose_number]
   	@purpose.purpose = params[:purpose]
   	@purpose.save
   	redirect_to :action => 'index'

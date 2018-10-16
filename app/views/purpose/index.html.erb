@@ -5,16 +5,14 @@
 		<thead>
 	    <tr>
         <th>ID</th>
-	      <th>Purpose_number</th>
-	      <th>Purpose</th>
+	      <th>目的</th>
 	    </tr>
 		</thead>
 
   <tbody>
-    <% @purpose.each do |purpose| %>
+    <% @purposes.each do |purpose| %>
       <tr>
         <td><%= link_to("#{purpose.id}", "/purpose/#{purpose.id}/edit")%></td>
-        <td><%= purpose.purpose_number %></td>
         <td><%= purpose.purpose %></td>
       </tr>
     <% end %>

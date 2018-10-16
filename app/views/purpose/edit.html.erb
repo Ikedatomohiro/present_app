@@ -6,8 +6,6 @@
 <%= form_tag("/purpose/#{@purpose.id}", {method: "put"}) do %>
 
 	<p>目的ID：<%= @purpose.id %></p>
-	<p>目的番号</p>
-	  <textarea name = "purpose_number"><%= @purpose.purpose_number %></textarea>
 
 	<p>目的</p>
 	  <textarea name = "purpose"><%= @purpose.purpose %></textarea>
