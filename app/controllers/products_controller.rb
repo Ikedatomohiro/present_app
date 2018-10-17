@@ -22,6 +22,8 @@ class ProductsController < ApplicationController
     @products = @products.get_by_age_group_number params[:age_group_number]
     end
 
+
+
     @purposes = Purpose.all
 
   end

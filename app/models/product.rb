@@ -1,5 +1,10 @@
 class Product < ApplicationRecord
-	has_many :shops, through: :product_management
+	has_many :shops, through: :product_managements
+	has_many :presents, through: :present_products
+	has_many :present_opponents, through: :present_opponent_products
+	has_many :purposes, through: :purpose_products
+	has_many :budgets, through: :budget_products
+	has_many :age_groups, through: :age_group_products
 
 	scope :get_by_name_or_characteristic, ->(name_or_characteristic) {
 	where("name like ? or characteristic like ?", "%#{name_or_characteristic}%", "%#{name_or_characteristic}%")

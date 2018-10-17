@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :presents, dependent: :destroy
+  has_many :present_opponents, through: :presents
+
 end

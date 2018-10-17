@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_17_020303) do
+ActiveRecord::Schema.define(version: 2018_10_17_060406) do
 
   create_table "age_group_products", force: :cascade do |t|
     t.integer "age_group_id"
@@ -128,7 +128,7 @@ ActiveRecord::Schema.define(version: 2018_10_17_020303) do
   create_table "purposes", force: :cascade do |t|
     t.integer "present_id"
     t.integer "product_id"
-    t.integer "purpose"
+    t.string "purpose"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["present_id"], name: "index_purposes_on_present_id"
