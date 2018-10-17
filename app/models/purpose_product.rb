@@ -1,0 +1,2 @@
+class PurposeProduct < ApplicationRecord
+end

@@ -10,7 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_16_020959) do
+ActiveRecord::Schema.define(version: 2018_10_17_020303) do
+
+  create_table "age_group_products", force: :cascade do |t|
+    t.integer "age_group_id"
+    t.integer "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["age_group_id"], name: "index_age_group_products_on_age_group_id"
+    t.index ["product_id"], name: "index_age_group_products_on_product_id"
+  end
+
+  create_table "age_groups", force: :cascade do |t|
+    t.integer "present_opponent_id"
+    t.integer "product_id"
+    t.integer "age_group_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["present_opponent_id"], name: "index_age_groups_on_present_opponent_id"
+    t.index ["product_id"], name: "index_age_groups_on_product_id"
+  end
+
+  create_table "budget_products", force: :cascade do |t|
+    t.integer "budget_id"
+    t.integer "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["budget_id"], name: "index_budget_products_on_budget_id"
+    t.index ["product_id"], name: "index_budget_products_on_product_id"
+  end
+
+  create_table "budgets", force: :cascade do |t|
+    t.integer "present_id"
+    t.integer "product_id"
+    t.integer "budget"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["present_id"], name: "index_budgets_on_present_id"
+    t.index ["product_id"], name: "index_budgets_on_product_id"
+  end
 
   create_table "present_opponent_products", force: :cascade do |t|
     t.integer "present_opponent_id"
@@ -78,10 +116,19 @@ ActiveRecord::Schema.define(version: 2018_10_16_020959) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "purpose_products", force: :cascade do |t|
+    t.integer "purpose_id"
+    t.integer "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_purpose_products_on_product_id"
+    t.index ["purpose_id"], name: "index_purpose_products_on_purpose_id"
+  end
+
   create_table "purposes", force: :cascade do |t|
     t.integer "present_id"
     t.integer "product_id"
-    t.string "purpose"
+    t.integer "purpose"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["present_id"], name: "index_purposes_on_present_id"

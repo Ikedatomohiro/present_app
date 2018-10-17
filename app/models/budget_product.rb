@@ -1,0 +1,2 @@
+class BudgetProduct < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class AgeGroupProduct < ApplicationRecord
+end
