@@ -12,10 +12,10 @@ class ProductsController < ApplicationController
     end
 
     if params[:budget_l].present?
-    @products = @products.get_by_price params[:budget_l]
+    @products = @products.get_by_price_lower params[:budget_l]
     end
     if params[:budget_u].present?
-    @products = @products.get_by_price params[:budget_u]
+    @products = @products.get_by_price_upper params[:budget_u]
     end
 
     if params[:age_group_number].present?
@@ -34,11 +34,13 @@ class ProductsController < ApplicationController
 
   def new
   	@product = Product.new(params[:product])
+    @purposes = Purpose.all
+
   end
 
   def edit
   	@product = Product.find_by(id: params[:id])
-    @purpose = Purpose.find_by(id: params[:id])
+    @purposes = Purpose.all
 
   end
 

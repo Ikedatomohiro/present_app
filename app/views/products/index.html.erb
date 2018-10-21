@@ -17,7 +17,6 @@
 </select>
 
 
-
 <% @purposes.each do |purpose| %>
 <%= check_box_tag "checkbox[#{purpose.id}]" %>
 <%= label_tag "checkbox[#{purpose.id}]", "#{purpose.purpose}" %>
@@ -32,6 +31,9 @@
 
 <%= submit_tag "検索" %>
 <% end %>
+
+
+
 </div>
 
 <% if @products.present? %>
@@ -54,13 +56,15 @@
 
   <tbody>
     <% @products.each do |product| %>
+    	 <% pn = product.purpose_number %>
+    	 <% @purpose = Purpose.find(1) %>
       <tr>
         <td><%= product.id %></td>
         <td><%= link_to(product.name, "/products/#{product.id}") %></td>
         <td><%= product.characteristic %></td>
         <td><%= product.product_hp %></td>
         <td><%= number_to_currency(product.price, :locale => 'jp') %></td>
-        <td><%= product.purpose_number %></td>
+        <td><%= @purpose.purpose %></td>
         <td><%= product.age_group_number %></td>
         <td><%= product.image %></td>
         <td><%= product.evaluation %></td>
@@ -75,5 +79,5 @@
   </tbody>
 </table>
 <% else %>
-<p>商品情報がありません。</p>
+<p>お探しの商品はありません。</p>
 <% end %>

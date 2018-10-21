@@ -18,7 +18,6 @@ class PurposeController < ApplicationController
   def create
   	@purpose = Purpose.new(
   		purpose: params[:purpose],
-   		purpose_number: params[:purpose_number]
   		)
 
       @purpose.save

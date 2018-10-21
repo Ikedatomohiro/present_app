@@ -17,15 +17,17 @@
 	<textarea name = "product_hp"><%= @product.product_hp %></textarea>
 
 <p>価格</p>
-	<input name = "price" value = <%=@product.price %>>円
+	<input name = "price" value = <%=@product.price %>>円　<br><br>
 
 <p>目的</p>
 <select name="purpose_number">
-<option value="0">誕生日</option>
-<option value="1">バレンタインデー</option>
-<option value="2">クリスマス</option>
+<% @purposes.each do |purpose| %>
+<option value= <%= purpose.id %> ><%= purpose.purpose %></option>
+<% end %>
 </select>
+
 <p>対象年齢</p>
+	<textarea name = "age_group_number">対象年齢</textarea>
 
 
 
