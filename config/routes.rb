@@ -14,5 +14,8 @@ post "products/:id/destroy" => "products#destroy"
 
 resources :purpose
 
+resources :user
+get "products/user/basket" => "users#basket"
+get "products/user/purchase" => "users#purchase"
 
 end

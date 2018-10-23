@@ -87,4 +87,6 @@ class ProductsController < ApplicationController
     redirect_to("/products/index")
   end
 
+
+
 end

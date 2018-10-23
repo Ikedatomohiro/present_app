@@ -10,3 +10,6 @@
 
 <img src= "<%= "/product_images/#{@product.image}" %>"><br>
 
+<%= button_to("この商品を買う", "user/purchase" , {method: "get"}) %>
+<%= button_to("買い物カゴ", "user/basket" , {method: "get"}) %>
+

@@ -8,34 +8,29 @@
 <div>
 <%= form_tag(products_index_path, method: "get") do %>
 
-<%= label_tag :name_or_characteristic, "商品名または特徴" %><%= text_field_tag :name_or_characteristic, params[:name_or_characteristic] %>
+	<%= label_tag :name_or_characteristic, "商品名または特徴" %><%= text_field_tag :name_or_characteristic, params[:name_or_characteristic] %>
 
 
-<%= label_tag :purpose_number, "目的" %>
-<select name="purpose_number">
-	<option value="">目的を選択してください</option>
+	<%= label_tag :purpose_number, "目的" %>
+		<select name="purpose_number">
+			<option value="">目的を選択してください</option>
+			<% @purposes.each do |purpose| %>
+			<option value= <%= purpose.id %> ><%= purpose.purpose %></option>
+			<% end %>
+		</select>
+
 	<% @purposes.each do |purpose| %>
-	<option value= <%= purpose.id %> ><%= purpose.purpose %></option>
+	<%= check_box_tag "checkbox[#{purpose.id}]" %>
+	<%= label_tag "checkbox[#{purpose.id}]", "#{purpose.purpose}" %>
 	<% end %>
-</select>
 
-<% @purposes.each do |purpose| %>
-<%= check_box_tag "checkbox[#{purpose.id}]" %>
-<%= label_tag "checkbox[#{purpose.id}]", "#{purpose.purpose}" %>
+	<%= label_tag :budget_l, "予算" %><%= text_field_tag :budget_l, params[:budget_l] %>
+	<%= label_tag :budget_u, "〜" %><%= text_field_tag :budget_u, params[:budget_u] %>
 
+	<%= label_tag :age_group_number, "対象年齢" %><%= text_field_tag :age_group_number, params[:age_group_number] %>
+
+	<%= submit_tag "検索" %>
 <% end %>
-
-
-<%= label_tag :budget_l, "予算" %><%= text_field_tag :budget_l, params[:budget_l] %>
-<%= label_tag :budget_u, "〜" %><%= text_field_tag :budget_u, params[:budget_u] %>
-
-<%= label_tag :age_group_number, "対象年齢" %><%= text_field_tag :age_group_number, params[:age_group_number] %>
-
-<%= submit_tag "検索" %>
-<% end %>
-
-
-
 </div>
 
 <% if @products.present? %>
