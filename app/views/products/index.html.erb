@@ -12,12 +12,8 @@
 
 
 <%= label_tag :purpose_number, "目的" %>
-
-
-
-<p>目的</p>
 <select name="purpose_number">
-	<option value=""></option>
+	<option value="">目的を選択してください</option>
 	<% @purposes.each do |purpose| %>
 	<option value= <%= purpose.id %> ><%= purpose.purpose %></option>
 	<% end %>
