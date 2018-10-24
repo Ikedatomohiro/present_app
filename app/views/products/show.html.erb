@@ -1,15 +1,18 @@
 <%= render "shared/header" %>
+
+<% purpose = Purpose.find(@product.purpose_number) %>
+
+
 <%= link_to("編集", "/products/#{@product.id}/edit") %>
 <%= button_to("削除", "/products/#{@product.id}/destroy", {method: "post"}) %>
-<p>ID：<%= @product.id %></p>
 <p>商品名：<%= @product.name %></p>
 <p>特徴：<%= @product.characteristic %></p>
 <p>ホームページ：<%= @product.product_hp %></p>
 <p>価格：<%= number_to_currency(@product.price, :locale => 'jp') %></p>
-<p>目的：<%= @product.purpose_number %></p>
+<p>目的：<%= purpose.purpose %></p>
 
 <img src= "<%= "/product_images/#{@product.image}" %>"><br>
 
 <%= button_to("この商品を買う", "user/purchase" , {method: "get"}) %>
-<%= button_to("買い物カゴ", "user/basket" , {method: "get"}) %>
+<%= button_to("買い物カゴに入れる", "user/basket" , {method: "get"}) %>
 
