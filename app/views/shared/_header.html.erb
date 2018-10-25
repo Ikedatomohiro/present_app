@@ -1,6 +1,6 @@
 <header>
 	<% if signed_in? %>
-		<%= link_to "ユーザーページ", '#' %>
+		<%= link_to "ユーザーページ", users_path %>
 		<%= link_to "ホーム", "/" %>
 		<%= link_to "商品リスト", products_index_path %>
 		<%= link_to "新規商品登録", products_new_path %>

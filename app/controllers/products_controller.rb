@@ -24,6 +24,10 @@ class ProductsController < ApplicationController
 
     @purposes = Purpose.all
 
+    if params[:checkbox].present?
+    @products = @products.where(purpose_number: params[:checkbox].keys)
+    end
+
   end
 
   def show
