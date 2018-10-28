@@ -1,3 +1,4 @@
 class Shop < ApplicationRecord
-	has_many :products, through: :product_management
+	has_many :product_managements
+	has_many :products, through: :product_managements
 end

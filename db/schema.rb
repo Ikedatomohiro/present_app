@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_17_060406) do
+ActiveRecord::Schema.define(version: 2018_10_27_142916) do
 
   create_table "age_group_products", force: :cascade do |t|
     t.integer "age_group_id"
@@ -43,9 +43,10 @@ ActiveRecord::Schema.define(version: 2018_10_17_060406) do
   create_table "budgets", force: :cascade do |t|
     t.integer "present_id"
     t.integer "product_id"
-    t.integer "budget"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "budget_max"
+    t.integer "budget_min"
     t.index ["present_id"], name: "index_budgets_on_present_id"
     t.index ["product_id"], name: "index_budgets_on_product_id"
   end
@@ -99,6 +100,7 @@ ActiveRecord::Schema.define(version: 2018_10_17_060406) do
     t.date "derivery_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "status"
     t.index ["product_id"], name: "index_product_managements_on_product_id"
     t.index ["shop_id"], name: "index_product_managements_on_shop_id"
   end
@@ -114,6 +116,7 @@ ActiveRecord::Schema.define(version: 2018_10_17_060406) do
     t.float "evaluation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "status"
   end
 
   create_table "purpose_products", force: :cascade do |t|
