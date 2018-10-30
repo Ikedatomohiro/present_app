@@ -7,11 +7,11 @@
 <%= button_to("削除", "/products/#{@product.id}/destroy", {method: "post"}) %>
 <p>商品名：<%= @product.name %></p>
 <p>特徴：<%= @product.characteristic %></p>
-<p>ホームページ：<%= @product.product_hp %></p>
+<p>ホームページ：<%= link_to(@product.product_hp, "#{@product.product_hp}") %></p>
 <p>価格：<%= number_to_currency(@product.price, :locale => 'jp') %></p>
 <p>目的：<%= purpose.purpose %></p>
 
-<img src= "<%= "/product_images/#{@product.image}" %>"><br>
+<img src= "<%= "/product_images/#{@product.image}" %>"  ><br>
 
 <%= button_to("この商品を買う", "user/purchase" , {method: "get"}) %>
 <%= button_to("買い物カゴに入れる", "user/basket" , {method: "get"}) %>

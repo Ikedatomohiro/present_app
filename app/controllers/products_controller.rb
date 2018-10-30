@@ -28,6 +28,8 @@ class ProductsController < ApplicationController
     @products = @products.where(purpose_number: params[:checkbox].keys)
     end
 
+    @budgets = Budget.all
+
   end
 
   def show

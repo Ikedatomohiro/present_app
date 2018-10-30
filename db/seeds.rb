@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+
+
+Budget.create(:budget_min => 500, :budget_max => 1000)
+Budget.create(:budget_min => 1000, :budget_max => 3000)
+Budget.create(:budget_min => 3000, :budget_max => 5000)
