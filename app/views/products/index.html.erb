@@ -65,7 +65,8 @@
         <td><%= image_tag("/product_images/#{product.image}", :width => "30", :height => "30") %></td>
         <td><%= product.evaluation %></td>
         <td>
-        <%= link_to "編集" %>
+        <%= link_to("編集", "/products/#{product.id}/edit") %>
+
         <%= link_to "削除" %>
         </td>　
       </tr>

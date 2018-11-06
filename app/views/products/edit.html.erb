@@ -17,7 +17,7 @@
 	<textarea name = "product_hp"><%= @product.product_hp %></textarea>
 
 <p>価格</p>
-	<input name = "price" value = <%=@product.price %>>円　<br><br>
+	<input name = "price" value = <%= @product.price %>>円　<br><br>
 
 <p>目的</p>
 <select name="purpose_number">
@@ -26,11 +26,12 @@
 <% end %>
 </select>
 
+
 <p>対象年齢</p>
 	<textarea name = "age_group_number"><%= @product.age_group_number %></textarea>
 
 <p>画像</p>
-	<img src= "<%= "/product_images/#{@product.image}" %>"><br>
+<%= image_tag("/product_images/#{@product.image}", :width => "100") %><br>
 		<input name="image" type="file"><br>
 
 <input type="submit" value="保存">
