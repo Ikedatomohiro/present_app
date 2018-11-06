@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :presents, dependent: :destroy
   has_many :present_opponents, through: :presents
-  has_many :baskets
+  has_many :carts, dependent: :destroy
   has_many :products, through: :baskets
 
 end

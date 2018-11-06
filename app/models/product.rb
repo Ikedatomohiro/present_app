@@ -7,7 +7,7 @@ class Product < ApplicationRecord
 	has_many :purposes, through: :purpose_products
 	has_many :age_group_products
 	has_many :age_groups, through: :age_group_products
-	has_many :baskets
+	has_many :carts
 	has_many :users, through: :baskets
 
 	scope :get_by_name_or_characteristic, ->(name_or_characteristic) {

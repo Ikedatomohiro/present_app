@@ -1,3 +1,5 @@
+<%= render "shared/header" %>
+
 <% if @carts.present? %>
 	<table class="cart_list">
 		<thead>
@@ -6,25 +8,31 @@
 		  <th>ユーザーID from Cart</th>
 		  <th>ユーザーID from User</th>
 		  <th>商品ID</th>
-		  <th>商品名</th>
+		  <th>商品名 from Product</th>
+		  <th>バックから削除</th>
 	</tr>
 	</thead>
-
+	<% total_price = 0 %>
 	<tbody>
 		  <% @carts.each do |cart| %>
-		  <% @users = User.find(params[:user_id]) %>
-		  <% @products = Product.find(params[:product_id]) %>
-
+		  <% @users = User.find(cart.user_id) %>
+		  <% @products = Product.find(cart.product_id) %>
+	<tr>
 		  <td><%= cart.id %></td>
 		  <td><%= cart.user_id %></td>
 		  <td><%= @users.id %></td>
 		  <td><%= cart.product_id %></td>
 		  <td><%= @products.name %></td>
+		  <td><%= button_to("削除", "/carts/#{cart.id}", {method: "delete"}) %></td>
+
+    </tr>
+    <% total_price += @products.price %>
     <% end %>
 
 	</tbody>
 </table>
 
+<p>合計金額は<%= number_to_currency(total_price, :locale => 'jp') %>です。</p>
 
 
 <% else %>

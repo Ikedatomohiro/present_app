@@ -20,7 +20,10 @@ class CartsController < ApplicationController
   def update
   end
 
-  def delete
+  def destroy
+  	@cart = Cart.find_by(id: params[:id])
+  	@cart.destroy
+    redirect_to("/carts")
   end
 end
 
