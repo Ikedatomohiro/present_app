@@ -1,0 +1,11 @@
+<% if @baskets.present? %>
+    <% @baskets.each do |basket| %>
+    <%= basket.id %><br>
+    <% end %>
+
+<% else %>
+<p>買い物カゴは空です。</p>
+<% end %>
+<%= params[:user_id] %>
+
+<%= params[:product_id] %>

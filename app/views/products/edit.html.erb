@@ -27,7 +27,7 @@
 </select>
 
 <p>対象年齢</p>
-	<textarea name = "age_group_number">対象年齢</textarea>
+	<textarea name = "age_group_number"><%= @product.age_group_number %></textarea>
 
 <p>画像</p>
 	<img src= "<%= "/product_images/#{@product.image}" %>"><br>

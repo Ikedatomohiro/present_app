@@ -11,8 +11,18 @@
 <p>価格：<%= number_to_currency(@product.price, :locale => 'jp') %></p>
 <p>目的：<%= purpose.purpose %></p>
 
-<img src= "<%= "/product_images/#{@product.image}" %>"  ><br>
+<img src= "<%= "/product_images/#{@product.image}" %>"><br>
 
-<%= button_to("この商品を買う", "user/purchase" , {method: "get"}) %>
-<%= button_to("買い物カゴに入れる", "user/basket" , {method: "get"}) %>
+
+<%= link_to "この商品を買う", products_user_purchase_path(:product_id => @product.id) %>
+
+
+<%= link_to "買い物カゴに入れる", basket_path(:product_id => @product.id, :user_id => current_user.id) %> <br>
+
+<%= form_tag("/baskets") do %>
+
+<%= link_to "買い物カゴに入れる", controller: "baskets", action: "create", :user_id => current_user.id, :product_id => @product.id %>
+
+<% end %>
+
 
