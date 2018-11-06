@@ -17,11 +17,11 @@
 <%= link_to "この商品を買う", products_user_purchase_path(:product_id => @product.id) %>
 
 
-<%= link_to "買い物カゴに入れる", basket_path(:product_id => @product.id, :user_id => current_user.id) %> <br>
+<%= link_to "買い物カゴに入れる", cart_path(:product_id => @product.id, :user_id => current_user.id) %> <br>
 
-<%= form_tag("/baskets") do %>
+<%= form_tag("/carts") do %>
 
-<%= link_to "買い物カゴに入れる", controller: "baskets", action: "create", :user_id => current_user.id, :product_id => @product.id %>
+<%= link_to "買い物カゴに入れる", controller: "carts", action: "create", :user_id => current_user.id, :product_id => @product.id %>
 
 <% end %>
 

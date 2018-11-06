@@ -1,0 +1,35 @@
+<% if @carts.present? %>
+	<table class="cart_list">
+		<thead>
+		<tr>
+		  <th>Cart ID</th>
+		  <th>ユーザーID from Cart</th>
+		  <th>ユーザーID from User</th>
+		  <th>商品ID</th>
+		  <th>商品名</th>
+	</tr>
+	</thead>
+
+	<tbody>
+		  <% @carts.each do |cart| %>
+		  <% @users = User.find(params[:user_id]) %>
+		  <% @products = Product.find(params[:product_id]) %>
+
+		  <td><%= cart.id %></td>
+		  <td><%= cart.user_id %></td>
+		  <td><%= @users.id %></td>
+		  <td><%= cart.product_id %></td>
+		  <td><%= @products.name %></td>
+    <% end %>
+
+	</tbody>
+</table>
+
+
+
+<% else %>
+    <p>買い物カゴは空です。</p>
+<% end %>
+
+<%= params[:user_id] %>
+<%= params[:product_id] %>
