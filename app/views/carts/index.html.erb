@@ -1,5 +1,6 @@
 <%= render "shared/header" %>
 
+<p>買い物カゴ</p>
 <% if @carts.present? %>
 	<table class="cart_list">
 		<thead>
@@ -9,7 +10,8 @@
 		  <th>ユーザーID from User</th>
 		  <th>商品ID</th>
 		  <th>商品名 from Product</th>
-		  <th>バックから削除</th>
+		  <th>価格</th>
+		  <th>買い物カゴから削除</th>
 	</tr>
 	</thead>
 	<% total_price = 0 %>
@@ -23,6 +25,7 @@
 		  <td><%= @users.id %></td>
 		  <td><%= cart.product_id %></td>
 		  <td><%= @products.name %></td>
+		  <td><%= number_to_currency(@products.price, :locale => 'jp') %></td>
 		  <td><%= button_to("削除", "/carts/#{cart.id}", {method: "delete"}) %></td>
 
     </tr>

@@ -1,0 +1,18 @@
+<%= render "shared/header" %>
+<%= params[:product_id] %>
+
+<p>ユーザー名</p>
+<p>商品</p>
+<p>購入金額</p>
+<p>プレゼントする人</p>
+<p>メッセージ</p>
+<p>お届け日</p>
+<p>お届け先住所</p>
+<p>合計金額</p><br>
+
+<p>以下は表示しないがmodelに保存</p>
+<p>ユーザーID</p>
+<p>目的</p>
+<p>決済した日</p>
+
+<%= link_to "購入する", products_user_confirm_path, :product_id => params[:product_id] %>

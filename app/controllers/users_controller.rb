@@ -32,8 +32,14 @@ class UsersController < ApplicationController
   end
 
   def purchase
+    @product = Product.all
   end
 
+  def settlement
+    @product = Product.all
+  end
 
+  def thanks
+  end
 
 end

@@ -9,9 +9,11 @@ class CartsController < ApplicationController
   end
 
   def create
+  	puts params[:user_id]
+  	puts "----------------"
   	@cart = Cart.new(
-  		user: params[:user_id],
-  		product: params[:product_id]
+  		user_id: params[:cart][:user_id],
+  		product_id: params[:cart][:product_id]
   		)
   	@cart.save
   	redirect_to("/carts")

@@ -1,3 +1,12 @@
 <p>以下の商品を購入しますか？</p>
-
 <%= params[:product_id] %>
+<% @product = Product.find(params[:product_id]) %>
+
+<p>商品名：<%= @product.name %></p>
+<p>特徴：<%= @product.characteristic %></p>
+<p>ホームページ：<%= link_to(@product.product_hp, "#{@product.product_hp}") %></p>
+<p>価格：<%= number_to_currency(@product.price, :locale => 'jp') %></p>
+
+<%= image_tag("/product_images/#{@product.image}", :width => "100") %><br>
+
+<%= link_to "購入する", products_user_settlement_path, :product_id => @product.id %>

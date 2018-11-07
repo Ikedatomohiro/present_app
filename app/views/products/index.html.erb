@@ -62,7 +62,7 @@
         <td><%= number_to_currency(product.price, :locale => 'jp') %></td>
         <td><%= @purposes.purpose %></td>
         <td><%= product.age_group_number %></td>
-        <td><%= image_tag("/product_images/#{product.image}", :width => "30", :height => "30") %></td>
+        <td><%= image_tag("/product_images/#{product.image}", :height => "35") %></td>
         <td><%= product.evaluation %></td>
         <td>
         <%= link_to("編集", "/products/#{product.id}/edit") %>
