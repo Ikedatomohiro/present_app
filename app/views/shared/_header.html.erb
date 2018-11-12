@@ -6,14 +6,22 @@
 		<%= link_to "新規商品登録", products_new_path %>
 		<%= link_to "目的リスト", purpose_index_path %>
 		<%= link_to "新規目的登録", new_purpose_path %>
-		<%= link_to "買い物カゴ" ,carts_path %>
+		<%= link_to "マイページ" %>
+
+
+<%= form_with scope: :post, url: carts_path do |form| %>
+<% @cart = Cart.new(user_id: current_user.id) %>
+<%= @cart.user_id %>
+<%= hidden_field :cart, :user_id %>
+<% end %>
+
 		<%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
 	<% else %>
 		<%= link_to "ホーム", "/" %>
 		<%= link_to "ログイン", new_user_session_path %>
 		<%= link_to "新規ユーザー登録", new_user_registration_path %>
 
-<% end %>
+	<% end %>
 
 
 </header>

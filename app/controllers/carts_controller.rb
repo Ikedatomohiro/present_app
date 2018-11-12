@@ -3,6 +3,10 @@ class CartsController < ApplicationController
   	@carts = Cart.all.order(created_at: :desc)
   	@products = Product.all
   	@users = User.all
+
+    if params[:user_id].present?
+    @carts = @carts.get_by_user_id params[:user_id]
+    end
   end
 
   def show
