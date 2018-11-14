@@ -9,7 +9,7 @@ class Product < ApplicationRecord
 	has_many :age_groups, through: :age_group_products
 	has_many :carts
 	has_many :users, through: :baskets
-	has_many :categories
+	has_many :category_controlls
 
 	scope :get_by_name_or_characteristic, ->(name_or_characteristic) {
 	where("name like ? or characteristic like ?", "%#{name_or_characteristic}%", "%#{name_or_characteristic}%")
