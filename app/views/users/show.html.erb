@@ -1,8 +1,10 @@
 <%= render "shared/header" %>
 
 
-<h4>ようこそ<%= @user.id %>さん</h4>
-<p>買い物カゴ</p>
+<h4>Welcome to your page</h4>
+
+<%= link_to "Cart", carts_path %>
+
 <p>過去のプレゼント</p>
 
 <p>ユーザー情報の変更</p>

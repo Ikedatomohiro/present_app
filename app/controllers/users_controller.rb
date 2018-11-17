@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @users = User.all
+
   end
 
   def new
@@ -38,10 +39,19 @@ class UsersController < ApplicationController
   def purchase_products
     @products = Product.all
     @carts = Cart.all
+    if current_user.id.present?
+      @carts = @carts.get_by_user_id current_user.id
+    end
+
+
   end
 
   def settlement
-    @product = Product.all
+    @products = Product.all
+    @carts = Cart.all
+    if current_user.id.present?
+      @carts = @carts.get_by_user_id current_user.id
+    end
   end
 
   def thanks

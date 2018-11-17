@@ -1,11 +1,12 @@
 class CartsController < ApplicationController
   def index
   	@carts = Cart.all.order(created_at: :desc)
-  	@products = Product.all
+  	@product = Product.all
   	@users = User.all
 
-    if params[:user_id].present?
-    @carts = @carts.get_by_user_id params[:user_id]
+    if current_user.id.present?
+      puts "----------------"
+      @carts = @carts.get_by_user_id current_user.id
     end
   end
 

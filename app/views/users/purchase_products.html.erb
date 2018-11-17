@@ -2,9 +2,6 @@
 	<table class="cart_list">
 		<thead>
 		<tr>
-		  <th>Cart ID</th>
-		  <th>ユーザーID from Cart</th>
-		  <th>商品ID</th>
 		  <th>商品名 from Product</th>
 		  <th>価格</th>
 	</tr>
@@ -12,16 +9,13 @@
 	<% total_price = 0 %>
 	<tbody>
 		  <% @carts.each do |cart| %>
-		  <% @products = Product.find(cart.product_id) %>
+		  <% @product = Product.find(cart.product_id) %>
 	<tr>
-		  <td><%= cart.id %></td>
-		  <td><%= cart.user_id %></td>
-		  <td><%= cart.product_id %></td>
-		  <td><%= @products.name %></td>
-		  <td><%= number_to_currency(@products.price, :locale => 'jp') %></td>
+		<td><%= link_to(@product.name, "/products/#{@product.id}") %></td>
+		  <td><%= number_to_currency(@product.price, :locale => 'jp') %></td>
 
     </tr>
-    <% total_price += @products.price %>
+    <% total_price += @product.price %>
     <% end %>
 
 	</tbody>

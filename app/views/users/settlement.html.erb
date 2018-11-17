@@ -1,6 +1,4 @@
 <%= render "shared/header" %>
-<%= params[:product_id] %>
-
 <p>ユーザー名</p>
 <p>商品</p>
 <p>購入金額</p>
@@ -8,11 +6,44 @@
 <p>メッセージ</p>
 <p>お届け日</p>
 <p>お届け先住所</p>
-<p>合計金額</p><%= params[:total_price] %><br>
+
+	<table class="cart_list">
+		<thead>
+		<tr>
+		  <th>商品名 from Product</th>
+		  <th>価格</th>
+	</tr>
+	</thead>
+	<% total_price = 0 %>
+	<tbody>
+		  <% @carts.each do |cart| %>
+		  <% @product = Product.find(cart.product_id) %>
+	<tr>
+		<td><%= link_to(@product.name, "/products/#{@product.id}") %></td>
+		  <td><%= number_to_currency(@product.price, :locale => 'jp') %></td>
+
+    </tr>
+    <% total_price += @product.price %>
+    <% end %>
+
+	</tbody>
+</table>
+
+<p>合計金額は<%= number_to_currency(total_price, :locale => 'jp') %>です。</p>
+
+
+
+
+
 
 <p>以下は表示しないがmodelに保存</p>
 <p>ユーザーID</p>
 <p>目的</p>
 <p>決済した日</p>
 
-<%= link_to "購入する", products_user_confirm_path, :product_id => params[:product_id] %>
+
+
+
+
+
+<%= link_to "次へ", products_user_confirm_path, :product_id => params[:product_id] %>
