@@ -38,5 +38,4 @@
     <p>買い物カゴは空です。</p>
 <% end %>
 
-<%= link_to "カートの商品を全て購入する", products_user_purchase_products_path %>
-
+<%= link_to "購入する", products_user_settlement_path, :total_price => total_price %>

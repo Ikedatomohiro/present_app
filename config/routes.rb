@@ -17,12 +17,11 @@ resources :purpose
 resources :users
 get "products/user/basket" => "users#basket"
 get "products/user/purchase" => "users#purchase"
-get "products/user/purchase_products" => "users#purchase_products"
 get "products/user/settlement" => "users#settlement"
 get "products/user/confirm" => "users#confirm"
 get "products/user/thanks" => "users#thanks"
 
 resources :carts
-
+resources :presents
 
 end

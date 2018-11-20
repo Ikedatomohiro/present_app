@@ -36,17 +36,18 @@ class UsersController < ApplicationController
     @product = Product.all
   end
 
-  def purchase_products
+  def settlement
     @products = Product.all
     @carts = Cart.all
     if current_user.id.present?
       @carts = @carts.get_by_user_id current_user.id
     end
 
+    @present = Present.new(params[:present])
 
   end
 
-  def settlement
+  def confirm
     @products = Product.all
     @carts = Cart.all
     if current_user.id.present?
