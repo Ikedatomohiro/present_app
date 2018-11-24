@@ -1,5 +1,5 @@
 class PresentOpponent < ApplicationRecord
-	has_many :presents
+	belongs_to :present, inverse_of: :present_opponent
 	has_many :users, through: :presents
-	bolongs_to :age_group
+	belongs_to :age_group
 end

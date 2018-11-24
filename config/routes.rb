@@ -18,10 +18,12 @@ resources :users
 get "products/user/basket" => "users#basket"
 get "products/user/purchase" => "users#purchase"
 get "products/user/settlement" => "users#settlement"
+#post "products/user/settlement" => "users#settlement"
 get "products/user/confirm" => "users#confirm"
 get "products/user/thanks" => "users#thanks"
 
 resources :carts
 resources :presents
+
 
 end

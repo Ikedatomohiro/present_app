@@ -19,18 +19,18 @@
 	<p>目的</p>
 	<select name="purpose_number">
 	<option value="">目的を選択してください</option>
-	<% @purposes.each do |purpose| %>
-	<option value= <%= purpose.id %> ><%= purpose.purpose %></option>
-<% end %>
-</select>
+		<% @purposes.each do |purpose| %>
+			<option value= <%= purpose.id %> ><%= purpose.purpose %></option>
+		<% end %>
+	</select>
 
-<p>対象年齢</p>
-	<textarea name = "age_group_number" placeholder="だいたい何歳向け？？"></textarea>
+	<p>対象年齢</p>
+		<textarea name = "age_group_number" placeholder="だいたい何歳向け？？"></textarea>
 
-<p>画像</p>
-<%= image_tag 'product_image.jpg', :size =>'120x100'%><br>
-	<input name="image" type="file"><br>
+	<p>画像</p>
+	<%= image_tag 'product_image.jpg', :size =>'120x100'%><br>
+		<input name="image" type="file"><br>
 
-<input type = "submit" value ="商品登録">
+	<input type = "submit" value ="商品登録">
 
 <% end %>

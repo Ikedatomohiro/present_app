@@ -45,14 +45,16 @@ class UsersController < ApplicationController
 
     @present = Present.new(params[:present])
 
+
   end
 
   def confirm
+    @present = Present.all
     @products = Product.all
     @carts = Cart.all
-    if current_user.id.present?
-      @carts = @carts.get_by_user_id current_user.id
-    end
+      if current_user.id.present?
+        @carts = @carts.get_by_user_id current_user.id
+      end
   end
 
   def thanks
