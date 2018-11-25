@@ -1,9 +1,15 @@
 <%= render "shared/header" %>
 
 <%= link_to("以下の内容で購入する", "/products/user/thanks") %>
-<%= link_to "内容を修正する", products_user_settlement_path(:product_id => params[:product_id]) %>
+<%= link_to "内容を修正する", products_user_settlement_path %>
 
-<% @present.each do |present| %>
-<%= present.id %>
+
+<% if @present.present? %>
+	<% @present.each do |present| %>
+	<%= present.message %>
+	<% end %>
+
+<% else %>
+    <p>Presentモデルは空です。</p>
 <% end %>
 

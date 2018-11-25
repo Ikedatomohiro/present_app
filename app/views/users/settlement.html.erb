@@ -1,10 +1,17 @@
 <%= render "shared/header" %>
 
-<%= form_with model: Present.new do |form| %>
+<%= form_tag ("/presents") do  %>
 
-	<p>プレゼントする人</p> <%= form.text_field :present_opponent %>
+	<%= link_to "Back", carts_path %>
+
+	<input type = "submit" value ="Next">
+	<p>プレゼントする人</p> 
+
 	<p>お届け日</p>
-	<p>メッセージ</p>  <%= form.text_field :message %>
+
+	<p>メッセージ</p>
+		<textarea name = "message"></textarea> <br>
+
 	<p>相手先住所</p>
 
 		<table class="cart_list">
@@ -36,9 +43,7 @@
 	<p>目的</p>
 	<p>決済した日</p>
 
-	<%= link_to "Back", carts_path %>
 
-	<%= button_to "Next" %>
 
 <% end %>
 
