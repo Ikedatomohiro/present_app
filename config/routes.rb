@@ -25,5 +25,7 @@ get "products/user/thanks" => "users#thanks"
 resources :carts
 resources :presents
 
-
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end

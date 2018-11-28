@@ -8,9 +8,15 @@ header {
 }
 
 .header_menu {
+	a {
+		text-decoration: none;
+	}
 	display: flex;
 	width: 500px;
 	justify-content: space-between;
+	font-family: "Iowan Old Style";
+	font-size: 30px; 
+
 }
 
 logo {
@@ -22,9 +28,13 @@ logo {
 }
 
 .search_box {
-	width: 100px;
-	height: 30px;
-	outline: 0;
+	input[type="text"] {
+		font-size: 30px;
+		padding: 10px;
+		width: 150px;
+	}
+
 }
+
 
 

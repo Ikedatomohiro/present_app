@@ -13,7 +13,7 @@
 		<%= button_to "Log out", destroy_user_session_path, method: :delete %>
 	<% else %>
 	<div class="header_menu">
-		<div class="serch_box">
+		<div class="search_box">
 			<%= form_tag(products_index_path, method: "get") do %>
 				<%= text_field_tag :name_or_characteristic, params[:name_or_characteristic], :placeholder => "Search present" %>
 			<% end %>

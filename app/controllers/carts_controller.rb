@@ -21,6 +21,8 @@ class CartsController < ApplicationController
   		product_id: params[:cart][:product_id]
   		)
   	@cart.save
+    NotificationMailer.send_confirm_to_user(current_user).deliver
+
   	redirect_to("/carts")
   end
 
