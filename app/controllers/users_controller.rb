@@ -65,6 +65,8 @@ class UsersController < ApplicationController
   end
 
   def thanks
+    NotificationMailer.send_confirm_to_user(current_user).deliver
+
   end
 
 

@@ -4,7 +4,7 @@ class NotificationMailer < ActionMailer::Base
   def send_confirm_to_user(user)
     @user = user
     mail(
-      subject: "カートへの商品登録が完了しました。",
+      subject: "ご購入ありがとうございました。",
       to: @user.email
     ) do |format|
       format.text
