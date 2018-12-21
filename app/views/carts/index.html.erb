@@ -6,12 +6,12 @@
 		<thead>
 		<tr>
 		  <th>商品ID</th>
-		  <th>商品名 from Product</th>
+		  <th>商品名</th>
 		  <th>価格</th>
 		  <th>この商品を買う<th>
 		  <th>買い物カゴから削除</th>
-	</tr>
-	</thead>
+		</tr>
+		</thead>
 	<% total_price = 0 %>
 	<tbody>
 		  <% @carts.each do |cart| %>
@@ -29,7 +29,7 @@
     <% end %>
 
 	</tbody>
-</table>
+	</table>
 
 <p>合計金額は<%= number_to_currency(total_price, :locale => 'jp') %>です。</p>
 

@@ -22,6 +22,8 @@ get "products/user/settlement" => "users#settlement"
 get "products/user/confirm" => "users#confirm"
 get "products/user/thanks" => "users#thanks"
 
+post "/products/user/settlement" => "presents#back"
+
 resources :carts
 resources :presents
 

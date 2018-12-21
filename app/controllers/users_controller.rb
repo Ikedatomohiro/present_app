@@ -45,6 +45,8 @@ class UsersController < ApplicationController
 
   def settlement
     @products = Product.all
+    @purposes = Purpose.all
+
     @carts = Cart.all
     if current_user.id.present?
       @carts = @carts.get_by_user_id current_user.id
@@ -57,16 +59,11 @@ class UsersController < ApplicationController
 
   def confirm
     @present = Present.all
-    @products = Product.all
-    @carts = Cart.all
-      if current_user.id.present?
-        @carts = @carts.get_by_user_id current_user.id
-      end
+
   end
 
   def thanks
     NotificationMailer.send_confirm_to_user(current_user).deliver
-
   end
 
 

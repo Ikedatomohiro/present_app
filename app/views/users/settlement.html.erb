@@ -10,7 +10,7 @@
 	<p>お届け日</p>
 
 	<p>メッセージ</p>
-		<textarea name = "message"></textarea> <br>
+		<%= text_area :present, :message %>
 
 	<p>相手先住所</p>
 
@@ -38,10 +38,20 @@
 
 	<p>合計金額は<%= number_to_currency(total_price, :locale => 'jp') %>です。</p>
 
-	<p>以下は表示しないがmodelに保存</p>
-	<p>ユーザーID</p>
-	<p>目的</p>
-	<p>決済した日</p>
+	<%= hidden_field :present, :user_id %>
+
+	<%= label_tag :purpose_number, "目的" %>
+		<select name="purpose_number">
+			<option value="">目的を選択してください</option>
+			<% @purposes.each do |purpose| %>
+				<option value= <%= purpose.id %> ><%= purpose.purpose %></option>
+			<% end %>
+		</select>
+
+	<%= hidden_field :present, :present_date, :value => Date.today %>
+
+	<%= label_tag :present_date, "お届け希望日" %>
+
 
 <% end %>
 

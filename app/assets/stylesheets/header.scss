@@ -12,11 +12,18 @@ header {
 		text-decoration: none;
 	}
 	display: flex;
-	width: 500px;
+	width: 800px;
 	justify-content: space-between;
 	font-family: "Iowan Old Style";
-	font-size: 30px; 
+	font-size: 30px;
+}
 
+.header_side_menu {
+	display: flex;
+	width: 350px;
+	justify-content: space-between;
+	text-align: center;
+	padding-top: 25px;
 }
 
 logo {
@@ -31,9 +38,11 @@ logo {
 	input[type="text"] {
 		font-size: 30px;
 		padding: 10px;
-		width: 150px;
+		width: 331px;
+		height: 67px;
+		font-family: Iowan Old Style;
+		text-align: left;
 	}
-
 }
 
 
