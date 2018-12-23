@@ -5,8 +5,14 @@
 	<%= link_to "Back", carts_path %>
 
 	<input type = "submit" value ="Next">
-	<p>プレゼントする人</p> 
-
+	<p>贈る相手</p> 
+		お名前<%= text_area :present_opponent, :name %><br>
+		性別
+		<select name="gender">
+			<% @genders.each do |gender| %>
+				<option value= <%= gender.gender %> ><%= gender.gender_type %></option>
+			<% end %>
+		</select>
 	<p>お届け日</p>
 
 	<p>メッセージ</p>
@@ -44,14 +50,13 @@
 		<select name="purpose_number">
 			<option value="">目的を選択してください</option>
 			<% @purposes.each do |purpose| %>
-				<option value= <%= purpose.id %> ><%= purpose.purpose %></option>
+				<option <% if @present.present? %><%= "selected" if purpose.id == params[:present][:purpose_number].to_i %><% end %> value = <%= purpose.id %> > <%= purpose.purpose %>
+				</option>
 			<% end %>
 		</select>
 
-	<%= hidden_field :present, :present_date, :value => Date.today %>
+	<%= hidden_field :present, :present_date, :value => Date.today %><br>
 
 	<%= label_tag :present_date, "お届け希望日" %>
-
-
 <% end %>
 

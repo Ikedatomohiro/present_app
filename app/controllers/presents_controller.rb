@@ -1,5 +1,7 @@
 class PresentsController < ApplicationController
-
+	def index
+		render :template => "users/confirm"
+	end
 
 	def create
 	  @present = Present.new(
@@ -12,8 +14,11 @@ class PresentsController < ApplicationController
 	  	message: params[:present][:message],
 	  	)
 	  puts @present.message
+	  puts @present.purpose_number
 	      @products = Product.all
-    @carts = Cart.all
+		  @carts = Cart.all
+		  @genders = Gender.all
+
       if current_user.id.present?
         @carts = @carts.get_by_user_id current_user.id
       end

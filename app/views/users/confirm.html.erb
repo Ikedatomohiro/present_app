@@ -8,13 +8,12 @@
 	<input type = "submit" value ="内容を修正する">
 <% end %>
 
-<p>プレゼント相手</p>
+<p>贈る相手</p>
 
 <p>メッセージ</p>
 <% if @present.present? %>
 
-	<%= @present.message %>
-	<%= params[:purpose_number] %> <br>
+	<%= @present.message %> <br>
 
 <% else %>
     <p>Presentモデルは空です。</p>
