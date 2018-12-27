@@ -47,7 +47,7 @@ class UsersController < ApplicationController
     @products = Product.all
     @purposes = Purpose.all
     @genders = Gender.all
-
+    @present = Present.new()
     @carts = Cart.all
     if current_user.id.present?
       @carts = @carts.get_by_user_id current_user.id
@@ -57,13 +57,47 @@ class UsersController < ApplicationController
 
   def confirm
     @present = Present.all
+    @purposes = Purpose.all
 
   end
 
   def thanks
+    @present = Present.new(present_params)
+      # user_id: current_user.id,
+      # present_opponent_id: params[:present_opponent_id],
+      # purpose_number: params[:purpose_number],
+      # present_date: params[:present_date],
+      # parchase_date: params[:parchase_date],
+      # budget: params[:budget],
+      # message: params[:present][:message],
+      # )
+    @present.save!
+    @present_opponent = PresentOpponent.new(presentopponent_params)
+      # name: params[:present_opponent][:name],
+      # gender: params[:gender],
+      # mail_address: params[:present_opponent][:mail_address],
+      # user_id: current_user.id,
+      # )
+    @present_opponent.save!
+
+
     NotificationMailer.send_confirm_to_user(current_user).deliver
+
+  end
+
+  def present
+    params.require(:present_opponent).permit(:present_opponent_id)
+  end
+
+  def presentopponent
+    params.require(:present_opponent).permit(:name)
   end
 
 
+  def cartitemdelete
+    @cart = Cart.find_by(id: params[:cart][:id])
+    @cart.destroy
+    render :template => "users/settlement"
+  end
 
 end

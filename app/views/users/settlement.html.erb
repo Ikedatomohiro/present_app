@@ -5,58 +5,62 @@
 	<%= link_to "Back", carts_path %>
 
 	<input type = "submit" value ="Next">
-	<p>贈る相手</p> 
-		お名前<%= text_area :present_opponent, :name %><br>
-		性別
+	<p>贈るお相手</p> 
+		<p>お名前</p><%= text_area :present_opponent, :name %><br>
+		<p>性別</p>
 		<select name="gender">
 			<% @genders.each do |gender| %>
-				<option value= <%= gender.gender %> ><%= gender.gender_type %></option>
+				<option <% if @gender.present? %><%= "selected" if gender.gender == params[:present_opponent][:gender].to_i %><% end %> value = <%= gender.gender %> > <%= gender.gender_type %>
+				</option>
 			<% end %>
 		</select>
-	<p>お届け日</p>
+	<p>お相手メールアドレス</p>
+		<%= text_area :present_opponent, :mail_address %><br>
 
+
+	<%= label_tag :purpose_number, "プレゼントの目的" %>
+		<select name="purpose_number">
+			<option value="">目的を選択してください</option>
+			<% @purposes.each do |purpose| %>
+				<option <% if params[:present].present? %><%= "selected" if purpose.id == params[:present][:purpose_number].to_i %><% end %> value = <%= purpose.id %> > <%= purpose.purpose %>
+				</option>
+			<% end %>
+		</select>
 	<p>メッセージ</p>
 		<%= text_area :present, :message %>
-
-	<p>相手先住所</p>
 
 		<table class="cart_list">
 			<thead>
 			<tr>
 			  <th>商品</th>
 			  <th>価格</th>
+			  <th>削除</th>
 		</tr>
 		</thead>
-		<% total_price = 0 %>
 		<tbody>
+		<% total_price = 0 %>
 			  <% @carts.each do |cart| %>
 			  <% @product = Product.find(cart.product_id) %>
 		<tr>
 			<td><%= link_to(@product.name, "/products/#{@product.id}") %></td>
-			  <td><%= number_to_currency(@product.price, :locale => 'jp') %></td>
+			<td><%= number_to_currency(@product.price, :locale => 'jp') %></td>
+			<td><%= button_to("削除(まだ動かない)") %></td>
 
 	    </tr>
 	    <% total_price += @product.price %>
-	    <% end %>
+	    	  <% end %>
 
 		</tbody>
 	</table>
 
+	<%= @present.message %>
+	<%= @present.purpose_number %>
+
+
 	<p>合計金額は<%= number_to_currency(total_price, :locale => 'jp') %>です。</p>
 
+	<%= hidden_field :present, :present_date, :value => Date.today %>
 	<%= hidden_field :present, :user_id %>
 
-	<%= label_tag :purpose_number, "目的" %>
-		<select name="purpose_number">
-			<option value="">目的を選択してください</option>
-			<% @purposes.each do |purpose| %>
-				<option <% if @present.present? %><%= "selected" if purpose.id == params[:present][:purpose_number].to_i %><% end %> value = <%= purpose.id %> > <%= purpose.purpose %>
-				</option>
-			<% end %>
-		</select>
-
-	<%= hidden_field :present, :present_date, :value => Date.today %><br>
-
-	<%= label_tag :present_date, "お届け希望日" %>
 <% end %>
 

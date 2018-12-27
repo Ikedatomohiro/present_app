@@ -13,19 +13,24 @@ post "products/:id/update" => "products#update"
 post "products/:id/destroy" => "products#destroy"
 
 resources :purpose
-
 resources :users
+resources :carts
+resources :presents
+
 get "products/user/basket" => "users#basket"
 get "products/user/purchase" => "users#purchase"
 get "products/user/settlement" => "users#settlement"
 #post "products/user/settlement" => "users#settlement"
 get "products/user/confirm" => "users#confirm"
-get "products/user/thanks" => "users#thanks"
+post "products/user/thanks" => "users#thanks"
+post "products/user/present" => "users#present"
+post "products/user/presentopponent" => "users#presentopponent"
+
+delete "products/user/:id" => "users#cartitemdelete"
 
 post "/products/user/settlement" => "presents#back"
 
-resources :carts
-resources :presents
+
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

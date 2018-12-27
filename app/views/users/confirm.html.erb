@@ -1,23 +1,39 @@
 <%= render "shared/header" %>
 
-<%= link_to("以下の内容で購入する", "/products/user/thanks") %>
+<%= form_tag ("/products/user/present") do %>
+	<%= hidden_field :present, :message %>
+	<%= hidden_field :present, :purpose_number %>
+
+
+
+	<input type = "submit" value ="以下の内容で購入する">
+<% end %>
+
+<%= form_tag ("/products/user/presentopponent") do %>
+
+	<%= hidden_field :present_opponent, :gender %>
+<% end %>
+
 <%= form_tag ("/products/user/settlement") do %>
 	<%= hidden_field :present, :message %>
 	<%= hidden_field :present, :purpose_number %>
+	<%= hidden_field :present_opponent, :gender %>
 
 	<input type = "submit" value ="内容を修正する">
 <% end %>
 
-<p>贈る相手</p>
+<p>贈るお相手</p>
+<p>お名前</p>
+	<%= @present_opponent.name %>
+<p>性別</p>
+	<%= @present_opponent.gender %>
+<p>お相手メールアドレス</p>
+	<%= @present_opponent.mail_address %><br>
 
+<p>贈る目的</p>
+	<%= @present.purpose_number %>
 <p>メッセージ</p>
-<% if @present.present? %>
-
 	<%= @present.message %> <br>
-
-<% else %>
-    <p>Presentモデルは空です。</p>
-<% end %>
 
 	<table class="cart_list">
 		<thead>

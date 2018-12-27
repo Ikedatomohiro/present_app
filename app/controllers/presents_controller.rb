@@ -1,9 +1,17 @@
 class PresentsController < ApplicationController
 	def index
+		@carts = Cart.all
+		@genders = Gender.all
 		render :template => "users/confirm"
 	end
 
 	def create
+	  @present_opponent = PresentOpponent.new(
+	  	name: params[:present_opponent][:name],
+	  	gender: params[:gender],
+	  	mail_address: params[:present_opponent][:mail_address],
+	  	user_id: current_user.id,
+	  	)
 	  @present = Present.new(
 	  	user_id: current_user.id,
 	  	present_opponent_id: params[:present_opponent_id],
@@ -13,6 +21,7 @@ class PresentsController < ApplicationController
 	  	budget: params[:budget],
 	  	message: params[:present][:message],
 	  	)
+
 	  puts @present.message
 	  puts @present.purpose_number
 	      @products = Product.all
@@ -29,10 +38,12 @@ class PresentsController < ApplicationController
 	def back
 		@present = Present.new(
 	  	message: params[:present][:message],
+	  	purpose_number: params[:present][:purpose_number]
 	  	)
 		@products = Product.all
 		@carts = Cart.all
 		@purposes = Purpose.all
+		@genders = Gender.all
 		render :template => "users/settlement"
 	end
 end

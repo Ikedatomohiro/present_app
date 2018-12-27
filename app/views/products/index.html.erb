@@ -20,8 +20,8 @@
 		</select>
 
 	<% @purposes.each do |purpose| %>
-	<%= check_box_tag "checkbox[#{purpose.id}]" %>
-	<%= label_tag "checkbox[#{purpose.id}]", "#{purpose.purpose}" %>
+		<%= check_box_tag "checkbox[#{purpose.id}]" %>
+		<%= label_tag "checkbox[#{purpose.id}]", "#{purpose.purpose}" %>
 	<% end %>
 
 	<%= label_tag :budget_l, "予算" %><%= text_field_tag :budget_l, params[:budget_l] %>
