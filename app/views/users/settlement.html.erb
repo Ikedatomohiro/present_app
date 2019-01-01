@@ -1,5 +1,7 @@
 <%= render "shared/header" %>
 
+
+
 <%= form_tag ("/presents") do  %>
 
 	<%= link_to "Back", carts_path %>
@@ -10,7 +12,7 @@
 		<p>性別</p>
 		<select name="gender">
 			<% @genders.each do |gender| %>
-				<option <% if @gender.present? %><%= "selected" if gender.gender == params[:present_opponent][:gender].to_i %><% end %> value = <%= gender.gender %> > <%= gender.gender_type %>
+				<option <% if params[:present_opponent].present? %><%= "selected" if gender.gender == params[:present_opponent][:gender].to_i %><% end %> value = <%= gender.gender %> > <%= gender.gender_type %>
 				</option>
 			<% end %>
 		</select>
@@ -18,9 +20,9 @@
 		<%= text_area :present_opponent, :mail_address %><br>
 
 
-	<%= label_tag :purpose_number, "プレゼントの目的" %>
+	<%= "プレゼントの目的" %>
 		<select name="purpose_number">
-			<option value="">目的を選択してください</option>
+			<option value="">選択してください</option>
 			<% @purposes.each do |purpose| %>
 				<option <% if params[:present].present? %><%= "selected" if purpose.id == params[:present][:purpose_number].to_i %><% end %> value = <%= purpose.id %> > <%= purpose.purpose %>
 				</option>
@@ -44,7 +46,7 @@
 		<tr>
 			<td><%= link_to(@product.name, "/products/#{@product.id}") %></td>
 			<td><%= number_to_currency(@product.price, :locale => 'jp') %></td>
-			<td><%= button_to("削除(まだ動かない)") %></td>
+			<td><%= "削除まだ動かない" %></td>
 
 	    </tr>
 	    <% total_price += @product.price %>
@@ -52,10 +54,6 @@
 
 		</tbody>
 	</table>
-
-	<%= @present.message %>
-	<%= @present.purpose_number %>
-
 
 	<p>合計金額は<%= number_to_currency(total_price, :locale => 'jp') %>です。</p>
 

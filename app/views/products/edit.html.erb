@@ -21,6 +21,7 @@
 
 <p>目的</p>
 <select name="purpose_number">
+	<option value="">選択してください</option>
 	<% @purposes.each do |purpose| %>
 		<option <%= "selected" if purpose.id == @product.purpose_number %> value= <%= purpose.id %> ><%= purpose.purpose %></option>
 	<% end %>

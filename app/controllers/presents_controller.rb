@@ -24,9 +24,9 @@ class PresentsController < ApplicationController
 
 	  puts @present.message
 	  puts @present.purpose_number
-	      @products = Product.all
-		  @carts = Cart.all
-		  @genders = Gender.all
+	  @products = Product.all
+	  @carts = Cart.all
+	  @genders = Gender.all
 
       if current_user.id.present?
         @carts = @carts.get_by_user_id current_user.id
@@ -37,9 +37,13 @@ class PresentsController < ApplicationController
 
 	def back
 		@present = Present.new(
-	  	message: params[:present][:message],
-	  	purpose_number: params[:present][:purpose_number]
-	  	)
+			message: params[:present][:message],
+			purpose_number: params[:present][:purpose_number]
+		)
+		@present_opponent = PresentOpponent.new(
+			name: params[:present_opponent][:name],
+			mail_address: params[:present_opponent][:mail_address]
+		)
 		@products = Product.all
 		@carts = Cart.all
 		@purposes = Purpose.all

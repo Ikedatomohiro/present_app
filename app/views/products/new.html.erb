@@ -18,7 +18,7 @@
 
 	<p>目的</p>
 	<select name="purpose_number">
-	<option value="">目的を選択してください</option>
+	<option value="">選択してください</option>
 		<% @purposes.each do |purpose| %>
 			<option value= <%= purpose.id %> ><%= purpose.purpose %></option>
 		<% end %>
