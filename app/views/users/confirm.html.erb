@@ -1,7 +1,10 @@
 <%= render "shared/header" %>
 
-<%= form_with url: products_user_thanks_path do |form| %>
-	<%= form.hidden_field :present, :message %>
+<%= form_for @present do |form| %>
+	<%= form.hidden_field :message %>
+		<%= fields_for @present.present_opponent do |f| %>
+			<%= f.hidden_field :gender %>
+		<% end %>
 	<input type = "submit" value ="以下の内容で購入する">
 <% end %>
 
@@ -20,8 +23,10 @@
 <p>お名前</p>
 	<%= @present_opponent.name %>
 <p>性別</p>
-	<% @gender = Gender.find_by gender: params[:gender] %>
-	<%= @gender.gender_type %>
+	<% if params[:gender].present? %>
+		<% @gender = Gender.find_by gender: params[:gender] %>
+		<%= @gender.gender_type %>
+	<% end %>
 <p>お相手メールアドレス</p>
 	<%= @present_opponent.mail_address %><br>
 

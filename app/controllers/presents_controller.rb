@@ -22,8 +22,6 @@ class PresentsController < ApplicationController
 	  	message: params[:present][:message],
 	  	)
 
-	  puts @present.message
-	  puts @present.purpose_number
 	  @products = Product.all
 	  @carts = Cart.all
 	  @genders = Gender.all

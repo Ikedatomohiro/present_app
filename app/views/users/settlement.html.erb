@@ -12,7 +12,7 @@
 		<p>性別</p>
 		<select name="gender">
 			<% @genders.each do |gender| %>
-				<option <% if params[:present_opponent].present? %><%= "selected" if gender.gender == params[:present_opponent][:gender].to_i %><% end %> value = <%= gender.gender %> > <%= gender.gender_type %>
+				<option <% if @gender.present? %><%= "selected" if gender.gender == params[:present_opponent][:gender].to_i %><% end %> value = <%= gender.gender %> > <%= gender.gender_type %>
 				</option>
 			<% end %>
 		</select>
@@ -20,7 +20,7 @@
 		<%= text_area :present_opponent, :mail_address %><br>
 
 
-	<%= "プレゼントの目的" %>
+	<%= label_tag :purpose_number, "プレゼントの目的" %>
 		<select name="purpose_number">
 			<option value="">選択してください</option>
 			<% @purposes.each do |purpose| %>
@@ -54,6 +54,10 @@
 
 		</tbody>
 	</table>
+
+	<%= @present.message %>
+	<%= @present.purpose_number %>
+
 
 	<p>合計金額は<%= number_to_currency(total_price, :locale => 'jp') %>です。</p>
 

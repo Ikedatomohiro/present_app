@@ -58,9 +58,8 @@ class ProductsController < ApplicationController
   		age_group_number: params[:age_group_number],
       image: "product_image.jpg"
   		)
-
-      @product.save
-  		redirect_to products_index_path
+    @product.save
+  	redirect_to products_index_path
   end
 
   def update

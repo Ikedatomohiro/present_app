@@ -52,7 +52,7 @@ class UsersController < ApplicationController
     if current_user.id.present?
       @carts = @carts.get_by_user_id current_user.id
     end
-
+    @present.user_id = current_user
   end
 
   def confirm
