@@ -1,6 +1,5 @@
 class PresentsController < ApplicationController
 
-
 	def index
 		@carts = Cart.all
 		@genders = Gender.all
@@ -8,29 +7,50 @@ class PresentsController < ApplicationController
 	end
 
 	def create
-	  @present_opponent = PresentOpponent.new(
-	  	name: params[:present_opponent][:name],
-	  	gender: params[:present_opponent][:gender],
-	  	mail_address: params[:present_opponent][:mail_address],
-	  	user_id: current_user.id,
-	  	)
-	  @present = Present.new(
-	  	user_id: current_user.id,
-	  	# present_opponent_id: params[:present_opponent_id],
-	  	purpose_number: params[:present][:purpose_number],
-	  	present_date: params[:present][:present_date],
-	  	parchase_date: params[:present][:parchase_date],
-	  	budget: params[:present][:budget],
-	  	message: params[:present][:message],
-	  	)
+	@present_opponent = PresentOpponent.new(
+		name: params[:present_opponent][:name],
+		gender: params[:present_opponent][:gender],
+		mail_address: params[:present_opponent][:mail_address],
+		user_id: current_user.id,
+		)
+	@present = Present.new(
+		user_id: current_user.id,
+		# present_opponent_id: params[:present_opponent_id],
+		purpose_number: params[:present][:purpose_number],
+		present_date: params[:present][:present_date],
+		parchase_date: params[:present][:parchase_date],
+		budget: params[:present][:budget],
+		message: params[:present][:message],
+		)
+		@carts = Cart.all
 
-	  @products = Product.all
-	  @carts = Cart.all
-	  @genders = Gender.all
+	@products = Product.all
+	@genders = Gender.all
+	@carts = @carts.get_by_user_id current_user.id
+	render :template => "users/confirm"
+	end
 
-	if params[:present][:parchase_date].present?
+	def set_present
+	@present_opponent = PresentOpponent.new(
+		name: params[:present_opponent][:name],
+		gender: params[:present_opponent][:gender],
+		mail_address: params[:present_opponent][:mail_address],
+		user_id: current_user.id,
+		)
+	@present = Present.new(
+		user_id: current_user.id,
+		# present_opponent_id: params[:present_opponent_id],
+		purpose_number: params[:present][:purpose_number],
+		present_date: params[:present][:present_date],
+		parchase_date: params[:present][:parchase_date],
+		budget: params[:present][:budget],
+		message: params[:present][:message],
+		)
+	@products = Product.all
+	@carts = Cart.all
+	@genders = Gender.all
 		@present_opponent.save!
-		puts PresentOpponent.last.id
+			puts PresentOpponent.last.id
 		@present.present_opponent_id = PresentOpponent.last.id
 		@present.save!
 
@@ -39,17 +59,12 @@ class PresentsController < ApplicationController
 		carts.each do |cart|
 			puts cart.product_id
 			@present_product = PresentProduct.create(
-				present_id: presentlastid,
-				product_id: cart.product_id
-				)
+			present_id: presentlastid,
+			product_id: cart.product_id
+			)
 			cart.delete
 		end
-		redirect_to products_user_thanks_path
-	elsif current_user.id.present?
-        @carts = @carts.get_by_user_id current_user.id
-		render :template => "users/confirm"
-	end
-
+	redirect_to products_user_thanks_path
 	end
 
 	def back

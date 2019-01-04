@@ -1,6 +1,6 @@
 <%= render "shared/header" %>
 
-<%= form_for @present do |form| %>
+<%= form_for @present, :url => {:action => 'set_present'} do |form| %>
 	<%= form.hidden_field :message %>
 	<%= form.hidden_field :purpose_number %>
 	<%= form.hidden_field :parchase_date, :value => Date.today %>

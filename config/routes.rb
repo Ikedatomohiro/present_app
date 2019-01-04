@@ -25,6 +25,7 @@ get "products/user/confirm" => "users#confirm"
 get "products/user/thanks" => "users#thanks"
 post "products/user/present" => "users#present"
 post "products/user/presentopponent" => "users#presentopponent"
+post "presents/set_present" => "presents#set_present"
 
 delete "products/user/:id" => "users#cartitemdelete"
 
