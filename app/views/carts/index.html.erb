@@ -34,8 +34,8 @@
 <p>合計金額は<%= number_to_currency(total_price, :locale => 'jp') %>です。</p>
 
 
+<%= link_to "購入する", products_user_settlement_path, :total_price => total_price %>
+
 <% else %>
     <p>買い物カゴは空です。</p>
 <% end %>
-
-<%= link_to "購入する", products_user_settlement_path, :total_price => total_price %>

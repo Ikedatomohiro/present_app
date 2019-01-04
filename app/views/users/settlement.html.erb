@@ -8,7 +8,7 @@
 	<p>贈るお相手</p> 
 		<p>お名前</p><%= text_field :present_opponent, :name %><br>
 		<p>性別</p>
-		<select name="gender">
+		<select name="present_opponent[gender]">
 			<% @genders.each do |gender| %>
 				<option <% if params[:present_opponent].present? %><%= "selected" if gender.gender == params[:present_opponent][:gender].to_i %><% end %> value = <%= gender.gender %> > <%= gender.gender_type %>
 				</option>
@@ -19,7 +19,7 @@
 
 
 	<%= "プレゼントの目的" %>
-		<select name="purpose_number">
+		<select name="present[purpose_number]">
 			<option value="">選択してください</option>
 			<% @purposes.each do |purpose| %>
 				<option <% if params[:present].present? %><%= "selected" if purpose.id == params[:present][:purpose_number].to_i %><% end %> value = <%= purpose.id %> > <%= purpose.purpose %>

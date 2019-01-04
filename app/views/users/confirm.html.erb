@@ -27,16 +27,16 @@
 <p>お名前</p>
 	<%= @present_opponent.name %>
 <p>性別</p>
-	<% if params[:gender].present? %>
-		<% @gender = Gender.find_by gender: params[:gender] %>
+	<% if params[:present_opponent][:gender].present? %>
+		<% @gender = Gender.find_by gender: params[:present_opponent][:gender] %>
 		<%= @gender.gender_type %>
 	<% end %>
 <p>お相手メールアドレス</p>
 	<%= @present_opponent.mail_address %><br>
 
 <p>贈る目的</p>
-	<% if params[:purpose_number].present? %>
-		<% @purpose = Purpose.find(params[:purpose_number]) %>
+	<% if params[:present][:purpose_number].present? %>
+		<% @purpose = Purpose.find(params[:present][:purpose_number]) %>
 		<%= @purpose.purpose %>
 	<% else %>
 		<%= "目的未選択" %>
