@@ -26,10 +26,14 @@ class PresentsController < ApplicationController
 	  @carts = Cart.all
 	  @genders = Gender.all
 
-      if current_user.id.present?
+	if params[:present][:parchase_date].present?
+		@present_opponent.save!
+		@present.save!
+		redirect_to products_user_thanks_path
+	elsif current_user.id.present?
         @carts = @carts.get_by_user_id current_user.id
-      end
-	  render :template => "users/confirm"
+		render :template => "users/confirm"
+	end
 
 	end
 

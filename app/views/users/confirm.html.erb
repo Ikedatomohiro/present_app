@@ -2,8 +2,12 @@
 
 <%= form_for @present do |form| %>
 	<%= form.hidden_field :message %>
-		<%= fields_for @present.present_opponent do |f| %>
+	<%= form.hidden_field :purpose_number %>
+	<%= form.hidden_field :parchase_date, :value => Date.today %>
+		<%= fields_for @present_opponent do |f| %>
+			<%= f.hidden_field :name %>
 			<%= f.hidden_field :gender %>
+			<%= f.hidden_field :mail_address %>
 		<% end %>
 	<input type = "submit" value ="以下の内容で購入する">
 <% end %>

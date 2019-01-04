@@ -22,7 +22,7 @@ get "products/user/purchase" => "users#purchase"
 get "products/user/settlement" => "users#settlement"
 #post "products/user/settlement" => "users#settlement"
 get "products/user/confirm" => "users#confirm"
-post "products/user/thanks" => "users#thanks"
+get "products/user/thanks" => "users#thanks"
 post "products/user/present" => "users#present"
 post "products/user/presentopponent" => "users#presentopponent"
 
