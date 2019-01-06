@@ -6,7 +6,32 @@
 <%= link_to "Cart", carts_path %>
 
 <p>過去のプレゼント</p>
-
+<table>
+	<tr>
+		<th>ID</th>
+		<th>プレゼント購入日</th>
+		<th>送ったお相手</th>
+		<th>プレゼント目的</th>
+		<th>プレゼント</th>
+		<th>写真</th>
+		<th>価格</th>
+	</tr>
+		<% @presents.each do |present| %>
+	<tr>
+		<td><%= present.id %></td>
+		<td><%= present.parchase_date %></td>
+		<td><%= present.present_opponent_id %></td>
+		<td><%= present.purpose_number %></td>
+		<% presentproducts = PresentProduct.where(present_id: present.id) %>
+			<% presentproducts.each do |presentproduct| %>
+				<% product = Product.find(presentproduct.product_id) %>
+				<td><%= product.name %></td>
+				<td></td>
+				<td></td>
+			<% end %>
+	</tr>
+		<% end %>
+</table>
 <p>ユーザー情報の変更</p>
 
 

@@ -21,7 +21,10 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @users = User.all
-
+    presents = Present.all
+    @presents = Present.where(user_id: current_user)
+    @present_products = PresentProduct.all
+    @preesnt_products = PresentProduct.where(present_id: @presents)
   end
 
   def new
