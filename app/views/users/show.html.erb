@@ -20,14 +20,16 @@
 	<tr>
 		<td><%= present.id %></td>
 		<td><%= present.parchase_date %></td>
-		<td><%= present.present_opponent_id %></td>
-		<td><%= present.purpose_number %></td>
+		<% presentopponent = PresentOpponent.find(present.present_opponent_id) %>
+		<td><%= presentopponent.name %></td>
+		<% purpose = Purpose.find(present.purpose_number) %>
+		<td><%= purpose.purpose %></td>
 		<% presentproducts = PresentProduct.where(present_id: present.id) %>
 			<% presentproducts.each do |presentproduct| %>
 				<% product = Product.find(presentproduct.product_id) %>
 				<td><%= product.name %></td>
-				<td></td>
-				<td></td>
+				<td><%= image_tag("/product_images/#{product.image}", :height => "35") %></td>
+				<td><%= number_to_currency(product.price, :locale => 'jp') %></td>
 			<% end %>
 	</tr>
 		<% end %>
