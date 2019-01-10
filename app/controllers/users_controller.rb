@@ -16,14 +16,13 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = Users.find(params[:id])
+
   end
 
   def show
-    @user = current_user
     @users = User.all
-    presents = Present.all
-    @presents = Present.where(user_id: current_user)
-    @present_products = PresentProduct.all
+    @presents = Present.where(user_id: params[:id])
     @preesnt_products = PresentProduct.where(present_id: @presents)
   end
 

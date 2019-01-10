@@ -1,8 +1,11 @@
 <% @users.each do |user| %>
 <%= link_to(user.id, "/users/#{user.id}") %>
-<%= user %>
+<%= user.name %>
 <%= user.email %>
 <%= user.password %>
+<%= user.gender %>
+<%= user.birthday %>
+<%= user.mailaddress %>
 <br>
 <% end %>
 

@@ -6,35 +6,29 @@
 <%= link_to "Cart", carts_path %>
 
 <p>過去のプレゼント</p>
-<table>
-	<tr>
-		<th>ID</th>
-		<th>プレゼント購入日</th>
-		<th>送ったお相手</th>
-		<th>プレゼント目的</th>
-		<th>プレゼント</th>
-		<th>写真</th>
-		<th>価格</th>
-	</tr>
-		<% @presents.each do |present| %>
-	<tr>
-		<td><%= present.id %></td>
-		<td><%= present.parchase_date %></td>
-		<% presentopponent = PresentOpponent.find(present.present_opponent_id) %>
-		<td><%= presentopponent.name %></td>
-		<% purpose = Purpose.find(present.purpose_number) %>
-		<td><%= purpose.purpose %></td>
-		<% presentproducts = PresentProduct.where(present_id: present.id) %>
-			<% presentproducts.each do |presentproduct| %>
-				<% product = Product.find(presentproduct.product_id) %>
-				<td><%= product.name %></td>
-				<td><%= image_tag("/product_images/#{product.image}", :height => "35") %></td>
-				<td><%= number_to_currency(product.price, :locale => 'jp') %></td>
-			<% end %>
-	</tr>
-		<% end %>
-</table>
-<p>ユーザー情報の変更</p>
+
+	<% @presents.each do |present| %>
+			<% presentopponent = PresentOpponent.find(present.present_opponent_id) %>
+			<% purpose = Purpose.find(present.purpose_number) %>
+			<% presentproducts = PresentProduct.where(present_id: present.id) %>
+		<div class = "purchaselog">
+			<div class = "purchaselogheader">
+				<div class = "purchasedate"><%= label :present, :注文日 %>
+				<p><%= present.parchase_date %></p></div>
+				<div class = "presentopponent"><%= label :present, :送ったお相手 %>
+				<p><%= presentopponent.name %></p></div>
+				<div class = "presentpurpose"><%= label :present, :目的 %>
+				<p><%= purpose.purpose %></p></div>
+			</div>
+				<% presentproducts.each do |presentproduct| %>
+					<% product = Product.find(presentproduct.product_id) %>
+					<%= image_tag("/product_images/#{product.image}", :height => "35") %>
+					<%= product.name %>
+					<%= number_to_currency(product.price, :locale => 'jp') %>
+				<% end %>
+		</div>
+	<% end %>
+<p><%= link_to(ユーザー情報の変更, "/users/#{user.id}/edit") %></p>
 
 
 
