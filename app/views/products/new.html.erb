@@ -4,33 +4,33 @@
 
 <%= form_tag("/products/create", {multipart: true}) do %>
 
-	<p>商品名</p>
-		<textarea name = "name" placeholder = "商品名"></textarea>
+  <p>商品名</p>
+    <textarea name = "name" placeholder = "商品名"></textarea>
 
-	<p>特徴</p>
-		<textarea name = "characteristic" placeholder = "特徴"></textarea>
+  <p>特徴</p>
+    <textarea name = "characteristic" placeholder = "特徴"></textarea>
 
-	<p>ホームページアドレス</p>
-		<textarea name = "product_hp" placeholder = "ホームページアドレス"></textarea>
+  <p>ホームページアドレス</p>
+    <textarea name = "product_hp" placeholder = "ホームページアドレス"></textarea>
 
-	<p>価格</p>
-		<input name = "price" placeholder = "価格">円 <br>
+  <p>価格</p>
+  	<input name = "price" placeholder = "価格">円 <br>
 
-	<p>目的</p>
-	<select name="purpose_number">
-	<option value="">選択してください</option>
-		<% @purposes.each do |purpose| %>
-			<option value= <%= purpose.id %> ><%= purpose.purpose %></option>
-		<% end %>
-	</select>
+  <p>目的</p>
+  <select name="purpose_number">
+  <option value="">選択してください</option>
+    <% @purposes.each do |purpose| %>
+      <option value= <%= purpose.id %> ><%= purpose.purpose %></option>
+    <% end %>
+  </select>
 
-	<p>対象年齢</p>
-		<textarea name = "age_group_number" placeholder="だいたい何歳向け？？"></textarea>
+  <p>対象年齢</p>
+    <textarea name = "age_group_number" placeholder="だいたい何歳向け？？"></textarea>
 
-	<p>画像</p>
-	<%= image_tag 'product_image.jpg', :size =>'120x100'%><br>
-		<input name="image" type="file"><br>
+  <p>画像</p>
+  <%= image_tag 'product_image.jpg', :size =>'120x100'%><br>
+    <input name="image" type="file"><br>
 
-	<input type = "submit" value ="商品登録">
+  <input type = "submit" value ="商品登録">
 
 <% end %>

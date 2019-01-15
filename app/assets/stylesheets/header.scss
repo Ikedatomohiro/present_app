@@ -1,49 +1,47 @@
 header {
-	background-color: #D0AD1B;
-	display: flex;
-	height: 129px;
-	justify-content: space-between;
-	align-items: center;
-	padding-right: 45px;
+  background-color: #D0AD1B;
+  display: flex;
+  height: 129px;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 45px;
 }
 
 .header_menu {
-	a {
-		text-decoration: none;
-	}
-	display: flex;
-	width: 800px;
-	justify-content: space-between;
-	font-family: "Iowan Old Style";
-	font-size: 30px;
+  a {
+    text-decoration: none;
+    }
+  display: flex;
+  width: 800px;
+  justify-content: space-between;
+  font-family: "Iowan Old Style";
+  font-size: 30px;
 }
 
 .header_side_menu {
-	display: flex;
-	width: 350px;
-	justify-content: space-between;
-	text-align: center;
-	padding-top: 25px;
+  display: flex;
+  width: 350px;
+  justify-content: space-between;
+  text-align: center;
+  padding-top: 25px;
 }
 
 logo {
-	font-family: "Hannotate SC";
-	color: #FFFFFF;
-	font-size: 30px;
-	line-height: 30px;
-	padding-left: 45px;
+  font-family: "Hannotate SC";
+  color: #FFFFFF;
+  font-size: 30px;
+  line-height: 30px;
+  padding-left: 45px;
 }
 
 .search_box {
-	input[type="text"] {
-		font-size: 30px;
-		padding: 10px;
-		width: 331px;
-		height: 67px;
-		font-family: Iowan Old Style;
-		text-align: left;
-	}
+  input[type="text"] {
+    font-size: 30px;
+    padding: 10px;
+    width: 331px;
+    height: 67px;
+    font-family: Iowan Old Style;
+    text-align: left;
+  }
 }
-
-
 

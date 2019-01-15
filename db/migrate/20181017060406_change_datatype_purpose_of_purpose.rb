@@ -1,5 +1,5 @@
 class ChangeDatatypePurposeOfPurpose < ActiveRecord::Migration[5.2]
   def change
-  	change_column :purposes, :purpose, :string
+    change_column :purposes, :purpose, :string
   end
 end

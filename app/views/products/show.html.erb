@@ -5,11 +5,11 @@
 
 <%= link_to("編集", "/products/#{@product.id}/edit") %>
 <%= button_to("削除", "/products/#{@product.id}/destroy", {method: "post"}) %>
-<p>商品名：<%= @product.name %></p>
-<p>特徴：<%= @product.characteristic %></p>
-<p>ホームページ：<%= link_to(@product.product_hp, "#{@product.product_hp}") %></p>
-<p>価格：<%= number_to_currency(@product.price, :locale => 'jp') %></p>
-<p>目的：<%= purpose.purpose %></p>
+  <p>商品名：<%= @product.name %></p>
+  <p>特徴：<%= @product.characteristic %></p>
+  <p>ホームページ：<%= link_to(@product.product_hp, "#{@product.product_hp}") %></p>
+  <p>価格：<%= number_to_currency(@product.price, :locale => 'jp') %></p>
+  <p>目的：<%= purpose.purpose %></p>
 
 <%= image_tag("/product_images/#{@product.image}", :width => "100") %><br>
 
@@ -17,12 +17,12 @@
 
 <%= form_tag("/carts") do %>
 
-<% @cart = Cart.new(user_id: current_user.id, product_id: @product.id) %>
-<%= @cart.user_id %>
-<%= @cart.product_id %>
-<%= hidden_field :cart, :user_id %>
-<%= hidden_field :cart, :product_id %>
-<%= button_to("買い物カゴに入れる", controller: "carts", action: "create") %>
+  <% @cart = Cart.new(user_id: current_user.id, product_id: @product.id) %>
+    <%= @cart.user_id %>
+    <%= @cart.product_id %>
+    <%= hidden_field :cart, :user_id %>
+    <%= hidden_field :cart, :product_id %>
+    <%= button_to("買い物カゴに入れる", controller: "carts", action: "create") %>
 
 <% end %>
 

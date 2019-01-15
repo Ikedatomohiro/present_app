@@ -1,3 +1,5 @@
+<%= render "shared/header" %>
+
 <% @users.each do |user| %>
 <%= link_to(user.id, "/users/#{user.id}") %>
 <%= user.name %>

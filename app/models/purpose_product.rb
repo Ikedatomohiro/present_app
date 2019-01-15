@@ -1,4 +1,4 @@
 class PurposeProduct < ApplicationRecord
-	belongs_to :purpose
-	belongs_to :product
+  belongs_to :purpose
+  belongs_to :product
 end

@@ -2,58 +2,58 @@
 
 <% @page_title = "商品リスト" %>
 <h3><%= @page_title %></h3>
- <%= "商品数：" %>
- <%= @products.count %>
+  <%= "商品数：" %>
+  <%= @products.count %>
 
 <div>
 <%= form_tag(products_index_path, method: "get") do %>
 
-	<%= label_tag :name_or_characteristic, "商品名または特徴" %><%= text_field_tag :name_or_characteristic, params[:name_or_characteristic] %>
+  <%= label_tag :name_or_characteristic, "商品名または特徴" %><%= text_field_tag :name_or_characteristic, params[:name_or_characteristic] %>
 
 
-	<%= label_tag :purpose_number, "目的" %>
-		<select name="purpose_number">
-			<option value="">選択してください</option>
-			<% @purposes.each do |purpose| %>
-			<option value= <%= purpose.id %> ><%= purpose.purpose %></option>
-			<% end %>
-		</select>
+  <%= label_tag :purpose_number, "目的" %>
+    <select name="purpose_number">
+      <option value="">選択してください</option>
+      <% @purposes.each do |purpose| %>
+      <option value= <%= purpose.id %> ><%= purpose.purpose %></option>
+      <% end %>
+    </select>
 
-	<% @purposes.each do |purpose| %>
-		<%= check_box_tag "checkbox[#{purpose.id}]" %>
-		<%= label_tag "checkbox[#{purpose.id}]", "#{purpose.purpose}" %>
-	<% end %>
+  <% @purposes.each do |purpose| %>
+    <%= check_box_tag "checkbox[#{purpose.id}]" %>
+    <%= label_tag "checkbox[#{purpose.id}]", "#{purpose.purpose}" %>
+  <% end %>
 
-	<%= label_tag :budget_l, "予算" %><%= text_field_tag :budget_l, params[:budget_l] %>
-	<%= label_tag :budget_u, "〜" %><%= text_field_tag :budget_u, params[:budget_u] %>
+  <%= label_tag :budget_l, "予算" %><%= text_field_tag :budget_l, params[:budget_l] %>
+  <%= label_tag :budget_u, "〜" %><%= text_field_tag :budget_u, params[:budget_u] %>
 
-	<%= label_tag :age_group_number, "対象年齢" %><%= text_field_tag :age_group_number, params[:age_group_number] %>
+  <%= label_tag :age_group_number, "対象年齢" %><%= text_field_tag :age_group_number, params[:age_group_number] %>
 
-	<%= submit_tag "検索" %>
+  <%= submit_tag "検索" %>
 <% end %>
 </div>
 
 <% if @products.present? %>
-	<table class="product_list">
-		<thead>
-	    <tr>
+  <table class="product_list">
+    <thead>
+      <tr>
           <th>ID</th>
-	      <th>商品名</th>
-	      <th>特徴</th>
-	      <th>Webサイト</th>
-	      <th>価格</th>
-	      <th>目的</th>
-	      <th>対象年齢</th>
-	      <th>画像</th>
-	      <th>評価</th>
-	      <th>操作</th>
+        <th>商品名</th>
+        <th>特徴</th>
+        <th>Webサイト</th>
+        <th>価格</th>
+        <th>目的</th>
+        <th>対象年齢</th>
+        <th>画像</th>
+        <th>評価</th>
+        <th>操作</th>
 
-	    </tr>
-		</thead>
+      </tr>
+    </thead>
 
   <tbody>
     <% @products.each do |product| %>
-    	 <% @purposes = Purpose.find(product.purpose_number) %>
+       <% @purposes = Purpose.find(product.purpose_number) %>
       <tr>
         <td><%= product.id %></td>
         <td><%= link_to(product.name, "/products/#{product.id}") %></td>

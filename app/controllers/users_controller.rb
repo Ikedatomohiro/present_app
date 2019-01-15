@@ -16,8 +16,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = Users.find(params[:id])
-
+    @user = current_user
+    @users = User.all
+    @genders = Gender.all
   end
 
   def show
@@ -33,6 +34,11 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(current_user.id)
+    @user.name = params[:user][:name]
+    @user.gender = params[:user][:gender]
+    @user.birthday = params[:user][:birthday]
+    @user.save!
   end
 
   def destroy

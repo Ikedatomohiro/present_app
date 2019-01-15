@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-  	@products = Product.all.order(created_at: :desc)
+    @products = Product.all.order(created_at: :desc)
 
     if params[:name_or_characteristic].present?
 #    @products = @products.get_by_characteristic params[:characteristic]
@@ -31,39 +31,39 @@ class ProductsController < ApplicationController
   end
 
   def show
-  	@product = Product.find_by(id: params[:id])
+    @product = Product.find_by(id: params[:id])
     @purposes = Purpose.all
 
   end
 
   def new
-  	@product = Product.new(params[:product])
+    @product = Product.new(params[:product])
     @purposes = Purpose.all
 
   end
 
   def edit
-  	@product = Product.find_by(id: params[:id])
+    @product = Product.find_by(id: params[:id])
     @purposes = Purpose.all
 
   end
 
   def create
-  	@product = Product.new(
-  		name: params[:name],
-  		characteristic: params[:characteristic],
-  		product_hp: params[:product_hp],
-  		price: params[:price],
-  		purpose_number: params[:purpose_number],
-  		age_group_number: params[:age_group_number],
+    @product = Product.new(
+      name: params[:name],
+      characteristic: params[:characteristic],
+      product_hp: params[:product_hp],
+      price: params[:price],
+      purpose_number: params[:purpose_number],
+      age_group_number: params[:age_group_number],
       image: "product_image.jpg"
-  		)
+      )
     @product.save
-  	redirect_to products_index_path
+    redirect_to products_index_path
   end
 
   def update
-  	@product = Product.find_by(id: params[:id])
+    @product = Product.find_by(id: params[:id])
     @product.name = params[:name]
     @product.characteristic = params[:characteristic]
     @product.product_hp = params[:product_hp]
@@ -71,20 +71,20 @@ class ProductsController < ApplicationController
     @product.purpose_number = params[:purpose_number]
     @product.age_group_number = params[:age_group_number]
 
-  	if params[:image]
-  		@product.image = "#{@product.id}.jpg"
-  		image = params[:image]
-  		File.binwrite("public/product_images/#{@product.image}", image.read)
-  	end
+    if params[:image]
+      @product.image = "#{@product.id}.jpg"
+      image = params[:image]
+      File.binwrite("public/product_images/#{@product.image}", image.read)
+    end
 
       @product.save
-  		redirect_to("/products/#{@product.id}")
+      redirect_to("/products/#{@product.id}")
 
   end
 
   def destroy
-  	@product = Product.find_by(id: params[:id])
-  	@product.destroy
+    @product = Product.find_by(id: params[:id])
+    @product.destroy
     redirect_to("/products/index")
   end
 
