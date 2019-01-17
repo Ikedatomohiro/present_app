@@ -1,7 +1,5 @@
 <%= render "shared/header" %>
 
-<% purpose = Purpose.find(@product.purpose_number) %>
-
 
 <%= link_to("編集", "/products/#{@product.id}/edit") %>
 <%= button_to("削除", "/products/#{@product.id}/destroy", {method: "post"}) %>
@@ -9,8 +7,12 @@
   <p>特徴：<%= @product.characteristic %></p>
   <p>ホームページ：<%= link_to(@product.product_hp, "#{@product.product_hp}") %></p>
   <p>価格：<%= number_to_currency(@product.price, :locale => 'jp') %></p>
-  <p>目的：<%= purpose.purpose %></p>
-
+      <p>目的：</p>
+        <% purpose_products = PurposeProduct.where(product_id: @product.id) %>
+        <% purpose_products.each do |purpose_product| %>
+          <% purpose = Purpose.find(purpose_product.purpose_id) %>
+          <%= purpose.purpose %><br>
+        <% end %>
 <%= image_tag("/product_images/#{@product.image}", :width => "100") %><br>
 
 <%= link_to "この商品を買う", products_user_purchase_path(:product_id => @product.id) %>

@@ -14,11 +14,11 @@
     <div class = "purchaselog">
       <div class = "purchaselogheader">
         <div class = "purchasedate"><%= label :present, :注文日 %>
-        <p><%= present.parchase_date %></p></div>
+          <p><%= present.parchase_date %></p></div>
         <div class = "presentopponent"><%= label :present, :送ったお相手 %>
-        <p><%= presentopponent.name %></p></div>
+          <p><%= presentopponent.name %></p></div>
         <div class = "presentpurpose"><%= label :present, :目的 %>
-        <p><%= purpose.purpose %></p></div>
+          <p><%= purpose.purpose %></p></div>
       </div>
         <% presentproducts.each do |presentproduct| %>
           <% product = Product.find(presentproduct.product_id) %>

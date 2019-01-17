@@ -10,15 +10,7 @@
 
   <%= label_tag :name_or_characteristic, "商品名または特徴" %><%= text_field_tag :name_or_characteristic, params[:name_or_characteristic] %>
 
-
   <%= label_tag :purpose_number, "目的" %>
-    <select name="purpose_number">
-      <option value="">選択してください</option>
-      <% @purposes.each do |purpose| %>
-      <option value= <%= purpose.id %> ><%= purpose.purpose %></option>
-      <% end %>
-    </select>
-
   <% @purposes.each do |purpose| %>
     <%= check_box_tag "checkbox[#{purpose.id}]" %>
     <%= label_tag "checkbox[#{purpose.id}]", "#{purpose.purpose}" %>
@@ -53,14 +45,19 @@
 
   <tbody>
     <% @products.each do |product| %>
-       <% @purposes = Purpose.find(product.purpose_number) %>
       <tr>
         <td><%= product.id %></td>
         <td><%= link_to(product.name, "/products/#{product.id}") %></td>
         <td><%= product.characteristic %></td>
         <td><%= link_to(product.product_hp, "#{product.product_hp}") %></td>
         <td><%= number_to_currency(product.price, :locale => 'jp') %></td>
-        <td><%= @purposes.purpose %></td>
+          <% purpose_products = PurposeProduct.where(product_id: product.id) %>
+            <td>
+              <% purpose_products.each do |purpose_product| %>
+                <% purpose = Purpose.find(purpose_product.purpose_id) %>
+                <%= purpose.purpose %>
+              <% end %>
+            </td>
         <td><%= product.age_group_number %></td>
         <td><%= image_tag("/product_images/#{product.image}", :height => "35") %></td>
         <td><%= product.evaluation %></td>

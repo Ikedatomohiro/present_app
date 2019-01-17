@@ -2,35 +2,22 @@
 <% @page_title = "新規商品登録" %>
 <h2><%= @page_title %></h2>
 
-<%= form_tag("/products/create", {multipart: true}) do %>
-
-  <p>商品名</p>
-    <textarea name = "name" placeholder = "商品名"></textarea>
-
-  <p>特徴</p>
-    <textarea name = "characteristic" placeholder = "特徴"></textarea>
-
-  <p>ホームページアドレス</p>
-    <textarea name = "product_hp" placeholder = "ホームページアドレス"></textarea>
-
-  <p>価格</p>
-  	<input name = "price" placeholder = "価格">円 <br>
-
-  <p>目的</p>
-  <select name="purpose_number">
-  <option value="">選択してください</option>
+<%= form_for @product, :url => {:action => 'create'} do |f| %>
+  <%= f.label "商品名" %>
+    <%= f.text_area :name %>
+  <%= f.label "特徴" %>
+    <%= f.text_area :characteristic %>
+  <%= f.label "ホームページアドレス" %>
+    <%= f.text_area :product_hp %>
+  <%= f.label "価格" %>
+    <%= f.text_area :price %>
+  <%= f.label "目的" %>
     <% @purposes.each do |purpose| %>
-      <option value= <%= purpose.id %> ><%= purpose.purpose %></option>
+      <%= check_box_tag "checkbox[#{purpose.id}]" %>
+      <%= label_tag "checkbox[#{purpose.id}]", "#{purpose.purpose}" %>
     <% end %>
-  </select>
-
-  <p>対象年齢</p>
-    <textarea name = "age_group_number" placeholder="だいたい何歳向け？？"></textarea>
-
-  <p>画像</p>
-  <%= image_tag 'product_image.jpg', :size =>'120x100'%><br>
-    <input name="image" type="file"><br>
-
-  <input type = "submit" value ="商品登録">
+  <%= f.label "対象年齢" %>
+    <%= f.text_field :age_group_number %>
+  <input type = "submit" value ="商品を登録する">
 
 <% end %>

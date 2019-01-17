@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all.order(created_at: :desc)
+    @purposes = Purpose.all
 
     if params[:name_or_characteristic].present?
 #    @products = @products.get_by_characteristic params[:characteristic]
@@ -22,16 +23,29 @@ class ProductsController < ApplicationController
     @products = @products.get_by_age_group_number params[:age_group_number]
     end
 
-    @purposes = Purpose.all
-
     if params[:checkbox].present?
-    @products = @products.where(purpose_number: params[:checkbox].keys)
+    purpose_products = PurposeProduct.where(purpose_id: params[:checkbox].keys)
+    puts params[:checkbox].keys
+      purpose_products.each do |p|
+        puts p.id
+        puts p.product_id
+      end
+    array = [] #からの配列を定義
+      purpose_products.each do |purpose_product|
+  #    @products = Product.where(id: purpose_product.product_id)
+  #    puts purpose_product.product_id
+      array.push(purpose_product.product_id)
+      end
+      puts array
+      puts array.uniq
+    @products = @products.where(id: array.uniq)
+
     end
 
   end
 
   def show
-    @product = Product.find_by(id: params[:id])
+    @product = Product.find(params[:id])
     @purposes = Purpose.all
 
   end
@@ -50,15 +64,24 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(
-      name: params[:name],
-      characteristic: params[:characteristic],
-      product_hp: params[:product_hp],
-      price: params[:price],
-      purpose_number: params[:purpose_number],
-      age_group_number: params[:age_group_number],
+      name: params[:product][:name],
+      characteristic: params[:product][:characteristic],
+      product_hp: params[:product][:product_hp],
+      price: params[:product][:price],
+      purpose_number: params[:product][:purpose_number],
+      age_group_number: params[:product][:age_group_number],
       image: "product_image.jpg"
       )
-    @product.save
+    @product.save!
+    purposes = params[:checkbox].keys
+      product = Product.find_by(name: params[:product][:name])
+      purposes.each do |purpose|
+        @purpose_product = PurposeProduct.new(
+          purpose_id: purpose,
+          product_id: product.id
+          )
+        @purpose_product.save!
+      end
     redirect_to products_index_path
   end
 

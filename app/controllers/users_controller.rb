@@ -28,6 +28,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    @User = From::User.new
   end
 
   def create
@@ -35,10 +36,10 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(current_user.id)
-    @user.name = params[:user][:name]
-    @user.gender = params[:user][:gender]
-    @user.birthday = params[:user][:birthday]
-    @user.save!
+    @user.update(user_params)
+#    @user.name = params[:name]
+#    @user.save
+    redirect_to user_path(current_user)
   end
 
   def destroy
@@ -81,5 +82,11 @@ class UsersController < ApplicationController
     @cart.destroy
     render :template => "users/settlement"
   end
+
+  private #このcontroller内でのみ機能させるメソッド
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def user_params
+      params.require(:user).permit(:name, :gender, :birthday)
+    end
 
 end
