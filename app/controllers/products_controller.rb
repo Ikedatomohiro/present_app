@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all.order(created_at: :desc)
     @purposes = Purpose.all
+    @products = Product.paginate(:page => params[:page], :per_page => 5).all.order(created_at: :desc)
 
     if params[:name_or_characteristic].present?
 #    @products = @products.get_by_characteristic params[:characteristic]
@@ -30,7 +30,7 @@ class ProductsController < ApplicationController
         puts p.id
         puts p.product_id
       end
-    array = [] #からの配列を定義
+    array = [] #空の配列を定義
       purpose_products.each do |purpose_product|
   #    @products = Product.where(id: purpose_product.product_id)
   #    puts purpose_product.product_id

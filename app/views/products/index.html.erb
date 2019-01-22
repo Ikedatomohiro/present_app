@@ -24,7 +24,7 @@
   <%= submit_tag "検索" %>
 <% end %>
 </div>
-
+<%= will_paginate @products %>
 <% if @products.present? %>
   <table class="product_list">
     <thead>
