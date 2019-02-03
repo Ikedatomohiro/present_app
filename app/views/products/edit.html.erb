@@ -20,13 +20,10 @@
   <input name = "price" value = <%= @product.price %>>円　<br><br>
 
 <p>目的</p>
-<select name="purpose_number">
-  <option value="">選択してください</option>
-  <% @purposes.each do |purpose| %>
-    <option <%= "selected" if purpose.id == @product.purpose_number %> value= <%= purpose.id %> ><%= purpose.purpose %></option>
-  <% end %>
-</select>
-
+    <% @purposes.each do |purpose| %>
+      <%= check_box_tag "checkbox[#{purpose.id}]" %>
+      <%= label_tag "checkbox[#{purpose.id}]", "#{purpose.purpose}" %>
+    <% end %>
 
 <p>対象年齢</p>
 	<textarea name = "age_group_number"><%= @product.age_group_number %></textarea>

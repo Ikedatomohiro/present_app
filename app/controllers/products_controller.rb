@@ -1,11 +1,17 @@
 class ProductsController < ApplicationController
   def index
     @purposes = Purpose.all
-    @products = Product.paginate(:page => params[:page], :per_page => 5).all.order(created_at: :desc)
+    @products = Product.where(status: true)
+    @products = @products.paginate(:page => params[:page], :per_page => 5).all.order(created_at: :desc)
 
     if params[:name_or_characteristic].present?
 #    @products = @products.get_by_characteristic params[:characteristic]
-    @products = @products.get_by_name_or_characteristic params[:name_or_characteristic]
+      # @products = @products.get_by_name_or_characteristic params[:name_or_characteristic]
+      search_words = params[:name_or_characteristic].split
+        search_words.each do |search_word|
+          @products = @products.get_by_name_or_characteristic search_word
+        end
+
     end
 
     if params[:purpose_number].present?
@@ -91,7 +97,6 @@ class ProductsController < ApplicationController
     @product.characteristic = params[:characteristic]
     @product.product_hp = params[:product_hp]
     @product.price = params[:price]
-    @product.purpose_number = params[:purpose_number]
     @product.age_group_number = params[:age_group_number]
 
     if params[:image]
@@ -100,7 +105,26 @@ class ProductsController < ApplicationController
       File.binwrite("public/product_images/#{@product.image}", image.read)
     end
 
-      @product.save
+    purpose_products = PurposeProduct.where(product_id: @product.id)
+      # purpose_products.destroy
+        array_pp = []
+        purpose_products.each do |purpose_product|
+          array_pp.push(purpose_product.product_id)
+        end
+        puts array_pp
+        puts purpose_products.size
+        purpose_products.destroy_all
+
+    purposes = params[:checkbox].keys
+      purposes.each do |purpose|
+        @purpose_product = PurposeProduct.new(
+          purpose_id: purpose,
+          product_id: @product.id
+          )
+        @purpose_product.save!
+      end
+
+      @product.save!
       redirect_to("/products/#{@product.id}")
 
   end
@@ -111,6 +135,13 @@ class ProductsController < ApplicationController
     redirect_to("/products/index")
   end
 
+  def dissapear
+    @product = Product.find(params[:id])
+    @product.status = false
+    @product.save!
+    redirect_to("/products/index")
+
+  end
 
 
 end

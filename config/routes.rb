@@ -30,7 +30,7 @@ post "presents/set_present" => "presents#set_present"
 delete "products/user/:id" => "users#cartitemdelete"
 
 post "/products/user/settlement" => "presents#back"
-
+delete "/product/dissapear" => "products#dissapear"
 
 
   if Rails.env.development?

@@ -31,15 +31,6 @@ ActiveRecord::Schema.define(version: 2018_12_23_135431) do
     t.index ["product_id"], name: "index_age_groups_on_product_id"
   end
 
-  create_table "baskets", force: :cascade do |t|
-    t.integer "user_id_id"
-    t.integer "product_id_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id_id"], name: "index_baskets_on_product_id_id"
-    t.index ["user_id_id"], name: "index_baskets_on_user_id_id"
-  end
-
   create_table "budget_products", force: :cascade do |t|
     t.integer "budget_id"
     t.integer "product_id"
@@ -155,7 +146,7 @@ ActiveRecord::Schema.define(version: 2018_12_23_135431) do
     t.float "evaluation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "status"
+    t.boolean "status", default: true, null: false
   end
 
   create_table "purpose_products", force: :cascade do |t|
