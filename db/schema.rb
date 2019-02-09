@@ -180,8 +180,7 @@ ActiveRecord::Schema.define(version: 2018_12_23_135431) do
     t.string "name"
     t.integer "gender"
     t.date "birthday"
-    t.string "mailaddress"
-    t.string "password"
+    t.boolean "admin", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false

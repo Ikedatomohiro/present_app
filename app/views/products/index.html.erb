@@ -1,85 +1,86 @@
-<%= render "shared/header" %>
+<div id = "background">
+  <%= render "shared/header" %>
 
-<% @page_title = "商品リスト" %>
-<h3><%= @page_title %></h3>
-  <%= "商品数：" %>
-  <%= @products.count %>
+  <% @page_title = "商品リスト" %>
+  <h3><%= @page_title %></h3>
+    <%= "商品数：" %>
+    <%= @products.count %>
 
-<div>
-<%= form_tag(products_index_path, method: "get") do %>
+  <div>
+  <%= form_tag(products_index_path, method: "get") do %>
 
-  <%= label_tag :name_or_characteristic, "商品名または特徴" %><%= text_field_tag :name_or_characteristic, params[:name_or_characteristic] %>
+    <%= label_tag :name_or_characteristic, "商品名または特徴" %><%= text_field_tag :name_or_characteristic, params[:name_or_characteristic] %><br>
 
-  <%= label_tag :purpose_number, "目的" %>
+    <%= label_tag :purpose_number, "目的" %>
 
-  <div id="text-button"><p id="text">クリック</p></div>
-  <div class="modal">
-    <% @purposes.each do |purpose| %>
-      <%= check_box_tag "checkbox[#{purpose.id}]" %>
-      <%= label_tag "checkbox[#{purpose.id}]", "#{purpose.purpose}" %>
-    <% end %>
-    <div id="close-button"><p id = "closepurpose">閉じる</p></div>
+    <div id="purpose-button"><p id="text">選択</p></div>
+    <div class="modal">
+      <% @purposes.each do |purpose| %>
+        <%= check_box_tag "checkbox[#{purpose.id}]" %>
+        <%= label_tag "checkbox[#{purpose.id}]", "#{purpose.purpose}" %>
+      <% end %>
+      <div id="close-button"><p id = "closepurpose">決定</p></div>
+    </div>
+      <div id = "purpose_list"></div>
+
+    <%= label_tag :budget_l, "予算" %><%= text_field_tag :budget_l, params[:budget_l] %>
+    <%= label_tag :budget_u, "〜" %><%= text_field_tag :budget_u, params[:budget_u] %><br>
+
+    <%= label_tag :age_group_number, "対象年齢" %><%= text_field_tag :age_group_number, params[:age_group_number] %><br>
+
+    <%= submit_tag "検索" %>
+  <% end %>
   </div>
-    <div id = "purpose_list"></div>
+  <%= will_paginate @products %>
+  <% if @products.present? %>
+    <table class="product_list">
+      <thead>
+        <tr>
+            <th>ID</th>
+          <th>商品名</th>
+          <th>特徴</th>
+          <th>Webサイト</th>
+          <th>価格</th>
+          <th>目的</th>
+          <th>対象年齢</th>
+          <th>画像</th>
+          <th>評価</th>
+          <th>操作</th>
 
-  <%= label_tag :budget_l, "予算" %><%= text_field_tag :budget_l, params[:budget_l] %>
-  <%= label_tag :budget_u, "〜" %><%= text_field_tag :budget_u, params[:budget_u] %>
+        </tr>
+      </thead>
 
-  <%= label_tag :age_group_number, "対象年齢" %><%= text_field_tag :age_group_number, params[:age_group_number] %>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.id %></td>
+          <td><%= link_to(product.name, "/products/#{product.id}") %></td>
+          <td><%= product.characteristic %></td>
+          <td><%= link_to(product.product_hp, "#{product.product_hp}") %></td>
+          <td><%= number_to_currency(product.price, :locale => 'jp') %></td>
+            <% purpose_products = PurposeProduct.where(product_id: product.id) %>
+              <td>
+                <% purpose_products.each do |purpose_product| %>
+                  <% purpose = Purpose.find(purpose_product.purpose_id) %>
+                  <%= purpose.purpose %>
+                <% end %>
+              </td>
+          <td><%= product.age_group_number %></td>
+          <td><%= image_tag("/product_images/#{product.image}", :height => "35") %></td>
+          <td><%= product.evaluation %></td>
+          <td>
+          <%= link_to("編集", "/products/#{product.id}/edit") %>
 
-  <%= submit_tag "検索" %>
-<% end %>
+            <%= button_to "削除", { :action => "dissapear", :id => product.id }, :confirm => "本当に削除しますか?", :method => :delete %>
+          </td>　
+        </tr>
+
+      <% end %>
+    </tbody>
+  </table>
+
+  <% else %>
+  <p>お探しの商品はありません。</p>
+  <% end %>
+
 </div>
-<%= will_paginate @products %>
-<% if @products.present? %>
-  <table class="product_list">
-    <thead>
-      <tr>
-          <th>ID</th>
-        <th>商品名</th>
-        <th>特徴</th>
-        <th>Webサイト</th>
-        <th>価格</th>
-        <th>目的</th>
-        <th>対象年齢</th>
-        <th>画像</th>
-        <th>評価</th>
-        <th>操作</th>
-
-      </tr>
-    </thead>
-
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.id %></td>
-        <td><%= link_to(product.name, "/products/#{product.id}") %></td>
-        <td><%= product.characteristic %></td>
-        <td><%= link_to(product.product_hp, "#{product.product_hp}") %></td>
-        <td><%= number_to_currency(product.price, :locale => 'jp') %></td>
-          <% purpose_products = PurposeProduct.where(product_id: product.id) %>
-            <td>
-              <% purpose_products.each do |purpose_product| %>
-                <% purpose = Purpose.find(purpose_product.purpose_id) %>
-                <%= purpose.purpose %>
-              <% end %>
-            </td>
-        <td><%= product.age_group_number %></td>
-        <td><%= image_tag("/product_images/#{product.image}", :height => "35") %></td>
-        <td><%= product.evaluation %></td>
-        <td>
-        <%= link_to("編集", "/products/#{product.id}/edit") %>
-
-          <%= button_to "削除", { :action => "dissapear", :id => product.id }, :confirm => "本当に削除しますか?", :method => :delete %>
-        </td>　
-      </tr>
-
-    <% end %>
-  </tbody>
-</table>
-
-<% else %>
-<p>お探しの商品はありません。</p>
-<% end %>
-
-

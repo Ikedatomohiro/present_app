@@ -1,7 +1,7 @@
 header {
   background-color: #D0AD1B;
   display: flex;
-  height: 129px;
+  height: 80px;
   justify-content: space-between;
   align-items: center;
   padding-right: 45px;
@@ -12,36 +12,46 @@ header {
     text-decoration: none;
     }
   display: flex;
-  width: 800px;
+  width: 500px;
   justify-content: space-between;
   font-family: "Iowan Old Style";
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .header_side_menu {
   display: flex;
-  width: 350px;
+  width: 250px;
   justify-content: space-between;
   text-align: center;
-  padding-top: 25px;
 }
 
 logo {
   font-family: "Hannotate SC";
   color: #FFFFFF;
-  font-size: 30px;
-  line-height: 30px;
+  font-size: 20px;
+  line-height: 20px;
   padding-left: 45px;
 }
 
 .search_box {
   input[type="text"] {
-    font-size: 30px;
+    font-size: 20px;
     padding: 10px;
-    width: 331px;
-    height: 67px;
+    width: 200px;
+    height: 25px;
     font-family: Iowan Old Style;
     text-align: left;
   }
 }
+
+.header_menu_login {
+  font-family: Iowan Old Style;
+  display: flex;
+  width: 250px;
+  justify-content: space-between;
+  text-align: right;
+}
+
+
+
 

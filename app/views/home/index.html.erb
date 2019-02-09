@@ -7,3 +7,12 @@
   <p>贈る相手から探す</p>
   <p>目的から探す</p>
 
+
+<% if signed_in? && current_user.admin == true %>
+    あなたは管理者です。
+
+<%= render "shared/footer" %>
+
+
+
+<% end %>
