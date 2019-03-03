@@ -1,4 +1,5 @@
 $(document).on('turbolinks:load', function() {
+
   console.log("test");
   console.log($(".modal label"));
 
@@ -9,11 +10,11 @@ $(document).on('turbolinks:load', function() {
   };
 
   document.getElementById("close-button").onclick = function() {
-    $('.modal').hide();
+    $('.modal').slideUp();
 
     var returnString = "";
 
-    $(".modal label").each(function(index) {
+    $('.modal label').each(function(index) {
       console.log(index + ': ' + $(this).text());
       var string = ("#" + $(this).attr("for"));
       console.log($(string));
@@ -23,10 +24,15 @@ $(document).on('turbolinks:load', function() {
         }
   });
 
-
-
     console.log(returnString)
     document.getElementById("purpose_list").innerHTML = returnString;
     // document.getElementById("text-button").innerHTML = "以下の目的を選択済み";
   };
+
+
+
+      $('.search_from_age').hide();
+      $('.age_group_label').click(function(){
+          $('.search_from_age').show();
+      });
 });

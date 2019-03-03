@@ -37,8 +37,6 @@ class UsersController < ApplicationController
   def update
     @user = User.find(current_user.id)
     @user.update(user_params)
-#    @user.name = params[:name]
-#    @user.save
     redirect_to user_path(current_user)
   end
 
@@ -67,15 +65,12 @@ class UsersController < ApplicationController
   def confirm
     @present = Present.all
     @purposes = Purpose.all
-
   end
 
   def thanks
     NotificationMailer.send_confirm_to_user(current_user).deliver
     redirect_to "/"
   end
-
-
 
   def cartitemdelete
     @cart = Cart.find_by(id: params[:cart][:id])
@@ -85,6 +80,7 @@ class UsersController < ApplicationController
 
   private #このcontroller内でのみ機能させるメソッド
     # Never trust parameters from the scary internet, only allow the white list through.
+    # update メソッドで使用
     def user_params
       params.require(:user).permit(:name, :gender, :birthday)
     end

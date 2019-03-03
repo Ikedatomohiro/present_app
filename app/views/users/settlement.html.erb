@@ -17,7 +17,6 @@
   <p>お相手メールアドレス</p>
     <%= text_field :present_opponent, :mail_address %><br>
 
-
   <%= "プレゼントの目的" %>
     <select name="present[purpose_number]">
       <option value="">選択してください</option>
@@ -40,15 +39,14 @@
     <tbody>
     <% total_price = 0 %>
         <% @carts.each do |cart| %>
-        <% @product = Product.find(cart.product_id) %>
-    <tr>
-      <td><%= link_to(@product.name, "/products/#{@product.id}") %></td>
-      <td><%= number_to_currency(@product.price, :locale => 'jp') %></td>
-      <td><%= "削除まだ動かない" %></td>
-
-      </tr>
-      <% total_price += @product.price %>
-          <% end %>
+          <% @product = Product.find(cart.product_id) %>
+            <tr>
+              <td><%= link_to(@product.name, "/products/#{@product.id}") %></td>
+              <td><%= number_to_currency(@product.price, :locale => 'jp') %></td>
+              <td><%= "削除まだ動かない" %></td>
+            </tr>
+          <% total_price += @product.price %>
+        <% end %>
 
     </tbody>
   </table>

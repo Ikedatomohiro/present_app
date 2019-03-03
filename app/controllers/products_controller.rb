@@ -5,13 +5,10 @@ class ProductsController < ApplicationController
     @products = @products.paginate(:page => params[:page], :per_page => 5).all.order(created_at: :desc)
 
     if params[:name_or_characteristic].present?
-#    @products = @products.get_by_characteristic params[:characteristic]
-      # @products = @products.get_by_name_or_characteristic params[:name_or_characteristic]
       search_words = params[:name_or_characteristic].split
         search_words.each do |search_word|
           @products = @products.get_by_name_or_characteristic search_word
         end
-
     end
 
     if params[:purpose_number].present?
@@ -30,22 +27,19 @@ class ProductsController < ApplicationController
     end
 
     if params[:checkbox].present?
-    purpose_products = PurposeProduct.where(purpose_id: params[:checkbox].keys)
-    puts params[:checkbox].keys
-      purpose_products.each do |p|
-        puts p.id
-        puts p.product_id
-      end
-    array = [] #空の配列を定義
-      purpose_products.each do |purpose_product|
-  #    @products = Product.where(id: purpose_product.product_id)
-  #    puts purpose_product.product_id
-      array.push(purpose_product.product_id)
-      end
+      purpose_products = PurposeProduct.where(purpose_id: params[:checkbox].keys)
+      puts params[:checkbox].keys
+        purpose_products.each do |p|
+          puts p.id
+          puts p.product_id
+        end
+      array = [] #空の配列を定義
+        purpose_products.each do |purpose_product|
+          array.push(purpose_product.product_id)
+        end
       puts array
       puts array.uniq
-    @products = @products.where(id: array.uniq)
-
+      @products = @products.where(id: array.uniq)
     end
 
   end
@@ -53,7 +47,6 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @purposes = Purpose.all
-
   end
 
   def new
@@ -79,6 +72,8 @@ class ProductsController < ApplicationController
       image: "product_image.jpg"
       )
     @product.save!
+
+    # 中間モデルを生成 PurposeProduct
     purposes = params[:checkbox].keys
       product = Product.find_by(name: params[:product][:name])
       purposes.each do |purpose|
@@ -106,14 +101,13 @@ class ProductsController < ApplicationController
     end
 
     purpose_products = PurposeProduct.where(product_id: @product.id)
-      # purpose_products.destroy
         array_pp = []
         purpose_products.each do |purpose_product|
           array_pp.push(purpose_product.product_id)
         end
         puts array_pp
         puts purpose_products.size
-        purpose_products.destroy_all
+        purpose_products.destroy_all #更新することによって古くなる中間モデルを削除する
 
     purposes = params[:checkbox].keys
       purposes.each do |purpose|
@@ -135,6 +129,7 @@ class ProductsController < ApplicationController
     redirect_to("/products/index")
   end
 
+# Productを削除するが、プレゼント履歴には残したいので、レコードの削除ではなく、非表示にする。
   def dissapear
     @product = Product.find(params[:id])
     @product.status = false

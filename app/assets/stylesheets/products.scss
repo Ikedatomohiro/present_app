@@ -4,7 +4,27 @@
 
 
 .modal {
-  background: white;
+  background: #51d4e2;
   width: 700px;
   position: absolute;
+  border-radius: 5px;
+  border-color: white;
+  border-style: none;
+}
+
+#purpose-button {
+  display: inline-block;
+  cursor: pointer;
+  padding: 0px 12px;
+  background-color: #5dca88;
+  box-shadow: 0px 5px #279C56;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 12px;
+}
+
+#purpose-button:active{
+  position: relative;
+  top: 5px;
+  box-shadow: none;
 }

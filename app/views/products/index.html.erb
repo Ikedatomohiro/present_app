@@ -13,7 +13,10 @@
 
     <%= label_tag :purpose_number, "目的" %>
 
-    <div id="purpose-button"><p id="text">選択</p></div>
+    <div id="purpose-button">
+      <p id="text">選択</p>
+    </div>
+
     <div class="modal">
       <% @purposes.each do |purpose| %>
         <%= check_box_tag "checkbox[#{purpose.id}]" %>
@@ -26,7 +29,8 @@
     <%= label_tag :budget_l, "予算" %><%= text_field_tag :budget_l, params[:budget_l] %>
     <%= label_tag :budget_u, "〜" %><%= text_field_tag :budget_u, params[:budget_u] %><br>
 
-    <%= label_tag :age_group_number, "対象年齢" %><%= text_field_tag :age_group_number, params[:age_group_number] %><br>
+    <div class="age_group_label"><%= label_tag :age_group_number, "対象年齢" %></div>
+    <div class="search_from_age"><%= text_field_tag :age_group_number, params[:age_group_number] %></div><br>
 
     <%= submit_tag "検索" %>
   <% end %>

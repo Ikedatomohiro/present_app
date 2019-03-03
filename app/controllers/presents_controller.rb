@@ -15,7 +15,6 @@ class PresentsController < ApplicationController
     )
   @present = Present.new(
     user_id: current_user.id,
-    # present_opponent_id: params[:present_opponent_id],
     purpose_number: params[:present][:purpose_number],
     present_date: params[:present][:present_date],
     parchase_date: params[:present][:parchase_date],
@@ -39,7 +38,6 @@ class PresentsController < ApplicationController
     )
   @present = Present.new(
     user_id: current_user.id,
-    # present_opponent_id: params[:present_opponent_id],
     purpose_number: params[:present][:purpose_number],
     present_date: params[:present][:present_date],
     parchase_date: params[:present][:parchase_date],

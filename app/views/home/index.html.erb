@@ -2,11 +2,18 @@
 
 <div class="page_title"><p>Welcome to Present App.</p></div>
 
-  <div class="search_by"><p>カテゴリーから探す</p></div>
+  <div class="category_search"><p>カテゴリーから探す</p></div>
   <p>価格から探す</p>
   <p>贈る相手から探す</p>
-  <p>目的から探す</p>
 
+  <p class="purpose_search">目的から探す</p>
+    <div class="search_from_purpose">
+        <% @purposes.each do |purpose| %>
+          <%= check_box_tag "checkbox[#{purpose.id}]" %>
+          <%= label_tag "checkbox[#{purpose.id}]", "#{purpose.purpose}" %>
+        <% end %>
+      <span>-</span>
+    </div>
 
 <% if signed_in? && current_user.admin == true %>
     あなたは管理者です。
