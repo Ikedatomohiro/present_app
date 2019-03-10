@@ -3,6 +3,8 @@ class NotificationMailer < ActionMailer::Base
 
   def send_confirm_to_user(user)
     @user = user
+    @users_present = Present.where(user_id: 2)
+    @latest_present = @users_present.last
     mail(
       subject: "ご購入ありがとうございました。",
       to: @user.email

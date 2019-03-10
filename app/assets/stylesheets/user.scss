@@ -3,14 +3,32 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+
+#user-menu {
+  display: flex;
+  margin-left: 20px;
+}
+
+.link-to-cart {
+  margin-right: 10px;
+  text-decoration: none;
+}
+
 .purchaselog {
-  width: 800px;
-  height: 300px;
+  width: 500px;
+  padding: 0px;
   background-color: green;
+  margin: 0 0 10px 10px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: #FFFFFF;
+  border-width: 2px;
   .purchaselogheader{
     display: flex;
+    margin: 10px;
     .purchasedate {
       width: 100px;
+      padding-right: 10px;
     }
     .presentopponent {
       width:150px;
@@ -18,6 +36,12 @@
     .presentpurpose {
       width: 150px;
     }
+
   }
 }
-
+.purchaselog-header-value {
+  font-size:20px;
+}
+.purchaseitem {
+  margin-left: 10px;
+}

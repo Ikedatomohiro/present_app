@@ -1,34 +1,58 @@
 <%= render "shared/header" %>
 
+<div id="page-comment">
+  Welcome to your page
+</div>
 
-<h4>Welcome to your page</h4>
+<div id="user-menu">
+  <div class="link-to-cart">
+    <%= link_to "Cart", carts_path %>
+  </div>
+  <div class="link-to-useredit">
+    <%= link_to "ユーザー情報の変更", edit_user_path(current_user) %>
+  </div>
+</div>
 
-<%= link_to "Cart", carts_path %>
-
-<p>過去のプレゼント</p>
-
+<div class="menu-title">
+  過去のプレゼント
+</div>
   <% @presents.each do |present| %>
       <% presentopponent = PresentOpponent.find(present.present_opponent_id) %>
       <% purpose = Purpose.find(present.purpose_number) %>
       <% presentproducts = PresentProduct.where(present_id: present.id) %>
     <div class = "purchaselog">
       <div class = "purchaselogheader">
-        <div class = "purchasedate"><%= label :present, :注文日 %>
-          <p><%= present.parchase_date %></p></div>
-        <div class = "presentopponent"><%= label :present, :送ったお相手 %>
-          <p><%= presentopponent.name %></p></div>
-        <div class = "presentpurpose"><%= label :present, :目的 %>
-          <p><%= purpose.purpose %></p></div>
+        <div class = "purchasedate">
+          <div class ="purchaselog-header-value">
+            <%= label :present, :注文日 %>
+          </div>
+          <p><%= present.parchase_date %></p>
+        </div>
+          <div class = "presentopponent">
+            <div class ="purchaselog-header-value">
+              <%= label :present, :送ったお相手 %>
+            </div>
+          <p><%= presentopponent.name %></p>
+          </div>
+          <div class = "presentpurpose">
+            <div class ="purchaselog-header-value">
+              <%= label :present, :目的 %>
+            </div>
+            <p><%= purpose.purpose %></p>
+          </div>
       </div>
-        <% presentproducts.each do |presentproduct| %>
-          <% product = Product.find(presentproduct.product_id) %>
-          <%= image_tag("/product_images/#{product.image}", :height => "35") %>
-          <%= product.name %>
-          <%= number_to_currency(product.price, :locale => 'jp') %>
-        <% end %>
+        <div class="purchaseitem">
+          <% presentproducts.each do |presentproduct| %>
+            <% product = Product.find(presentproduct.product_id) %>
+            <%= product.name %>
+            <%= number_to_currency(product.price, :locale => 'jp') %>
+            <br>
+            <%= image_tag("/product_images/#{product.image}", :height => "70") %>
+            <br>
+          <% end %>
+        </div>
     </div>
   <% end %>
-<p><%= link_to "ユーザー情報の変更", edit_user_path(current_user) %></p>
 
 
 
