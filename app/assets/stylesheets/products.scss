@@ -2,10 +2,28 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.search-area {
+  margin-left: 20px;
+  width: 50%;
+  border-style: solid;
+  border-color: lightblue;
+  background-color: lightgreen;
+  border-radius: 10px;
+}
+
+#deside-purpose-btn {
+  width: 50px;
+  height: 30px;
+  border-style: solid;
+  border-color: blue;
+  border-width: 3px;
+  border-radius: 10px;
+  background-color: yellow;
+}
 
 .modal {
   background: #51d4e2;
-  width: 700px;
+  width: 200px;
   position: absolute;
   border-radius: 5px;
   border-color: white;
@@ -15,12 +33,10 @@
 #purpose-button {
   display: inline-block;
   cursor: pointer;
-  padding: 0px 12px;
   background-color: #5dca88;
   box-shadow: 0px 5px #279C56;
   border-radius: 3px;
   color: #fff;
-  font-size: 12px;
 }
 
 #purpose-button:active{

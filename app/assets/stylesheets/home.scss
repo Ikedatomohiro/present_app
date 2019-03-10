@@ -4,25 +4,27 @@
 
 
 
-.bg{
-    /*位置の設定*/
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    /*背景画像の設定*/
-
+.category_search {
+    width: 50%;
+    height: 60px;
+    margin:10px;
+    border-style: solid;
+    border-color: #FFFFFF;
+    border-width: 2px;
+    border-radius: 5px;
 }
 
-body {
-    margin: 0;
-    background: image-url("background.png");
-    background-size: cover;
-    position: relative;
-    min-height: 100vh;
+.serch-from-btn-group {
+    display: flex;
 }
 
+.search-from-purpose {
+    background:pink;
+}
+
+.serch-from-category {
+    background: orange;
+}
 .inner_body {
     min-height: 100vh;
     height: 100%;

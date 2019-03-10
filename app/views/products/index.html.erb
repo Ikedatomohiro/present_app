@@ -6,33 +6,38 @@
     <%= @page_title %>
   </div>
 
-  <div>
-  <%= form_tag(products_index_path, method: "get") do %>
+  <div class="search-area">
+    <%= form_tag(products_index_path, method: "get") do %>
 
-    <%= label_tag :name_or_characteristic, "商品名または特徴" %><%= text_field_tag :name_or_characteristic, params[:name_or_characteristic] %><br>
+      <%= label_tag :name_or_characteristic, "商品名または特徴" %><%= text_field_tag :name_or_characteristic, params[:name_or_characteristic] %><br>
 
-    <%= label_tag :purpose_number, "目的" %>
+      <%= label_tag :purpose_number, "目的" %>
 
-    <div id="purpose-button">
-      <p id="text">選択</p>
-    </div>
+      <div id="purpose-button">
+        <div id="text">
+          選択
+        </div>
+      </div>
 
-    <div class="modal">
-      <% @purposes.each do |purpose| %>
-        <%= check_box_tag "checkbox[#{purpose.id}]" %>
-        <%= label_tag "checkbox[#{purpose.id}]", "#{purpose.purpose}" %>
-      <% end %>
-      <div id="close-button"><p id = "closepurpose">決定</p></div>
-    </div>
-      <div id = "purpose_list"></div>
+      <div class="modal">
+        <% @purposes.each do |purpose| %>
+          <%= check_box_tag "checkbox[#{purpose.id}]" %>
+          <%= label_tag "checkbox[#{purpose.id}]", "#{purpose.purpose}" %>
+          <br>
+        <% end %>
+        <div id="deside-purpose-btn">決定</div>
+      </div>
+        <div id = "purpose_list"></div>
 
-    <%= label_tag :budget_l, "予算" %><%= text_field_tag :budget_l, params[:budget_l] %>
-    <%= label_tag :budget_u, "〜" %><%= text_field_tag :budget_u, params[:budget_u] %><br>
+      <%= label_tag :budget_l, "予算" %><%= text_field_tag :budget_l, params[:budget_l] %>
+      <%= label_tag :budget_u, "〜" %><%= text_field_tag :budget_u, params[:budget_u] %><br>
 
-    <div class="age_group_label"><%= label_tag :age_group_number, "対象年齢" %></div>
-    <div class="search_from_age"><%= text_field_tag :age_group_number, params[:age_group_number] %></div><br>
+      <div class="age_group_label"><%= label_tag :age_group_number, "対象年齢" %></div>
+      <div class="search_from_age"><%= text_field_tag :age_group_number, params[:age_group_number] %></div><br>
 
-    <%= submit_tag "検索" %>
+      <%= submit_tag "検索" %>
+  </div>
+
     <%= "商品数：" %>
     <%= @products.count %>  <% end %>
   </div>

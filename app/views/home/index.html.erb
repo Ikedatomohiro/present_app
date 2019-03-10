@@ -3,12 +3,14 @@
 <div id="page-comment">
   Welcome to Present App.
 </div>
-
-  <div class="category_search"><p>カテゴリーから探す</p></div>
-  <p>価格から探す</p>
-  <p>贈る相手から探す</p>
-
-  <p class="purpose_search">目的から探す</p>
+<div class="serch-from-btn-group">
+  <div class="category_search serch-from-category">
+    カテゴリーから探す
+  </div>
+  <div class="category_search search-from-purpose">
+    目的から探す
+  </div>
+</div>
     <div class="search_from_purpose">
         <% @purposes.each do |purpose| %>
           <%= check_box_tag "checkbox[#{purpose.id}]" %>

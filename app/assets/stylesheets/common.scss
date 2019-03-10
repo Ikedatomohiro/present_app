@@ -1,3 +1,22 @@
+.bg{
+    /*位置の設定*/
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*背景画像の設定*/
+
+}
+
+body {
+    margin: 0;
+    background: image-url("background.png");
+    background-size: cover;
+    position: relative;
+    min-height: 100vh;
+}
+
 #page-comment {
   font-family: "Hiragino Kaku Gothic Pro";
   padding-left: 40px; 

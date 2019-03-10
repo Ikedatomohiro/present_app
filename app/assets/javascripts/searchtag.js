@@ -9,7 +9,7 @@ $(document).on('turbolinks:load', function() {
     $('.modal').show();
   };
 
-  document.getElementById("close-button").onclick = function() {
+  document.getElementById("deside-purpose-btn").onclick = function() {
     $('.modal').slideUp();
 
     var returnString = "";
@@ -26,10 +26,7 @@ $(document).on('turbolinks:load', function() {
 
     console.log(returnString)
     document.getElementById("purpose_list").innerHTML = returnString;
-    // document.getElementById("text-button").innerHTML = "以下の目的を選択済み";
   };
-
-
 
       $('.search_from_age').hide();
       $('.age_group_label').click(function(){
