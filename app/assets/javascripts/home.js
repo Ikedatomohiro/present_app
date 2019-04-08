@@ -1,7 +1,5 @@
 $(document).on('turbolinks:load', function() {
-      $('.search_from_purpose').hide();
-
-     $('.purpose_search').click(function(){
-     });
-
+  $('.category_search search-from-purpose').click(function(){
+    $('.search_from_purpose').show();
+  });
 });

@@ -1,13 +1,14 @@
 <header>
   <logo>Present App.<br>Thanks to YOU</logo>
+
   <% if signed_in? %>
-  <div class = "header_menu_login">
-    <%= link_to "Home", "/" %>
-    <%= link_to "商品リスト", products_index_path %>
-    <%= link_to "Cart", carts_path %>
-    <%= link_to "My page", "/users/#{current_user.id}" %>
-  </div>
-    <%= button_to "Log out", destroy_user_session_path, method: :delete %>
+    <div class = "header_menu">
+      <P><%= link_to "Home", "/" %></P>
+      <p><%= link_to "商品リスト", products_index_path %></p>
+      <p><%= link_to "Cart", carts_path %></p>
+      <p><%= link_to "My page", "/users/#{current_user.id}" %></p>
+    </div>
+      <%= button_to "Log out", destroy_user_session_path, method: :delete %>
   <% else %>
     <div class="header_menu">
       <div class="search_box">
