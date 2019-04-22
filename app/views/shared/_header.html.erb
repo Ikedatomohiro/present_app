@@ -1,5 +1,10 @@
 <header>
-  <logo>Present App.<br>Thanks to YOU</logo>
+  <%= link_to(("/"),class:'logo') do %>
+    <div id="logo">
+      Present App.<br>Thanks to YOU
+    </div>
+
+  <% end %>
 
   <% if signed_in? %>
     <div class = "header_menu">
@@ -7,8 +12,10 @@
       <p><%= link_to "商品リスト", products_index_path %></p>
       <p><%= link_to "Cart", carts_path %></p>
       <p><%= link_to "My page", "/users/#{current_user.id}" %></p>
+        <div class= "logout">
+          <%= button_to "Log out", destroy_user_session_path, method: :delete %>
+        </div>
     </div>
-      <%= button_to "Log out", destroy_user_session_path, method: :delete %>
   <% else %>
     <div class="header_menu">
       <div class="search_box">

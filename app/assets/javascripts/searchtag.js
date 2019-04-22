@@ -24,7 +24,7 @@ $(document).on('turbolinks:load', function() {
         }
   });
 
-    console.log(returnString)
+    console.log(returnString);
     document.getElementById("purpose_list").innerHTML = returnString;
   };
 
