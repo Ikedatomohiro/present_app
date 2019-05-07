@@ -78,7 +78,8 @@ class UsersController < ApplicationController
     render :template => "users/settlement"
   end
 
-  private #このcontroller内でのみ機能させるメソッド
+  private
+    #このcontroller内でのみ機能させるメソッド
     # Never trust parameters from the scary internet, only allow the white list through.
     # update メソッドで使用
     def user_params

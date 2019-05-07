@@ -18,11 +18,11 @@ $(document).on('turbolinks:load', function() {
     if($purchaseitems.hasClass('open')){
       $purchaseitems.removeClass('open');
       $purchaseitems.slideUp();
-      $(this).find('span').text('+');
+      $(this).find('span').text('+').css('padding','0px');
     }else{
       $purchaseitems.addClass('open');
       $purchaseitems.slideDown();
-      $(this).find('span').text('-');
+      $(this).find('span').text('-').css('padding-left','2px');
     }
   });
 });

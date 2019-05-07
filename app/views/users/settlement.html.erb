@@ -1,5 +1,7 @@
 <%= render "shared/header" %>
-
+<div id="page-comment">
+  Settlement page
+</div>
 <%= form_tag ("/presents") do  %>
 
   <%= link_to "Back", carts_path %>
@@ -21,7 +23,13 @@
     <select name="present[purpose_number]">
       <option value="">選択してください</option>
       <% @purposes.each do |purpose| %>
-        <option <% if params[:present].present? %><%= "selected" if purpose.id == params[:present][:purpose_number].to_i %><% end %> value = <%= purpose.id %> > <%= purpose.purpose %>
+        <option 
+          <% if params[:present].present? %>
+            <%= "selected" if purpose.id == params[:present][:purpose_number].to_i %>
+            <% end %>
+             value = <%= purpose.id %> 
+              >
+                <%= purpose.purpose %>
         </option>
       <% end %>
     </select>

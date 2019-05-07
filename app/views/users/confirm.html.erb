@@ -1,5 +1,7 @@
 <%= render "shared/header" %>
-
+<div id="page-comment">
+  Confirm your purchase
+</div>
 <%= form_for @present, :url => {:action => 'set_present'} do |form| %>
   <%= form.hidden_field :message %>
   <%= form.hidden_field :purpose_number %>

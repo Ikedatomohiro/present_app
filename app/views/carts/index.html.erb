@@ -11,7 +11,6 @@
       <th>商品ID</th>
       <th>商品名</th>
       <th>価格</th>
-      <th>この商品を買う<th>
       <th>買い物カゴから削除</th>
     </tr>
     </thead>
@@ -24,7 +23,7 @@
       <td><%= cart.product_id %></td>
       <td><%= link_to(@product.name, "/products/#{@product.id}") %></td>
       <td><%= number_to_currency(@product.price, :locale => 'jp') %></td>
-      <td><%= link_to "この商品を買う", products_user_purchase_path(:product_id => @product.id) %></td>
+
       <td><%= button_to("削除", "/carts/#{cart.id}", {method: "delete"}) %></td>
 
     </tr>
