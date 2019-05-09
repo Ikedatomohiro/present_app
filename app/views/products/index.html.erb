@@ -1,9 +1,12 @@
 <div id = "background">
   <%= render "shared/header" %>
 
-  <% @page_title = "Products List" %>
+  <% content_for :title do %>
+    Products list
+  <% end %>
+  
   <div id="page-comment">
-    <%= @page_title %>
+    Products List
   </div>
 
   <div class="search-area">
