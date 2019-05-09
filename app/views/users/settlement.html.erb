@@ -41,7 +41,6 @@
       <tr>
         <th>商品</th>
         <th>価格</th>
-        <th>削除</th>
     </tr>
     </thead>
     <tbody>
@@ -51,7 +50,6 @@
             <tr>
               <td><%= link_to(@product.name, "/products/#{@product.id}") %></td>
               <td><%= number_to_currency(@product.price, :locale => 'jp') %></td>
-              <td><%= "削除まだ動かない" %></td>
             </tr>
           <% total_price += @product.price %>
         <% end %>

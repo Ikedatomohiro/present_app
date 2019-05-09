@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
   def show
     @users = User.all
-    @presents = Present.where(user_id: params[:id])
+    @presents = Present.where(user_id: params[:id]).order(created_at: :desc)
     @preesnt_products = PresentProduct.where(present_id: @presents)
   end
 

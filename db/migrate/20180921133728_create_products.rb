@@ -8,7 +8,8 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.integer :purpose_number
       t.integer :age_group_number
       t.string :image
-      t.float :evaluation
+      t.boolean :status, null: false, default: true
+
       t.timestamps
     end
   end

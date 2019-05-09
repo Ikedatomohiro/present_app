@@ -31,24 +31,11 @@ ActiveRecord::Schema.define(version: 2018_12_23_135431) do
     t.index ["product_id"], name: "index_age_groups_on_product_id"
   end
 
-  create_table "budget_products", force: :cascade do |t|
-    t.integer "budget_id"
-    t.integer "product_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["budget_id"], name: "index_budget_products_on_budget_id"
-    t.index ["product_id"], name: "index_budget_products_on_product_id"
-  end
-
   create_table "budgets", force: :cascade do |t|
-    t.integer "present_id"
-    t.integer "product_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "budget_max"
     t.integer "budget_min"
-    t.index ["present_id"], name: "index_budgets_on_present_id"
-    t.index ["product_id"], name: "index_budgets_on_product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "carts", force: :cascade do |t|
@@ -68,9 +55,10 @@ ActiveRecord::Schema.define(version: 2018_12_23_135431) do
 
   create_table "category_controlls", force: :cascade do |t|
     t.integer "product_id"
-    t.string "category"
+    t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_category_controlls_on_category_id"
     t.index ["product_id"], name: "index_category_controlls_on_product_id"
   end
 
@@ -104,6 +92,7 @@ ActiveRecord::Schema.define(version: 2018_12_23_135431) do
   create_table "present_products", force: :cascade do |t|
     t.integer "present_id"
     t.integer "product_id"
+    t.float "evaluation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["present_id"], name: "index_present_products_on_present_id"
@@ -115,7 +104,7 @@ ActiveRecord::Schema.define(version: 2018_12_23_135431) do
     t.integer "present_opponent_id"
     t.integer "purpose_number"
     t.date "present_date"
-    t.date "parchase_date"
+    t.date "purchase_date"
     t.integer "budget"
     t.text "message"
     t.datetime "created_at", null: false
@@ -127,10 +116,10 @@ ActiveRecord::Schema.define(version: 2018_12_23_135431) do
   create_table "product_managements", force: :cascade do |t|
     t.integer "shop_id"
     t.integer "product_id"
+    t.integer "stock"
     t.date "derivery_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "status"
     t.index ["product_id"], name: "index_product_managements_on_product_id"
     t.index ["shop_id"], name: "index_product_managements_on_shop_id"
   end
@@ -143,10 +132,9 @@ ActiveRecord::Schema.define(version: 2018_12_23_135431) do
     t.integer "purpose_number"
     t.integer "age_group_number"
     t.string "image"
-    t.float "evaluation"
+    t.boolean "status", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "status", default: true, null: false
   end
 
   create_table "purpose_products", force: :cascade do |t|

@@ -3,6 +3,7 @@ class CreatePresentProducts < ActiveRecord::Migration[5.2]
     create_table :present_products do |t|
       t.references :present, foreign_key: true
       t.references :product, foreign_key: true
+      t.float :evaluation
       t.timestamps
     end
   end

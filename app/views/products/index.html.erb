@@ -1,7 +1,7 @@
 <div id = "background">
   <%= render "shared/header" %>
 
-  <% @page_title = "Product List" %>
+  <% @page_title = "Products List" %>
   <div id="page-comment">
     <%= @page_title %>
   </div>
@@ -78,7 +78,7 @@
               </td>
           <td><%= product.age_group_number %></td>
           <td><%= image_tag("/product_images/#{product.image}", :height => "35") %></td>
-          <td><%= product.evaluation %></td>
+          <td><%= "準備中" %></td>
           <% if signed_in? && current_user.admin == true %>
             <td>
             <%= link_to("編集", "/products/#{product.id}/edit") %>

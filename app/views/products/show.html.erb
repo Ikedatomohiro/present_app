@@ -1,5 +1,9 @@
 <%= render "shared/header" %>
 
+<div id="page-comment">
+  Product information
+</div>
+
 <% if signed_in? && current_user.admin == true %>
   <%= link_to("編集", "/products/#{@product.id}/edit") %>
   <%= button_to("削除", "/products/#{@product.id}/destroy", {method: "post"}) %>

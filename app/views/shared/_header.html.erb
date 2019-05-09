@@ -9,7 +9,7 @@
   <% if signed_in? %>
     <div class = "header_menu">
       <P><%= link_to "Home", "/" %></P>
-      <p><%= link_to "商品リスト", products_index_path %></p>
+      <p><%= link_to "Product", products_index_path %></p>
       <p><%= link_to "Cart", carts_path %></p>
       <p><%= link_to "My page", "/users/#{current_user.id}" %></p>
         <div class= "logout">

@@ -1,5 +1,9 @@
 <%= render "shared/header" %>
 
+<div id="page-comment">
+  Users list
+</div>
+
 <% @users.each do |user| %>
 <%= link_to(user.id, "/users/#{user.id}") %>
 <%= user.name %>

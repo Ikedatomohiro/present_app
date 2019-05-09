@@ -1,7 +1,7 @@
 <%= render "shared/header" %>
 
 <div id="page-comment">
-  Welcome to your page
+  My page
 </div>
 
 <div id="user-menu">
@@ -53,7 +53,10 @@
             <%= image_tag("/product_images/#{product.image}", :height => "70") %>
             <br>
           <% end %>
-        </div>
+        <div>メッセージ</div>
+        <%= present.message %>
+      </div>
+
     </div>
   <% end %>
 

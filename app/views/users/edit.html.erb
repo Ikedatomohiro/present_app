@@ -1,5 +1,9 @@
 <%= render "shared/header" %>
 
+<div id="page-comment">
+  User information
+</div>
+
 <%= form_for @user, :url => {:action => 'update'} do |form| %>
   <%= form.label :お名前 %>
   <%= form.text_area :name %>
