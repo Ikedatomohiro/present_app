@@ -2,7 +2,7 @@
   <div class="header-top-wrapper">
     <div class="container header-top">
       <div class="header-left">
-        <p class="concept-word">大切な人に贈る大切なプレゼントだから、心を込めて贈る人の「ときめき」を伝えるお手伝いをします。<%= link_to '参照記事','http://www.happiness-d.com/shop/default.aspx', :target => "_blank" %></p>
+        <p class="concept-word">大切な人に贈る大切なプレゼントだから、心を込めて贈る人の「ときめき」を伝えるお手伝いをします。<%= link_to '参照サイト','http://www.happiness-d.com/shop/default.aspx', :target => "_blank" %></p>
           <div class="header-logogroup">
             <%= link_to 'Present App. Thanks to YOU', '/' ,id:'logo' %>
             <div class="free-info">
@@ -30,17 +30,40 @@
       </div>
     </div>
   </div>
-  <div class="header-bottom-wrapper">
-    <div class="container header-bottom">
-      <div class="search_box">
-        <%= form_tag(products_index_path, method: "get") do %>
-          <%= text_field_tag :name_or_characteristic, params[:name_or_characteristic], :placeholder => "Search present" %>
-        <% end %>
-        <button>検索</button>
+  <div class="subheader-wrapper">
+    <div class="container subheader">
+      <div class="subheader-left">
+        <div class="search-box">
+            <%= form_tag(products_index_path, method: "get") do %>
+              <%= text_field_tag :name_or_characteristic, params[:name_or_characteristic], :placeholder => "キーワードを入力" , style: "border: none"%>
+        </div>
+              <div class="select-category">
+                <select name="カテゴリ">
+                  <option value selected>全てのカテゴリから</option>
+                  <option>バッグ</option>
+                  <option>　レディースバッグ</option>
+                  <option>　　ショルダーバッグ</option>
+                  <option>　　トートバッグ</option>
+                  <option>　メンズバッグ</option>
+                  <option>　　ハンドバッグバッグ</option>
+                  <option>　　リュック・バッグ</option>
+                  <option>財布</option>
+                  <option>　レディース財布</option>
+                  <option>　　長財布</option>
+                  <option>　　コインケース</option>
+                  <option>　メンズ財布</option>
+                  <option>　　長財布</option>
+                  <option>　　コインケース</option>
+                </select>
+              </div>
+                  <%= image_submit_tag "go.gif", alt:"検索", class:"go" %>
+            <% end %>
       </div>
-      <p>ようこそ</p>
-        <% if signed_in? %>
-          <p><%=  %>様</p>
+
+      <% if signed_in? %>
+        <div class="subheader-right">
+          <p>ようこそ<%=  %>様</p>
+      </div>
           <%= link_to "Cart", carts_path %>
           <p><%= link_to "My page", "/users/#{current_user.id}" %></p>
           <div class= "logout">
@@ -48,10 +71,26 @@
           </div>
 
         <% else %>
-          <p>ゲスト　様</p>
-          <%= link_to "Log in", new_user_session_path %>
+          <div class="subheader-right">
+            <div class="welcome">
+              ようこそ　ゲスト 様
+            </div>
+            <div class="subheader-right-img">
+              <%= link_to image_tag("login_btn.png", alt:"ログイン"), new_user_session_path %>
+              <%= link_to image_tag("favorite_btn.png", alt:"お気に入りリスト") %>
+              <div class="subheader-right-cart">
+                <%= link_to image_tag("cart_icon.png", alt:"カート") %>
+              </div>
+              <div class="subheader-right-cart-number">
+                <%= "0" %>
+              </div>
+            </div>
+          </div>
         <% end %>
     </div>
+  </div>
+  <div class="caution">
+    <p>類似サイトです。ご注意ください！</p>
   </div>
 
 </header>

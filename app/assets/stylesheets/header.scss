@@ -14,18 +14,15 @@ header {
 
 .header-top-wrapper {
   height: 107.734px;
-  padding-bottom: 12px;
+  padding-bottom: 7px;
+  margin-top: 7px;
   border-bottom: 2px solid #d9d9d9;
 }
-
-.header-bottom-wrapper {
-}
-
 
 .concept-word {
   color: #b0b0b0;
   font-size: 10px;
-  margin-top: 6px;
+  margin: 0;
 }
 
 .header-top {
@@ -48,13 +45,14 @@ header {
 }
 
 #logo {
-  width: 140px;
+  width: 190px;
   height: 55px;
   margin-right: 28px;
-  margin-top: 5px;
+  margin-top: 15px;
   color: #2a000c;
   font-family: "Hannotate SC";
-  font-size: 20px;
+  font-size: 24px;
+  letter-spacing: 2px;
   line-height: 20px;
   text-decoration: none;
 }
@@ -66,12 +64,11 @@ header {
   display: flex;
   justify-content: space-between;
   position: absolute;
-  top: 76px;
-  left: 319px;
+  top: 73px;
+  left: 321px;
   bottom: -14px;
   right: -17px;
 }
-
 
 .header-right {
   width: 366px;
@@ -81,18 +78,18 @@ header {
 }
 
 .header-right-info {
-  padding: 6px;
+  width: 346px;
+  height: 16.734px;
   display: flex;
-  justify-content: flex-end;
   a {
     padding-left: 20px;
   }
 }
 
 .header-right-inner {
-  width: 344px;
+  width: 342px;
   height: 61px;
-  padding: 10px;
+  padding: 12px 10px 8px 12px;
   display: flex;
   justify-content: space-between;
   border-radius: 5px;
@@ -114,19 +111,116 @@ header {
 
 .header-right-image {
   a {
-    margin-left: 2px;
+    margin-left: 4px;
     }
 }
 
-.search_box {
+.subheader-wrapper {
+  height: 31px;
+  padding: 10px 0;
+}
+
+.subheader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.subheader-left {
+  display: flex;
+  width: 388px;
+  height: 34px;
+
+}
+
+.search-box {
+  width: 157px;
+  height: 29px;
+  margin: 0;
+  padding: 0 10px 0 0;
+  border: 1px solid #d8ccd0;
+  border-radius: 5px 0 0 5px;
   input[type="text"] {
-    font-size: 20px;
-    padding: 10px;
-    width: 200px;
-    height: 25px;
-    font-family: Iowan Old Style;
-    text-align: left;
+    width: 150px;
+    height: 27px;
+    font-size: 12px;
+    padding-left: 9px;
+    margin-left: 2px;
+    font-family: Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
   }
+}
+
+.go {
+  width: 70px;
+  height: 30px;
+  padding: 1px;
+  margin-left: 4px;
+}
+
+.select-category {
+  width: 146px;
+  height: 29px;
+  border: 1px solid #d8ccd0;
+  background-color: #e7dde0;
+  border-radius: 0 5px 5px 0;
+  margin-left: -5px;
+    select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-size: 12px;
+    letter-spacing: 1.3px;
+    font-family: Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    font-weight: 700;
+    color: #2a000c;
+    width: 230px;
+    margin-left: 5px;
+    border: 0;
+    outline: none;
+    padding: 5px;
+    background: transparent;
+  }
+}
+
+.subheader-right {
+  width: 570px;
+  height: 30px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.subheader-right-img {
+  display: flex;
+}
+
+.subheader-right-img a {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.welcome {
+  line-height: 30px;
+  font-family: Hiragino Kaku Gothic Pro;
+  font-size: 13px;
+  color: #2a000c;
+}
+
+.subheader-right-cart {
+  padding: 4px 7px 5px 6px;
+  background-color: #91092f;
+  border-radius: 5px 0 0 5px;
+  margin-left: 7px;
+}
+
+.subheader-right-cart-number {
+  width: 18px;
+  height: 30px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 30px;
+  padding: 0 10px 0 13px;
+  background-color: #91092f;
+  border-radius: 0 5px 5px 0;
+  color: #fff;
 }
 
 .logout {
@@ -134,9 +228,18 @@ header {
   padding-right: 20px;
 }
 
+.caution {
+  background-color: #91092f;
+  height: 31px;
+  line-height: 31px;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  font-weight: 700;
+}
 
-
-
-
+.caution p {
+  margin: 0;
+}
 
 
