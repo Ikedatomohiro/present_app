@@ -9,18 +9,10 @@
 
 }
 
-body {
-    margin: 0;
-    background: image-url("background.png");
-    background-size: cover;
-    position: relative;
-    min-height: 100vh;
-    background-attachment: fixed;
-}
 
 #page-comment {
   font-family: "Hiragino Kaku Gothic Pro";
-  padding-top: 60px;
+  padding-top: 160px;
   padding-left: 40px; 
   margin: 40px 20px;
   font-size: 32px;

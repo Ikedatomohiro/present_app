@@ -5,7 +5,7 @@
 <%= form_for @present, :url => {:action => 'set_present'} do |form| %>
   <%= form.hidden_field :message %>
   <%= form.hidden_field :purpose_number %>
-  <%= form.hidden_field :parchase_date, :value => Date.today %>
+  <%= form.hidden_field :purchase_date, :value => Date.today %>
     <%= fields_for @present_opponent do |f| %>
       <%= f.hidden_field :name %>
       <%= f.hidden_field :gender %>

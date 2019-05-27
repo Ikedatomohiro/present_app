@@ -1,34 +1,61 @@
 <header>
-  <%= link_to(("/"),class:'logo') do %>
-    <div id="logo">
-      Present App.<br>Thanks to YOU
-    </div>
-
-  <% end %>
-
-  <% if signed_in? %>
-    <div class = "header_menu">
-      <P><%= link_to "Home", "/" %></P>
-      <p><%= link_to "Product", products_index_path %></p>
-      <p><%= link_to "Cart", carts_path %></p>
-      <p><%= link_to "My page", "/users/#{current_user.id}" %></p>
-        <div class= "logout">
-          <%= button_to "Log out", destroy_user_session_path, method: :delete %>
+  <div class="header-top-wrapper">
+    <div class="container header-top">
+      <div class="header-left">
+        <p class="concept-word">大切な人に贈る大切なプレゼントだから、心を込めて贈る人の「ときめき」を伝えるお手伝いをします。<%= link_to '参照記事','http://www.happiness-d.com/shop/default.aspx', :target => "_blank" %></p>
+          <div class="header-logogroup">
+            <%= link_to 'Present App. Thanks to YOU', '/' ,id:'logo' %>
+            <div class="free-info">
+              <%= link_to(image_tag("banner_wrapping_free.gif", alt:"ラッピング無料")) %>
+              <%= link_to(image_tag("banner_belt_forre.gif", alt:"ベルト調整無料")) %>
+            </div>
+          </div>
+      </div>
+      <div class="header-right">
+        <div class="header-right-info">
+          <%= link_to(image_tag("register_btn.png", alt:"新規会員登録"), new_user_registration_path) %>
+          <%= link_to(image_tag("guide_btn.png", alt:"ショッピングガイド")) %>
+          <%= link_to(image_tag("faq_btn.png", alt:"よくあるご質問")) %>
         </div>
+        <div class="header-right-inner">
+          <div class="comment">
+            <p >全国80店舗展開中！安心と信頼の上場企業日本流通自主管理協会(AACD)の会員企業です</p>
+            <p class="shopinfo"><%= link_to(image_tag("header_right_text_btn.png", alt:"全国の店舗情報はこちら")) %></p>
+          </div>
+          <div class="header-right-image">
+            <%= link_to(image_tag("aacd_img.png", alt:"AACD")) %>
+            <%= link_to(image_tag("jpx_img.png", alt:"JPX")) %>
+          </div>
+        </div>
+      </div>
     </div>
-  <% else %>
-    <div class="header_menu">
+  </div>
+  <div class="header-bottom-wrapper">
+    <div class="container header-bottom">
       <div class="search_box">
         <%= form_tag(products_index_path, method: "get") do %>
           <%= text_field_tag :name_or_characteristic, params[:name_or_characteristic], :placeholder => "Search present" %>
         <% end %>
+        <button>検索</button>
       </div>
-      <div class="header_side_menu">
-        <%= link_to "Home", "/" %>
-        <%= link_to "Log in", new_user_session_path %>
-        <%= link_to "Sign up", new_user_registration_path %>
-      </div>
+      <p>ようこそ</p>
+        <% if signed_in? %>
+          <p><%=  %>様</p>
+          <%= link_to "Cart", carts_path %>
+          <p><%= link_to "My page", "/users/#{current_user.id}" %></p>
+          <div class= "logout">
+            <%= button_to "Log out", destroy_user_session_path, method: :delete %>
+          </div>
+
+        <% else %>
+          <p>ゲスト　様</p>
+          <%= link_to "Log in", new_user_session_path %>
+        <% end %>
     </div>
-  <% end %>
+  </div>
 
 </header>
+
+
+
+

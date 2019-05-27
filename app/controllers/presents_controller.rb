@@ -17,7 +17,7 @@ class PresentsController < ApplicationController
     user_id: current_user.id,
     purpose_number: params[:present][:purpose_number],
     present_date: params[:present][:present_date],
-    parchase_date: params[:present][:parchase_date],
+    purchase_date: params[:present][:purchase_date],
     budget: params[:present][:budget],
     message: params[:present][:message],
     )
@@ -40,7 +40,7 @@ class PresentsController < ApplicationController
     user_id: current_user.id,
     purpose_number: params[:present][:purpose_number],
     present_date: params[:present][:present_date],
-    parchase_date: params[:present][:parchase_date],
+    purchase_date: params[:present][:purchase_date],
     budget: params[:present][:budget],
     message: params[:present][:message],
     )
@@ -54,14 +54,14 @@ class PresentsController < ApplicationController
 
     presentlastid = Present.last.id
     carts = Cart.where(user_id: current_user)
-    carts.each do |cart|
-      puts cart.product_id
-      @present_product = PresentProduct.create(
-      present_id: presentlastid,
-      product_id: cart.product_id
-      )
-      cart.delete
-    end
+      carts.each do |cart|
+        puts cart.product_id
+        @present_product = PresentProduct.create(
+        present_id: presentlastid,
+        product_id: cart.product_id
+        )
+        cart.delete
+      end
   redirect_to products_user_thanks_path
   end
 

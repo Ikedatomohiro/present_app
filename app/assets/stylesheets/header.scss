@@ -1,52 +1,121 @@
+body {
+  margin: 0;
+}
+
 header {
-  position: fixed;
-  top: 0;
-  z-index: 10;
-  background-color: #D0AD1B;
-  display: flex;
-  height: 80px;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  padding-right: 45px;
+  padding-bottom: 10px;
 }
 
-.header_menu {
-  a {
-    text-decoration: none;
-    }
-  display: flex;
-  width: 500px;
-  justify-content: space-between;
-  font-family: "Iowan Old Style";
-  font-size: 20px;
+.container {
+  width: 960px;
+  margin: 0 auto;
+  text-align: left;
 }
 
-.logout {
-  line-height: 70px;
-  padding-right: 20px;
+.header-top-wrapper {
+  height: 107.734px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #d9d9d9;
 }
 
-.header_side_menu {
+.header-bottom-wrapper {
+}
+
+
+.concept-word {
+  color: #b0b0b0;
+  font-size: 10px;
+  margin-top: 6px;
+}
+
+.header-top {
   display: flex;
-  width: 250px;
   justify-content: space-between;
-  text-align: center;
+}
+
+.header-left {
+  width: 574px;
+  position: relative;
+}
+
+.header-left p {
+  margin-bottom: 10px;
+}
+.header-logogroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 #logo {
-  width: 150px;
+  width: 140px;
+  height: 55px;
+  margin-right: 28px;
+  margin-top: 5px;
+  color: #2a000c;
   font-family: "Hannotate SC";
-  color: #FFFFFF;
   font-size: 20px;
   line-height: 20px;
-  margin-left: 45px;
-/*  border-width: 1px;
-  border-style: solid;*/
+  text-decoration: none;
 }
 
-.logo {
-  text-decoration: none;
+.free-info {
+  width: 258px;
+  height: 26px;
+  display: inline-block;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 76px;
+  left: 319px;
+  bottom: -14px;
+  right: -17px;
+}
+
+
+.header-right {
+  width: 366px;
+  height: 63px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-right-info {
+  padding: 6px;
+  display: flex;
+  justify-content: flex-end;
+  a {
+    padding-left: 20px;
+  }
+}
+
+.header-right-inner {
+  width: 344px;
+  height: 61px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+  background-color: #f6eff1;
+  position: absolute;
+  top: 34px;
+}
+
+.comment {
+  color:#2a000c;
+  font-size: 10px;
+  width: 205px;
+}
+
+.comment p {
+  margin-top: -3px;
+  margin-left: -3px;
+}
+
+.header-right-image {
+  a {
+    margin-left: 2px;
+    }
 }
 
 .search_box {
@@ -59,6 +128,12 @@ header {
     text-align: left;
   }
 }
+
+.logout {
+  line-height: 70px;
+  padding-right: 20px;
+}
+
 
 
 

@@ -3,6 +3,9 @@
 <div id="page-comment">
   Welcome to Present App.
 </div>
+
+      <p><%= link_to "Product", products_index_path %></p>
+
 <div class="serch-from-btn-group">
   <div class="category_search serch-from-category">
     カテゴリーから探す
@@ -16,7 +19,6 @@
           <%= check_box_tag "checkbox[#{purpose.id}]" %>
           <%= label_tag "checkbox[#{purpose.id}]", "#{purpose.purpose}" %>
         <% end %>
-      <span>-</span>
     </div>
 
 
