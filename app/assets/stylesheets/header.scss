@@ -3,7 +3,8 @@ body {
 }
 
 header {
-  padding-bottom: 10px;
+  padding-bottom: 0px;
+  border-bottom: 1px solid #91092f;
 }
 
 .container {
@@ -89,7 +90,8 @@ header {
 .header-right-inner {
   width: 342px;
   height: 61px;
-  padding: 12px 10px 8px 12px;
+  margin-top: -2px;
+  padding: 14px 10px 8px 12px;
   display: flex;
   justify-content: space-between;
   border-radius: 5px;
@@ -105,7 +107,13 @@ header {
 }
 
 .comment p {
-  margin-top: -3px;
+  margin-top: -4px;
+  margin-left: -2px;
+  margin-bottom: 10px;
+  line-height: 14px;
+}
+
+.shop-info {
   margin-left: -3px;
 }
 
@@ -163,6 +171,7 @@ header {
   background-color: #e7dde0;
   border-radius: 0 5px 5px 0;
   margin-left: -5px;
+  position: relative;
     select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -172,13 +181,24 @@ header {
     font-family: Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
     font-weight: 700;
     color: #2a000c;
-    width: 230px;
+    width: 120px;
     margin-left: 5px;
     border: 0;
     outline: none;
     padding: 5px;
     background: transparent;
   }
+}
+
+.select-category:before{
+  position: absolute;/*絶対配置*/
+  content: '';/*空に*/
+  border-top: 4px solid #2a000c;/*三角を作る*/
+  border-right: 4px solid transparent;
+  border-left: 5px solid transparent;
+  top: 13px;/*下にフィット*/
+  left: 132px;/*中央配置*/
+  transform: translateX(-50%);/*一応ズレを補正*/
 }
 
 .subheader-right {
@@ -221,25 +241,21 @@ header {
   background-color: #91092f;
   border-radius: 0 5px 5px 0;
   color: #fff;
+  position: relative;
+}
+
+.subheader-right-cart-number:before{
+  position: absolute;
+  content: '';
+  border-left: 1px solid #620620;
+  border-top:19px solid #620620;
+  top: 5px;
+  left: -1px;
 }
 
 .logout {
   line-height: 70px;
   padding-right: 20px;
-}
-
-.caution {
-  background-color: #91092f;
-  height: 31px;
-  line-height: 31px;
-  color: #fff;
-  font-size: 12px;
-  text-align: center;
-  font-weight: 700;
-}
-
-.caution p {
-  margin: 0;
 }
 
 

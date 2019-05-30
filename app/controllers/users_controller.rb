@@ -2,7 +2,6 @@ class UsersController < ApplicationController
 
   def index
     @user = current_user
-    @users = User.all
 
   end
 
@@ -25,6 +24,11 @@ class UsersController < ApplicationController
     @users = User.all
     @presents = Present.where(user_id: params[:id]).order(created_at: :desc)
     @preesnt_products = PresentProduct.where(present_id: @presents)
+    @users = User.all
+        @carts = Cart.all.order(created_at: :desc)
+      if signed_in?
+        @carts = @carts.get_by_user_id current_user.id
+      end
   end
 
   def new

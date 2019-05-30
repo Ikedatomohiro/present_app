@@ -3,11 +3,9 @@ class CartsController < ApplicationController
     @carts = Cart.all.order(created_at: :desc)
     @product = Product.all
     @users = User.all
-
-    if current_user.id.present?
-      puts "----------------"
-      @carts = @carts.get_by_user_id current_user.id
-    end
+      if signed_in?
+        @carts = @carts.get_by_user_id current_user.id
+      end
   end
 
   def show

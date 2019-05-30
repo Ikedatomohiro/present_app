@@ -20,7 +20,7 @@
         <div class="header-right-inner">
           <div class="comment">
             <p >全国80店舗展開中！安心と信頼の上場企業日本流通自主管理協会(AACD)の会員企業です</p>
-            <p class="shopinfo"><%= link_to(image_tag("header_right_text_btn.png", alt:"全国の店舗情報はこちら")) %></p>
+            <div class="shop-info"><%= link_to(image_tag("header_right_text_btn.png", alt:"全国の店舗情報はこちら")) %></div>
           </div>
           <div class="header-right-image">
             <%= link_to(image_tag("aacd_img.png", alt:"AACD")) %>
@@ -45,7 +45,7 @@
                   <option>　　ショルダーバッグ</option>
                   <option>　　トートバッグ</option>
                   <option>　メンズバッグ</option>
-                  <option>　　ハンドバッグバッグ</option>
+                  <option>　　ハンドバッグ</option>
                   <option>　　リュック・バッグ</option>
                   <option>財布</option>
                   <option>　レディース財布</option>
@@ -61,14 +61,23 @@
       </div>
 
       <% if signed_in? %>
-        <div class="subheader-right">
-          <p>ようこそ<%=  %>様</p>
-      </div>
-          <%= link_to "Cart", carts_path %>
-          <p><%= link_to "My page", "/users/#{current_user.id}" %></p>
-          <div class= "logout">
-            <%= button_to "Log out", destroy_user_session_path, method: :delete %>
+          <div class="subheader-right">
+            <div class="welcome">
+              ようこそ　<%= current_user.name %> 様
+            </div>
+            <div class="subheader-right-img">
+              <%= link_to image_tag("mypage_btn.png", alt:"マイページ"), "/users/#{current_user.id}" %>
+              <%= link_to image_tag("favorite_btn.png", alt:"お気に入りリスト") %>
+              <div class="subheader-right-cart">
+                <%= link_to image_tag("cart_icon.png", alt:"カート"), carts_path %>
+              </div>
+              <div class="subheader-right-cart-number">
+                <%= @carts.count %>
+              </div>
+            </div>
           </div>
+
+
 
         <% else %>
           <div class="subheader-right">
@@ -89,9 +98,7 @@
         <% end %>
     </div>
   </div>
-  <div class="caution">
-    <p>類似サイトです。ご注意ください！</p>
-  </div>
+
 
 </header>
 

@@ -2,39 +2,63 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-
-.category_search {
-    width: 50%;
-    height: 60px;
-    margin:10px;
-    border-style: solid;
-    border-color: #FFFFFF;
-    border-width: 2px;
-    border-radius: 5px;
+.caution {
+  background-color: #91092f;
+  height: 31px;
+  line-height: 31px;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  font-weight: 700;
 }
 
-.serch-from-btn-group {
+.caution p {
+  margin: 0;
+}
+
+.select-contents-tag {
+    width: 960px;
     display: flex;
 }
 
-.search-from-purpose {
-    background:pink;
+.select-contents-tag p {
+    position: relative;
+    width: 184px;
+    height: 30px;
+    font-size: 12px;
+    color: #2a000c;
+    background-color: #F5EFF1;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #D8CCD0;
+    line-height: 30px;
 }
 
-.serch-from-category {
-    background: orange;
-}
-.inner_body {
-    min-height: 100vh;
-    height: 100%;
-    background: rgba(255,255,255,0.5);
+.select-contents-tag p:not(last-child) {
+    margin-right: 10px;
 }
 
-.search_from_purpose{
-/*    display: none;
-*/}
+.select-contents-tag p:before{
+    position: absolute;
+    content: '';
+    border-top: 4px solid #91092F;
+    border-right: 4px solid transparent;
+    border-left: 5px solid transparent;
+    top: 13px;
+    left: 160px;
+    transform: translateX(-50%);
+}
 
-#testjquery {
-    color: green;
+.select-list {
+    margin-bottom: 30px;
+}
+
+.new-item-view {
+    border: 1px solid #D8CCD0;
+}
+
+.image-area {
+    width: 100px;
+    height: 300px;
+    border: 3px solid #D8CCD0;
 }

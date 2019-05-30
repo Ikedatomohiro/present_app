@@ -1,25 +1,33 @@
 <%= render "shared/header" %>
-
-<div id="page-comment">
-  Welcome to Present App.
-</div>
-
-      <p><%= link_to "Product", products_index_path %></p>
-
-<div class="serch-from-btn-group">
-  <div class="category_search serch-from-category">
-    カテゴリーから探す
+  <div class="caution">
+    <p>類似サイトです。ご注意ください！</p>
   </div>
-  <div class="category_search search-from-purpose">
-    目的から探す
+  <div class="wideslider container">
+    <%= link_to(image_tag("hd_handd_main.png", alt:"バナー")) %>
   </div>
-</div>
-    <div class="search_from_purpose">
-        <% @purposes.each do |purpose| %>
-          <%= check_box_tag "checkbox[#{purpose.id}]" %>
-          <%= label_tag "checkbox[#{purpose.id}]", "#{purpose.purpose}" %>
-        <% end %>
-    </div>
+  <div class="select-contents-tag container">
+    <p>ブランドから選ぶ</p>
+    <p>カテゴリから選ぶ</p>
+    <p>価格から選ぶ</p>
+    <p>贈る相手から選ぶ</p>
+    <p>贈る目的から選ぶ</p>
+  </div>
+  <div class="select-list"></div>
+  <div class="new-items container">
+    <%= link_to(image_tag("newitem_title.png", alt:"新着アイテム")) %>
+      <div class="new-item-view">
+        <div class="image-area">
+        </div>
+        <div class="item-details">
+        </div>
+      </div>
+
+
+
+  </div>
+
+
+
 
 
 <% if signed_in? && current_user.admin == true %>

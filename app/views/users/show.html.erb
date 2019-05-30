@@ -7,7 +7,9 @@
 <div id="page-comment">
   My page
 </div>
-
+          <div class= "logout">
+            <%= button_to "Log out", destroy_user_session_path, method: :delete %>
+          </div>
 <div id="user-menu">
   <div class="link-to-cart">
     <%= link_to "Cart", carts_path %>
