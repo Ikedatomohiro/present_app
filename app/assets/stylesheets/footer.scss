@@ -1,0 +1,149 @@
+.change-mode {
+  height: 16px;
+  padding: 10px 0;
+  background-color: #975567;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  line-height: 17px;
+}
+
+.change-mode a {
+  color: #401E1E;
+}
+
+.change-mode a:hover {
+  color: #91092F;
+  text-decoration: none;
+}
+
+.footer {
+  background-color: #F5EFF1
+}
+
+.footer .container {
+  display: flex;
+}
+
+.footer-left {
+  width: 430px;
+  height: 304px;
+  margin: 20px 20px 0 0 ;
+  padding: 20px;
+  background-color: #ede4e6;
+  border-radius: 5px;
+}
+
+.footer-icon {
+  height: 50px;
+  margin: 0 0 25px 0;
+  text-align: center;
+}
+
+.mb10 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 19px;
+}
+
+.mb12 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  line-height: 19px;
+}
+
+.mb20 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  line-height: 19px;
+}
+
+.mb30 {
+  margin-top: 0;
+  margin-bottom: 30px;
+  line-height: 19px;
+}
+
+.about-us, .contact {
+  position: relative;
+  height: 19px;
+  padding-left: 13px;
+  a{
+    text-decoration: none;
+    color: #2a000c;
+  }
+}
+
+.about-us:before, .contact:before {
+  position: absolute;
+  content: '';
+  top: 7px;
+  left: -2px;
+  width: 4px;
+  height: 4px;
+  border-top: 2px solid #91092F;
+  border-right: 2px solid #91092F;
+  /*-webkit-transform: rotate(45deg);　ベンダープレフィックス（いらないかも）*/
+  transform: rotate(45deg);
+}
+
+.about-us:hover, .contact:hover {
+  cursor: pointer;
+  a {
+  color: #91092F;
+  border-bottom: 1px solid #91092F;
+  }
+}
+
+.aacd-logo-large {
+  margin-bottom: 0;
+}
+
+.footer-right {
+  width: 430px;
+  height: 304px;
+  margin: 20px 0 0 0 ;
+  padding: 20px;
+  background-color: #ede4e6;
+  border-radius: 5px;
+}
+
+.footer-right .footer-icon {
+  height: 49px;
+}
+
+.footer-info {
+  display: flex;
+  margin: 0 auto;
+  padding: 24px 0 21px 0;
+}
+
+.footer-info li {
+  position: relative;
+  list-style: none;
+  display: block;
+  justify-content: space-between;
+  line-height: 16px;
+  padding-right: 13px;
+  margin-right: 14px;
+}
+
+.footer-info li:not(:first-child):before {
+  position: absolute;
+  content: '';
+  border-left: 1px solid #D5C9CC;
+  border-top:12px solid #D5C9CC;
+  top: 3px;
+  left: -15px;
+}
+
+.copyright {
+  background-color: #91092f;
+  height: 35px;
+  margin:0;
+  line-height: 35px;
+  color: #fff;
+  font-size: 10px;
+  text-align: center;
+  font-weight: 700;
+}
