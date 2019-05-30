@@ -12,7 +12,7 @@
   color: #401E1E;
 }
 
-.change-mode a:hover {
+.change-mode a:hover, .admin-menu a:hover {
   color: #91092F;
   text-decoration: none;
 }
@@ -112,13 +112,13 @@
   height: 49px;
 }
 
-.footer-info {
+.footer-info, .admin-menu {
   display: flex;
   margin: 0 auto;
   padding: 24px 0 21px 0;
 }
 
-.footer-info li {
+.footer-info li, .admin-menu a {
   position: relative;
   list-style: none;
   display: block;
@@ -128,7 +128,7 @@
   margin-right: 14px;
 }
 
-.footer-info li:not(:first-child):before {
+.footer-info li:not(:first-child):before, .admin-menu a:not(:first-child):before {
   position: absolute;
   content: '';
   border-left: 1px solid #D5C9CC;

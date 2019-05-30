@@ -2,7 +2,14 @@ body {
   font-family: "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W6", "Hiragino Kaku Gothic Pro", Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
   font-size: 12px;
   color: #2a000c;
+  margin: 0;
   }
+
+.container {
+  width: 960px;
+  margin: 0 auto;
+  text-align: left;
+}
 
 .bg{
     /*位置の設定*/
@@ -12,21 +19,5 @@ body {
     top: 0;
     left: 0;
     /*背景画像の設定*/
-
 }
 
-
-
-
-.menu-title{
-  font-size: 16px;
-  margin:20px;
-  padding-left: 15px;
-  border-style: solid;
-  color: #365F0E;
-  background-color: #85B713;
-  width: 140px;
-  line-height: 40px;
-  border-width: 2px;
-  border-radius: 5px;
-}
