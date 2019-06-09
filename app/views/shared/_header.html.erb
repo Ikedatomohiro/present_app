@@ -4,10 +4,10 @@
       <div class="header-left">
         <p class="concept-word">大切な人に贈る大切なプレゼントだから、心を込めて贈る人の「ときめき」を伝えるお手伝いをします。<%= link_to '参照サイト','http://www.happiness-d.com/shop/default.aspx', :target => "_blank" %></p>
           <div class="header-logogroup">
-            <%= link_to 'Present App. Thanks to YOU', '/' ,id:'logo' %>
+            <%= link_to 'Present App. Thanks to YOU', '/' , id:'logo' %>
             <div class="free-info">
               <%= link_to(image_tag("banner_wrapping_free.gif", alt:"ラッピング無料")) %>
-              <%= link_to(image_tag("banner_belt_forre.gif", alt:"ベルト調整無料")) %>
+              <%= link_to(image_tag("banner_belt_forre.gif", alt:"ベルト調整無料")) %>              
             </div>
           </div>
       </div>
@@ -18,9 +18,11 @@
           <%= link_to(image_tag("faq_btn.png", alt:"よくあるご質問")) %>
         </div>
         <div class="header-right-inner">
-          <div class="comment">
+          <div class="header-right-text">
             <p >全国80店舗展開中！安心と信頼の上場企業日本流通自主管理協会(AACD)の会員企業です</p>
-            <div class="shop-info"><%= link_to(image_tag("header_right_text_btn.png", alt:"全国の店舗情報はこちら")) %></div>
+            <div class="shop-info">
+              <%= link_to(image_tag("header_right_text_btn.png", alt:"全国の店舗情報はこちら")) %>
+              </div>
           </div>
           <div class="header-right-image">
             <%= link_to(image_tag("aacd_img.png", alt:"AACD")) %>
@@ -32,11 +34,13 @@
   </div>
   <div class="subheader-wrapper">
     <div class="container subheader">
-      <div class="subheader-left">
-        <div class="search-box">
-            <%= form_tag(products_index_path, method: "get") do %>
-              <%= text_field_tag :name_or_characteristic, params[:name_or_characteristic], :placeholder => "キーワードを入力" , style: "border: none"%>
-        </div>
+
+      <div>
+        <%= form_tag(products_index_path, method: "get", class:"subheader-left") do %>
+
+          <div class="search-box">
+             <%= text_field_tag :name_or_characteristic, params[:name_or_characteristic], :placeholder => "キーワードを入力" , style: "border: none"%>
+          </div>
               <div class="select-category">
                 <select name="カテゴリ">
                   <option value selected>全てのカテゴリから</option>
@@ -70,36 +74,31 @@
               <%= link_to image_tag("favorite_btn.png", alt:"お気に入りリスト") %>
               <div class="subheader-right-cart">
                 <%= link_to image_tag("cart_icon.png", alt:"カート"), carts_path %>
-              </div>
-              <div class="subheader-right-cart-number">
-                <%= @carts.count %>
+                <div class="subheader-right-cart-number">
+                  <%= @carts.count %>
+                </div>
               </div>
             </div>
           </div>
-
-
-
         <% else %>
           <div class="subheader-right">
-            <div class="welcome">
+            <p class="welcome">
               ようこそ　ゲスト 様
-            </div>
+            </p>
             <div class="subheader-right-img">
               <%= link_to image_tag("login_btn.png", alt:"ログイン"), new_user_session_path %>
               <%= link_to image_tag("favorite_btn.png", alt:"お気に入りリスト") %>
               <div class="subheader-right-cart">
-                <%= link_to image_tag("cart_icon.png", alt:"カート") %>
-              </div>
-              <div class="subheader-right-cart-number">
-                <%= "0" %>
+                  <%= link_to image_tag("cart_icon.png", alt:"カート") %>
+                <p class="subheader-right-cart-number">
+                  <%= "0" %>
+                </p>
               </div>
             </div>
           </div>
         <% end %>
     </div>
   </div>
-
-
 </header>
 
 

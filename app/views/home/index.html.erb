@@ -1,29 +1,53 @@
-  <div class="caution">
-    <p>類似サイトです。ご注意ください！</p>
+<div class="caution">
+  <p>類似サイトです。ご注意ください！</p>
+</div>
+
+<div class="container">
+  <div class="wideslider">
+    <div class="commerce-image">
+      <%= link_to(image_tag("hd_handd_main.png", alt:"バナー")) %>
+    </div>
   </div>
-  <div class="wideslider container">
-    <%= link_to(image_tag("hd_handd_main.png", alt:"バナー")) %>
-  </div>
-  <div class="select-contents-tag container">
-    <p>ブランドから選ぶ</p>
-    <p>カテゴリから選ぶ</p>
-    <p>価格から選ぶ</p>
-    <p>贈る相手から選ぶ</p>
-    <p>贈る目的から選ぶ</p>
+  <div class="select-contents-tag">
+    <div class="contents">
+      <p>ブランドから選ぶ</p>
+      <p>カテゴリから選ぶ</p>
+      <p>価格から選ぶ</p>
+      <p>贈る相手で選ぶ</p>
+      <p>贈る目的で選ぶ</p>
+    </div>
   </div>
   <div class="select-list"></div>
-  <div class="new-items container">
-    <%= link_to(image_tag("newitem_title.png", alt:"新着アイテム")) %>
-      <div class="new-item-view">
-        <div class="image-area">
-        </div>
-        <div class="item-details">
+  <div class="new-items">
+    <%= image_tag("newitem_title.png", alt:"新着アイテム") %>
+  </div>
+
+  <div class="new-item-view">
+    <% @products.each do |product| %>
+
+      <div class="image-area">
+        <p class="product-img">
+          <%= image_tag("/product_images/#{product.image}", :width => "100px") %>
+        </p>
+        <div class="product-info-home">
+          <div class="product-name">
+            <%= link_to(product.name, "/products/#{product.id}") %>
+          </div>
+          <div class="icon">
+            <%= image_tag("free-wrapping.png") %>
+          </div>
+          <div class="price">
+            <p>当店販売価格<br>
+            <%= number_to_currency(product.price, :locale => 'jp') %> <span>(税込)</span><p>
+          </div>
+          <div class="favorite-btn">
+            <%= image_tag("favorite_btn-2.png") %>
+          </div>
         </div>
       </div>
 
-
-
+    <% end %>
   </div>
 
-
+</div>
 

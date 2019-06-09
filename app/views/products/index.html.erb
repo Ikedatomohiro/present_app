@@ -1,11 +1,11 @@
-<div id = "background">
+<div class="container">
 
   <% content_for :title do %>
     Products list
   <% end %>
   
   <div id="page-comment">
-    Products List
+    商品一覧
   </div>
 
   <div class="search-area">
@@ -38,65 +38,70 @@
       <div class="search_from_age"><%= text_field_tag :age_group_number, params[:age_group_number] %></div><br>
 
       <%= submit_tag "検索" %>
-  </div>
-
     <%= "商品数：" %>
     <%= @products.count %>  <% end %>
   </div>
   <%= will_paginate @products %>
+
+<!-- ここから商品一覧 -->
+  <div class="item-view">
+
   <% if @products.present? %>
-    <table class="product_list">
-      <thead>
-        <tr>
-            <th>ID</th>
-          <th>商品名</th>
-          <th>特徴</th>
-          <th>Webサイト</th>
-          <th>価格</th>
-          <th>目的</th>
-          <th>対象年齢</th>
-          <th>画像</th>
-          <th>評価</th>
-          <% if signed_in? && current_user.admin == true %>
-            <th>操作</th>
-          <% end %>
-        </tr>
-      </thead>
 
-    <tbody>
-      <% @products.each do |product| %>
-        <tr>
-          <td><%= product.id %></td>
-          <td><%= link_to(product.name, "/products/#{product.id}") %></td>
-          <td><%= product.characteristic %></td>
-          <td><%= link_to(product.product_hp, "#{product.product_hp}") %></td>
-          <td><%= number_to_currency(product.price, :locale => 'jp') %></td>
-            <% purpose_products = PurposeProduct.where(product_id: product.id) %>
-              <td>
-                <% purpose_products.each do |purpose_product| %>
-                  <% purpose = Purpose.find(purpose_product.purpose_id) %>
+    <% @products.each do |product| %>
+
+      <div class="image-area">
+        <p class="product-img">
+          <%= image_tag("/product_images/#{product.image}", :width => "100px") %>
+        </p>
+        <div class="product-info-products">
+          <div class="product-name">
+            <%= link_to(product.name, "/products/#{product.id}") %>
+          </div>
+          <div class="product-characteristic">
+            <%= product.characteristic %>
+          </div>
+          <div class="product-hp">
+            <%= link_to(product.product_hp, "#{product.product_hp}") %>
+              <% purpose_products = PurposeProduct.where(product_id: product.id) %>
+          </div>
+              <% purpose_products.each do |purpose_product| %>
+                <% purpose = Purpose.find(purpose_product.purpose_id) %>
                   <%= purpose.purpose %>
-                <% end %>
-              </td>
-          <td><%= product.age_group_number %></td>
-          <td><%= image_tag("/product_images/#{product.image}", :height => "35") %></td>
-          <td><%= "準備中" %></td>
-          <% if signed_in? && current_user.admin == true %>
-            <td>
-            <%= link_to("編集", "/products/#{product.id}/edit") %>
+              <% end %>
 
+
+          <div class="icon">
+            <%= image_tag("free-wrapping.png") %>
+          </div>
+          <div class="price">
+            <p>当店販売価格<br>
+            <%= number_to_currency(product.price, :locale => 'jp') %> <span>(税込)</span><p>
+          </div>
+          <div class="favorite-btn">
+            <%= image_tag("favorite_btn-2.png") %>
+          </div>
+
+            <% if signed_in? && current_user.admin == true %>
+              <%= link_to("編集", "/products/#{product.id}/edit") %>
               <%= button_to "削除", { :action => "dissapear", :id => product.id }, :confirm => "本当に削除しますか?", :method => :delete %>
-            </td>
-          <% end %>
-        </tr>
+              
+            <% end %>
 
-      <% end %>
-    </tbody>
-  </table>
+        </div>
+      </div>
+
+    <% end %>
 
   <% else %>
-  <p>お探しの商品はありません。</p>
+    <p>お探しの商品はありません。</p>
   <% end %>
+
+
+  </div>
+
+
+
 
 </div>
 

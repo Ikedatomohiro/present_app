@@ -9,7 +9,7 @@ class NotificationMailer < ActionMailer::Base
       subject: "ご購入ありがとうございました。",
       to: @user.email
     ) do |format|
-      format.text
+      format.html
     end
   end
 end

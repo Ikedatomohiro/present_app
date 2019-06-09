@@ -6,6 +6,8 @@ class HomeController < ApplicationController
         @carts = @carts.get_by_user_id current_user.id
       end
 
+    @products = Product.last(5)
+
   end
 
   def registration

@@ -1,0 +1,164 @@
+/*タブレット表示用*/
+@media (max-width: 960px) {
+  .header-top, .subheader {
+    display: block;
+    position: relative;
+  }
+
+  .header-top-wrapper {
+    height: 217px;
+  }
+
+  .subheader-wrapper {
+    height: 80px;
+  }
+
+  header:before {
+    top: 220px;
+  }   /*横棒の位置を調整*/
+
+  .footer {
+    position: relative;
+  }
+
+  .header-left, {
+    position: absolute;
+    top: 45px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .header-right {
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .subheader-left {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .subheader-right {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .select-contents-tag {
+    position: relative;
+  }
+
+  .contents {
+    position: absolute;
+    top: 90%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    
+  }
+
+  .contents p {
+    width: 130px;
+
+  }
+
+  .contents p:before {
+    display: none;
+  }
+
+
+  .footer {
+    position: relative;
+    height: 400px;
+  }
+
+  .footer-main {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);/*真ん中で安定して表示してくれる。*/
+  }
+  .footer-left, .footer-right {
+    width: 380px;
+  }
+
+  .footer-info {
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 820px;
+  }
+}
+
+/*スマートフォン表示用*/
+@media (max-width: 670px) {
+  .search-box {
+    font-size: 24px;
+  }
+
+  .select-contents-tag, .footer-main, .footer-info {
+    display: block;
+  }
+
+  .wideslider {
+
+  }
+
+  .select-contents-tag p {
+    width: 300px;
+    margin: 10px 10px;
+    position: absolute;
+    left: 35%;
+    transform: translate(-50%, -50%);
+  }
+
+  .select-contents-tag p:before{
+    display: none;
+  }
+
+  .footer {
+    position: relative;
+    height: 1050px;
+    font-size: 18px;
+  }
+
+  .footer-main {
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .footer-left {
+    height: 400px;
+  }
+
+  .footer-right {
+    height: 370px;
+  }
+
+  .footer-info {
+    position: absolute;
+    top: 88%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    a{
+      line-height: 30px;
+    }
+  }
+
+    .footer-info li:before{
+    display: none;
+  }
+
+  .footer-info li {
+    width: 200px;
+  }
+
+}

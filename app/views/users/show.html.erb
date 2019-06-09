@@ -1,65 +1,66 @@
 <% content_for :title do %>
   My page
 <% end %>
-
-<div id="page-comment">
-  My page
-</div>
-          <div class= "logout">
-            <%= button_to "Log out", destroy_user_session_path, method: :delete %>
-          </div>
-<div id="user-menu">
-  <div class="link-to-cart">
-    <%= link_to "Cart", carts_path %>
+<div class="container">
+  <h1 id="page-comment">
+    マイページ
+  </h1>
+  <div class= "logout">
+    <%= button_to "Log out", destroy_user_session_path, method: :delete %>
   </div>
-  <div class="link-to-useredit">
-    <%= link_to "ユーザー情報の変更", edit_user_path(current_user) %>
-  </div>
-</div>
-
-<div class="menu-title">
-  過去のプレゼント
-</div>
-  <% @presents.each do |present| %>
-      <% presentopponent = PresentOpponent.find(present.present_opponent_id) %>
-      <% purpose = Purpose.find(present.purpose_number) %>
-      <% presentproducts = PresentProduct.where(present_id: present.id) %>
-    <div class = "purchaselog">
-      <div class = "purchaselogheader">
-        <div class = "purchasedate">
-          <div class ="purchaselog-header-value">
-            <%= label :present, :注文日 %>
-          </div>
-          <p><%= present.purchase_date %></p>
-        </div>
-          <div class = "presentopponent">
-            <div class ="purchaselog-header-value">
-              <%= label :present, :送ったお相手 %>
-            </div>
-          <p><%= presentopponent.name %></p>
-          </div>
-          <div class = "presentpurpose">
-            <div class ="purchaselog-header-value">
-              <%= label :present, :目的 %>
-            </div>
-            <p><%= purpose.purpose %></p>
-          </div>
-          <div class="open-items-button">
-            <span>+</span>
-          </div>
-      </div>
-        <div class="purchaseitems">
-          <% presentproducts.each do |presentproduct| %>
-            <% product = Product.find(presentproduct.product_id) %>
-            <%= product.name %>
-            <%= number_to_currency(product.price, :locale => 'jp') %>
-            <br>
-            <%= image_tag("/product_images/#{product.image}", :height => "70") %>
-            <br>
-          <% end %>
-        <div>メッセージ</div>
-        <%= present.message %>
-      </div>
-
+  <div id="user-menu">
+    <div class="link-to-cart">
+      <%= link_to "カート", carts_path %>
     </div>
-  <% end %>
+    <div class="link-to-useredit">
+      <%= link_to "ユーザー情報の変更", edit_user_path(current_user) %>
+    </div>
+  </div>
+
+  <div class="menu-title">
+    過去のプレゼント
+  </div>
+    <% @presents.each do |present| %>
+        <% presentopponent = PresentOpponent.find(present.present_opponent_id) %>
+        <% purpose = Purpose.find(present.purpose_number) %>
+        <% presentproducts = PresentProduct.where(present_id: present.id) %>
+      <div class = "purchaselog">
+        <div class = "purchaselogheader">
+          <div class = "purchasedate">
+            <div class ="purchaselog-header-value">
+              <%= label :present, :注文日 %>
+            </div>
+            <p><%= present.purchase_date %></p>
+          </div>
+            <div class = "presentopponent">
+              <div class ="purchaselog-header-value">
+                <%= label :present, :送ったお相手 %>
+              </div>
+            <p><%= presentopponent.name %></p>
+            </div>
+            <div class = "presentpurpose">
+              <div class ="purchaselog-header-value">
+                <%= label :present, :目的 %>
+              </div>
+              <p><%= purpose.purpose %></p>
+            </div>
+            <div class="open-items-button">
+              <span>+</span>
+            </div>
+        </div>
+          <div class="purchaseitems">
+            <% presentproducts.each do |presentproduct| %>
+              <% product = Product.find(presentproduct.product_id) %>
+              <%= product.name %>
+              <%= number_to_currency(product.price, :locale => 'jp') %>
+              <br>
+              <%= image_tag("/product_images/#{product.image}", :height => "70") %>
+              <br>
+            <% end %>
+          <div>メッセージ</div>
+          <%= present.message %>
+        </div>
+
+      </div>
+    <% end %>
+</div>

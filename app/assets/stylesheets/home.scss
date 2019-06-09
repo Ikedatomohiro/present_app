@@ -16,49 +16,139 @@
   margin: 0;
 }
 
-.select-contents-tag {
-    width: 960px;
-    display: flex;
+.commerce-image img {
+  width: 100%;
+  height: autoß;
+}
+
+.contents {
+  width: 960px;
+  display: flex;
 }
 
 .select-contents-tag p {
-    position: relative;
-    width: 184px;
-    height: 30px;
-    font-size: 12px;
-    color: #2a000c;
-    background-color: #F5EFF1;
-    text-align: center;
-    border-radius: 5px;
-    border: 1px solid #D8CCD0;
-    line-height: 30px;
+  position: relative;
+  width: 184px;
+  height: 30px;
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+  color: #2a000c;
+  font-weight: 700;
+  background-color: #F5EFF1;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid #D8CCD0;
+  line-height: 30px;
 }
 
-.select-contents-tag p:not(last-child) {
-    margin-right: 10px;
+.select-contents-tag p:not(:last-child) {
+  margin-right: 10px;
 }
 
-.select-contents-tag p:before{
-    position: absolute;
-    content: '';
-    border-top: 4px solid #91092F;
-    border-right: 4px solid transparent;
-    border-left: 5px solid transparent;
-    top: 13px;
-    left: 160px;
-    transform: translateX(-50%);
+.contents p:before{
+  position: absolute;
+  content: '';
+  border-top: 4px solid #91092F;
+  border-right: 4px solid transparent;
+  border-left: 5px solid transparent;
+  top: 12px;
+  left: 167px;
+  transform: translateX(-50%);
 }
 
 .select-list {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
+}
+
+.new-items {
+  margin-bottom: 20px;
 }
 
 .new-item-view {
-    border: 1px solid #D8CCD0;
+  display: flex;
+  width: 960px;
+  margin-bottom: 20px;
 }
 
 .image-area {
-    width: 100px;
-    height: 300px;
-    border: 3px solid #D8CCD0;
+  width: 20%;
+  border-top: solid 1px #d8ccd0;
+  border-left: solid 1px #d8ccd0;
+  border-bottom: solid 1px #d8ccd0;
+}
+
+.image-area:last-child{
+  border-right: solid 1px #d8ccd0;
+} /*新着アイテムの一番右の欄に枠線を入れる*/
+
+.product-img {
+  text-align: center;
+  height: 187px;
+  padding: 17px 18px;
+  margin: 0;
+  border-top: 3px solid #f6eff1;
+  border-left: 3px solid #f6eff1;
+  border-right: 3px solid #f6eff1;
+}
+
+.product-info-home {
+  height: 220px;
+  padding: 0 5px 14px 5px;
+  border-bottom: 3px solid #f6eff1;
+  border-left: 3px solid #f6eff1;
+  border-right: 3px solid #f6eff1;
+}
+
+.product-name {
+  height: 64px;
+  margin-bottom: 11px;
+}
+
+.product-name a {
+  color: #685557;
+  text-decoration: none;
+}
+
+.product-name a:hover {
+  border-bottom: 1px solid #685557;
+}
+
+.icon {
+  height: 18px;
+  margin-bottom: 11px;
+}
+
+.price {
+  height: 65px;
+  padding: 0 8px;
+  p {
+    text-align: right;
+    margin: 0;
+    line-height: 17px;
+  }
+  span {
+    position: relative;
+    font-size: 10px;
+  }
+}
+
+.favorite-btn {
+  position: relative;
+  margin-top: 11px;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.favorite-btn img {
+}
+
+.favorite-btn:before {
+  position: absolute;
+  content: '';
+  border-top: 1px dashed #D0D0D0;
+  height: 1px;
+  width: 150px;
+  left: 15px;
+  top: 0px;
 }

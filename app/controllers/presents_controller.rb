@@ -21,10 +21,11 @@ class PresentsController < ApplicationController
     budget: params[:present][:budget],
     message: params[:present][:message],
     )
-    @carts = Cart.all
 
   @products = Product.all
   @genders = Gender.all
+
+  @carts = Cart.all
   @carts = @carts.get_by_user_id current_user.id
   render :template => "users/confirm"
   end

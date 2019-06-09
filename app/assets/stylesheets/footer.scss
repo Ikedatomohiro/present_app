@@ -1,5 +1,5 @@
 .change-mode {
-  height: 16px;
+  height: 36px;
   padding: 10px 0;
   background-color: #975567;
   color: #fff;
@@ -17,17 +17,17 @@
   text-decoration: none;
 }
 
-.footer {
-  background-color: #F5EFF1
+footer {
+  background-color: #F5EFF1;
 }
 
-.footer .container {
+.footer-main {
   display: flex;
 }
 
 .footer-left {
-  width: 430px;
-  height: 304px;
+  width: 470px;
+  height: 344px;
   margin: 20px 20px 0 0 ;
   padding: 20px;
   background-color: #ede4e6;
@@ -79,19 +79,19 @@
   content: '';
   top: 7px;
   left: -2px;
-  width: 4px;
-  height: 4px;
-  border-top: 2px solid #91092F;
-  border-right: 2px solid #91092F;
+  width: 6px;
+  height: 6px;
+  border-top: 1.5px solid #91092F;
+  border-right: 1.5px solid #91092F;
   /*-webkit-transform: rotate(45deg);　ベンダープレフィックス（いらないかも）*/
   transform: rotate(45deg);
 }
 
-.about-us:hover, .contact:hover {
+.about-us:hover, .contact:hover, .footer-info li:hover {
   cursor: pointer;
   a {
-  color: #91092F;
-  border-bottom: 1px solid #91092F;
+    color: #91092F;
+    border-bottom: 1px solid #91092F;
   }
 }
 
@@ -100,8 +100,8 @@
 }
 
 .footer-right {
-  width: 430px;
-  height: 304px;
+  width: 470px;
+  height: 344px;
   margin: 20px 0 0 0 ;
   padding: 20px;
   background-color: #ede4e6;
@@ -121,8 +121,6 @@
 .footer-info li, .admin-menu a {
   position: relative;
   list-style: none;
-  display: block;
-  justify-content: space-between;
   line-height: 16px;
   padding-right: 13px;
   margin-right: 14px;
@@ -135,6 +133,11 @@
   border-top:12px solid #D5C9CC;
   top: 3px;
   left: -15px;
+}
+
+.footer-info a {
+  text-decoration: none;
+  color: #2a000c;
 }
 
 .copyright {
