@@ -1,5 +1,5 @@
 <% content_for :title do %>
-  My page
+  <%= current_user.name %> 様のマイページ
 <% end %>
 <div class="container">
   <h1 id="page-comment">
@@ -64,3 +64,5 @@
       </div>
     <% end %>
 </div>
+
+
