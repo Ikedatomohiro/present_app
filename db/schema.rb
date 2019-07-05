@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_23_135431) do
+ActiveRecord::Schema.define(version: 2019_07_02_111634) do
 
   create_table "age_group_products", force: :cascade do |t|
     t.integer "age_group_id"
@@ -156,10 +156,19 @@ ActiveRecord::Schema.define(version: 2018_12_23_135431) do
     t.index ["product_id"], name: "index_purposes_on_product_id"
   end
 
+  create_table "shop_managements", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "shop_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_shop_managements_on_shop_id"
+    t.index ["user_id"], name: "index_shop_managements_on_user_id"
+  end
+
   create_table "shops", force: :cascade do |t|
     t.string "name"
     t.string "web_site"
-    t.string "mail_address"
+    t.string "mail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -169,6 +178,7 @@ ActiveRecord::Schema.define(version: 2018_12_23_135431) do
     t.integer "gender"
     t.date "birthday"
     t.boolean "admin", default: false, null: false
+    t.boolean "shopkeeper", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false

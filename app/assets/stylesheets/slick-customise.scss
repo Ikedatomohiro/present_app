@@ -1,0 +1,28 @@
+.prev.slick-arrow {
+  &:after {
+    content: url(prev.png);
+  }
+  position: absolute;
+  right: calc(50vw + 480px);
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height:40px;
+  z-index: 1;
+
+}
+
+
+.next.slick-arrow {
+  &:after {
+    content: url(next.png);
+  }
+  position: absolute;
+  left: calc(50vw + 480px);
+  /*vw:view width 50vwで中央*/
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 40px;
+  z-index: 1;
+}

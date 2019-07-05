@@ -3,7 +3,7 @@ class CreateShops < ActiveRecord::Migration[5.2]
     create_table :shops do |t|
       t.string :name
       t.string :web_site
-      t.string :mail_address
+      t.string :mail
       t.timestamps
     end
   end

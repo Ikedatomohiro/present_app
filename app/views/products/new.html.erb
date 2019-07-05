@@ -1,23 +1,29 @@
-<% @page_title = "新規商品登録" %>
-<h2><%= @page_title %></h2>
+<div class="container">
 
-<%= form_for @product, :url => {:action => 'create'} do |f| %>
-  <%= f.label "商品名" %>
-    <%= f.text_area :name %>
-  <%= f.label "特徴" %>
-    <%= f.text_area :characteristic %>
-  <%= f.label "ホームページアドレス" %>
-    <%= f.text_area :product_hp %>
-  <%= f.label "価格" %>
-    <%= f.text_area :price %>
-  <%= f.label "目的" %>
-    <% @purposes.each do |purpose| %>
-      <%= check_box_tag "checkbox[#{purpose.id}]" %>
-      <%= label_tag "checkbox[#{purpose.id}]", "#{purpose.purpose}" %>
-    <% end %>
-  <%= f.label "対象年齢" %>
-    <%= f.text_field :age_group_number %>
-  <input type = "submit" value ="商品を登録する">
+  <%= form_for @product, :url => {:action => 'create'} do |f| %>
 
-<% end %>
+    <%= f.label "商品名" %>
+      <p><%= f.text_area :name %></p>
 
+    <%= f.label "特徴" %>
+      <P><%= f.text_area :characteristic %></P>
+
+    <%= f.label "ホームページアドレス" %>
+      <P><%= f.text_area :product_hp %></P>
+
+    <%= f.label "価格" %>
+      <P><%= f.text_area :price %></P>
+
+    <P><%= f.label "目的" %></P>
+      <% @purposes.each do |purpose| %>
+        <%= check_box_tag "checkbox[#{purpose.id}]" %>
+        <%= label_tag "checkbox[#{purpose.id}]", "#{purpose.purpose}" %>
+      <% end %>
+
+    <P><%= f.label "対象年齢" %></P>
+      <%= f.text_field :age_group_number %>
+    <input type = "submit" value ="商品を登録する">
+
+  <% end %>
+
+</div>

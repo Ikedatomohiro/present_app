@@ -23,6 +23,23 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
 
+
+      <div class="field">
+        <%= f.label "ユーザー名" %><br />
+        <%= f.text_field :name %>
+      </div>
+
+
+      <%= "店名"%>
+      <%= text_field_tag 'shop[name]' %>
+
+      <%= "Webサイト"%>
+      <%= text_field_tag 'shop[web_site]' %>
+
+      <%= "ショップメールアドレス"%>
+      <%= text_field_tag 'shop[mail]' %>
+
+
       <div class="actions">
         <%= f.submit "登録する" %>
       </div>

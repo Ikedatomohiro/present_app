@@ -51,6 +51,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @purposes = Purpose.all
+
     @carts = Cart.all.order(created_at: :desc)
       if signed_in?
         @carts = @carts.get_by_user_id current_user.id
@@ -58,6 +59,11 @@ class ProductsController < ApplicationController
   end
 
   def new
+    @carts = Cart.all
+      if signed_in?
+        @carts = @carts.get_by_user_id current_user.id
+      end
+
     @product = Product.new(params[:product])
     @purposes = Purpose.all
 
@@ -70,8 +76,10 @@ class ProductsController < ApplicationController
   end
 
   def create
+
+
     @product = Product.new(
-      name: params[:product][:name],
+      name: params[:product][:name], 
       characteristic: params[:product][:characteristic],
       product_hp: params[:product][:product_hp],
       price: params[:product][:price],

@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user = User.create(:name => "いけだとも", :gender => 2, :birthday => "1981-08-22", :email => "to.tomo.tomohiro@gmail.com", :password => "Tomohir0", :admin => "true")
+user = User.create(:name => "いけだとも", :gender => 2, :birthday => "1981-08-22", :email => "to.tomo.tomohiro@gmail.com", :password => "Tomohir0", :admin => "true", :shopkeeper => "true")
 user = User.create(:name => "ともひろ", :gender => 2, :birthday => "1981-08-22", :email => "tomohiro.ikeda@gmail.com", :password => "tomohiro", :admin => "false")
 
 
@@ -53,4 +53,4 @@ PurposeProduct.create(purpose_id: 2, product_id: 6)
 PurposeProduct.create(purpose_id: 5, product_id: 6)
 PurposeProduct.create(purpose_id: 6, product_id: 6)
 
-
+Shop.create(name: "ドンキ・ホーテ", web_site: "http://donkihote", mail: "to.tomo.tomohiro@gmail.com")

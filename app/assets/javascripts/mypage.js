@@ -18,11 +18,11 @@ $(document).on('turbolinks:load', function() {
     if($purchaseitems.hasClass('open')){
       $purchaseitems.removeClass('open');
       $purchaseitems.slideUp();
-      $(this).find('span').text('+').css('padding','0px');
+      $(this).find('#button').css({transform:"rotate(0deg)",transition:"0.5s"});
     }else{
       $purchaseitems.addClass('open');
       $purchaseitems.slideDown();
-      $(this).find('span').text('-').css('padding-left','2px');
+      $(this).find('#button').css({transform:"rotate(180deg)",transition:"0.5s"});
     }
   });
 });

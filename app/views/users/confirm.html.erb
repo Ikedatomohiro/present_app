@@ -1,7 +1,5 @@
 <div class="container">
-  <div id="page-comment">
-    Confirm your purchase
-  </div>
+
   <%= form_for @present, :url => {:action => 'set_present'} do |form| %>
     <%= form.hidden_field :message %>
     <%= form.hidden_field :purpose_number %>
@@ -65,6 +63,6 @@
         <% end %>
       </tbody>
     </table>
-  <p>合計金額は<%= number_to_currency(total_price, :locale => 'jp') %>です。</p>
+  <p class="total-fee">合計金額は<%= number_to_currency(total_price, :locale => 'jp') %>です。</p>
   <p>お届け希望日</p>
 </div>

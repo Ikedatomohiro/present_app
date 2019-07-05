@@ -4,40 +4,33 @@
   <title></title>
 </head>
 <body>
-  <h1>
+  <h2>
     <%= @user.name %> 様
-  </h1>
+  </h2>
 
-  <p>Present Appをご利用いただきありがとうございます。Present Appがお客様のご注文を承ったことをお知らせいたします。詳細はマイページからご確認ください。
-  </p>
+  <h4>Present Appをご利用いただきありがとうございます。<br>
+     Present Appがお客様のご注文を承ったことをお知らせいたします。<br>
+     詳細はマイページからご確認ください。
+  </h4>
 
-  <div class="order-info">
-    <div class="deriver-data">
-      <p>注文番号：present.id</p>
-    </div>
-    <div class="deriber-address">
-    </div>
+  <h4 style="font-weight: bold;">注文番号：</h4><%= @latest_present.id %>
 
-    <div class="order-items">
-      <p>注文内容</p>
-      <p>注文番号：
-      <p>注文日：today</p>
-        <div class="">
-          <img>
-          <div class="">
-            <p>product-name</p>
-          </div>
-          <div class="">
-            price
-          </div>
-
-        </div>
-
-    </div>
+  <h4 style="font-weight: bold;">注文内容：  </h4>
+    <% i = 1 %>
+    
+      <% @latest_products.each do |present|%>
+        <p style="margin-bottom: 20px">
+          <% product = Product.find(present.product_id) %>
+          <%= "#{i}." %><%= product.name %><br>
+          <%= image_tag("/product_images/#{product.image}", :width => "100px") %><br>
+          <%= number_to_currency(product.price, :locale => 'jp') %><br>
+          <% i += 1 %>
+        </p>
+      <% end %>
 
 
-  </div>
-  <%= @latest_present.id %>
+  <h4 style="font-weight: bold;">ご注文合計金額：</h4><%= number_to_currency(@total_price, :locale => 'jp') %>
+  <h4 style="font-weight: bold;">注文日：</h4><%= Date.today.strftime('%Y年%m月%d日') %>
 
 </body>
 </html>

@@ -3,9 +3,6 @@
   Users list
 <% end %>
 <div class="container">
-  <div id="page-comment">
-    Users list
-  </div>
 
   <% @users.each do |user| %>
   <%= link_to(user.id, "/users/#{user.id}") %>
@@ -18,17 +15,5 @@
   <br>
   <% end %>
 
-<!-- メール文を作成するのにこの場所を借りています。 -->
-
-    ・注文番号 :<%= @latest_present.id %>
-    ・注文日   :<%= Date.today.strftime('%Y年%m月%d日') %>
-    ・プレゼントする方：
-    ・注文内容 :
-              <% @latest_products.each do |present| %>
-              <% product = Product.find(present.product_id) %>
-              <%= product.name %>
-              <%= number_to_currency(product.price, :locale => 'jp') %>
-              <% end %>
-    ・合計金額　：<%= number_to_currency(@total_price, :locale => 'jp') %>
     
 </div>

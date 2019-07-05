@@ -1,65 +1,66 @@
 <% content_for :title do %>
   Settlment page
 <% end %>
+<div class="container">
 
-<div id="page-comment">
-  Settlement page
-</div>
-<%= form_tag ("/presents") do  %>
+  <%= form_tag ("/presents") do  %>
+    <div class="settlement-btn">
+      <%= link_to "カートに戻る", carts_path, id:"back-button" %>
+      <input type = "submit" value ="進む">
+    </div>
 
-  <%= link_to "Back", carts_path %>
+    <div class="">
+      <p>贈るお相手</p> 
+      <p>お名前</p><%= text_field :present_opponent, :name %><br>
+      <p>性別</p>
+        <select name="present_opponent[gender]">
+          <% @genders.each do |gender| %>
+            <option <% if params[:present_opponent].present? %><%= "selected" if gender.gender == params[:present_opponent][:gender].to_i %><% end %> value = <%= gender.gender %> > <%= gender.gender_type %>
+            </option>
+          <% end %>
+        </select>
+      <p>お相手メールアドレス</p>
+        <%= text_field :present_opponent, :mail_address %><br>
 
-  <input type = "submit" value ="Next">
-  <p>贈るお相手</p> 
-    <p>お名前</p><%= text_field :present_opponent, :name %><br>
-    <p>性別</p>
-    <select name="present_opponent[gender]">
-      <% @genders.each do |gender| %>
-        <option <% if params[:present_opponent].present? %><%= "selected" if gender.gender == params[:present_opponent][:gender].to_i %><% end %> value = <%= gender.gender %> > <%= gender.gender_type %>
-        </option>
-      <% end %>
-    </select>
-  <p>お相手メールアドレス</p>
-    <%= text_field :present_opponent, :mail_address %><br>
+      <%= "プレゼントの目的" %>
+        <select name="present[purpose_number]">
+          <option value="">選択してください</option>
+          <% @purposes.each do |purpose| %>
+            <option 
+              <% if params[:present].present? %>
+                <%= "selected" if purpose.id == params[:present][:purpose_number].to_i %>
+                <% end %>
+                 value = <%= purpose.id %> 
+                  >
+                    <%= purpose.purpose %>
+            </option>
+          <% end %>
+        </select>
+      <p>メッセージ</p>
+        <%= text_area :present, :message %>
 
-  <%= "プレゼントの目的" %>
-    <select name="present[purpose_number]">
-      <option value="">選択してください</option>
-      <% @purposes.each do |purpose| %>
-        <option 
-          <% if params[:present].present? %>
-            <%= "selected" if purpose.id == params[:present][:purpose_number].to_i %>
+        <table class="cart_list">
+          <thead>
+          <tr>
+            <th>商品</th>
+            <th>価格</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% total_price = 0 %>
+            <% @carts.each do |cart| %>
+              <% @product = Product.find(cart.product_id) %>
+                <tr>
+                  <td><%= link_to(@product.name, "/products/#{@product.id}") %></td>
+                  <td><%= number_to_currency(@product.price, :locale => 'jp') %></td>
+                </tr>
+              <% total_price += @product.price %>
             <% end %>
-             value = <%= purpose.id %> 
-              >
-                <%= purpose.purpose %>
-        </option>
-      <% end %>
-    </select>
-  <p>メッセージ</p>
-    <%= text_area :present, :message %>
+          </tbody>
+        </table>
 
-    <table class="cart_list">
-      <thead>
-      <tr>
-        <th>商品</th>
-        <th>価格</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% total_price = 0 %>
-        <% @carts.each do |cart| %>
-          <% @product = Product.find(cart.product_id) %>
-            <tr>
-              <td><%= link_to(@product.name, "/products/#{@product.id}") %></td>
-              <td><%= number_to_currency(@product.price, :locale => 'jp') %></td>
-            </tr>
-          <% total_price += @product.price %>
-        <% end %>
+      <p class="total-fee">合計金額は<%= number_to_currency(total_price, :locale => 'jp') %>です。</p>
+    </div>
+  <% end %>
 
-    </tbody>
-  </table>
-
-  <p>合計金額は<%= number_to_currency(total_price, :locale => 'jp') %>です。</p>
-
-<% end %>
+</div>

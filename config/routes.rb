@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-devise_for :users
+devise_for :users, controllers: {
+  registrations: 'users/registrations'
+}
+
 get "/" => "home#index"
 
 get "products/index"        => "products#index"
@@ -16,6 +19,7 @@ delete "/product/dissapear" => "products#dissapear"
 resources :purpose
 resources :users
 resources :carts
+resources :shop
 
 resources :presents
 post "presents/set_present"      => "presents#set_present"

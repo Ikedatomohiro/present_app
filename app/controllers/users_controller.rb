@@ -6,22 +6,6 @@ class UsersController < ApplicationController
       if signed_in?
         @carts = @carts.get_by_user_id current_user.id
       end
-
-
-# メール文を作成するのにこの場所を借りています。
-  a = current_user.id
-  @users_present = Present.where(user_id: a)
-  @latest_present = @users_present.last
-  b = @latest_present.id
-  @latest_products = PresentProduct.where(present_id: b)
-  price = 0
-    @latest_products.each do |present|
-      product = Product.find(present.product_id)
-      price += product.price
-    end
-  @total_price = price
-
-
   
   end
 
@@ -52,7 +36,6 @@ class UsersController < ApplicationController
       if signed_in?
         @carts = @carts.get_by_user_id current_user.id
       end
-
   end
 
   def new
