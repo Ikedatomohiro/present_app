@@ -6,7 +6,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.integer :gender
       t.date :birthday
       t.boolean :admin, null: false, default: false
-      t.boolean :shopkeeper, default: false
       t.timestamps
     end
   end

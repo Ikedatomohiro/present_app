@@ -6,22 +6,28 @@
       <p><%= f.text_area :name %></p>
 
     <%= f.label "特徴" %>
-      <P><%= f.text_area :characteristic %></P>
+      <p><%= f.text_area :characteristic %></p>
 
     <%= f.label "ホームページアドレス" %>
-      <P><%= f.text_area :product_hp %></P>
+      <p><%= f.text_area :product_hp %></p>
 
     <%= f.label "価格" %>
-      <P><%= f.text_area :price %></P>
+      <p><%= f.text_field :price %></p>
 
-    <P><%= f.label "目的" %></P>
+    <p><%= f.label "目的" %></p>
       <% @purposes.each do |purpose| %>
         <%= check_box_tag "checkbox[#{purpose.id}]" %>
         <%= label_tag "checkbox[#{purpose.id}]", "#{purpose.purpose}" %>
       <% end %>
 
-    <P><%= f.label "対象年齢" %></P>
+    <p><%= f.label "対象年齢" %></p>
       <%= f.text_field :age_group_number %>
+
+    <%= fields_for @product_management do |f| %>
+      <%= f.label "登録個数" %>
+      <p><%= f.text_field :stock %></p>
+    <% end %>
+
     <input type = "submit" value ="商品を登録する">
 
   <% end %>

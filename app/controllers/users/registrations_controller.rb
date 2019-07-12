@@ -5,17 +5,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  def new
-    super
-
-
+  # def new
+  #   super
 
   end
 
   # POST /resource
   def create
   n = User.last.id
-    super
+    super  
+    # superのところでuserが生成する
     if n != User.last.id
 # ユーザー登録されたときだけshopが作られる
       @shop = Shop.new(

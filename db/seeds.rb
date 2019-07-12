@@ -6,18 +6,18 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user = User.create(:name => "いけだとも", :gender => 2, :birthday => "1981-08-22", :email => "to.tomo.tomohiro@gmail.com", :password => "Tomohir0", :admin => "true", :shopkeeper => "true")
-user = User.create(:name => "ともひろ", :gender => 2, :birthday => "1981-08-22", :email => "tomohiro.ikeda@gmail.com", :password => "tomohiro", :admin => "false")
+user = User.create(name: "いけだとも", gender: 2, birthday: "1981-08-22", email: "to.tomo.tomohiro@gmail.com", password: "Tomohir0", admin: "true")
+user = User.create(name: "ともひろ", gender: 2, birthday: "1981-08-22", email: "tomohiro.ikeda@gmail.com", password: "tomohiro", admin: "false")
 
 
-Budget.create(:budget_min => 500, :budget_max => 1000)
-Budget.create(:budget_min => 1000, :budget_max => 3000)
-Budget.create(:budget_min => 3000, :budget_max => 5000)
+Budget.create(budget_min: 500, budget_max: 1000)
+Budget.create(budget_min: 1000, budget_max: 3000)
+Budget.create(budget_min: 3000, budget_max: 5000)
 
-Gender.create(:gender => 1, :gender_type => "未回答")
-Gender.create(:gender => 2, :gender_type => "男性")
-Gender.create(:gender => 3, :gender_type => "女性")
-Gender.create(:gender => 4, :gender_type => "その他")
+Gender.create(gender: 1, gender_type: "未回答")
+Gender.create(gender: 2, gender_type: "男性")
+Gender.create(gender: 3, gender_type: "女性")
+Gender.create(gender: 4, gender_type: "その他")
 
 Purpose.create(:purpose =>"バレンタインデー")
 Purpose.create(:purpose =>"誕生日")
@@ -33,6 +33,15 @@ Product.create(:name =>"手帳", :characteristic =>"青い手帳", :product_hp =
 Product.create(:name =>"ネクタイ", :characteristic =>"新卒向け", :product_hp =>"necktie.com", :price => 12000, :image => "5.jpg")
 Product.create(:name =>"ビール", :characteristic =>"苦いがうまい", :product_hp =>"beer.com", :price => 15000, :image => "6.jpg")
 
+Shop.create(name: "ドンキ・ホーテ", web_site: "http://donkihote.com", mail: "to.tomo.tomohiro@gmail.com")
+Shop.create(name: "よろずや", web_site: "http://nandemo.com", mail: "tomohiro@ymail.com")
+
+ProductManagement.create(shop_id: 1, product_id: 1, stock: 10)
+ProductManagement.create(shop_id: 1, product_id: 2, stock: 15)
+ProductManagement.create(shop_id: 1, product_id: 3, stock: 20)
+ProductManagement.create(shop_id: 2, product_id: 4, stock: 25)
+ProductManagement.create(shop_id: 2, product_id: 5, stock: 30)
+ProductManagement.create(shop_id: 2, product_id: 6, stock: 35)
 
 PurposeProduct.create(purpose_id: 1, product_id: 1)
 PurposeProduct.create(purpose_id: 2, product_id: 1)
@@ -53,4 +62,10 @@ PurposeProduct.create(purpose_id: 2, product_id: 6)
 PurposeProduct.create(purpose_id: 5, product_id: 6)
 PurposeProduct.create(purpose_id: 6, product_id: 6)
 
-Shop.create(name: "ドンキ・ホーテ", web_site: "http://donkihote", mail: "to.tomo.tomohiro@gmail.com")
+
+ShopManagement.create(user_id: 1, shop_id: 1)
+ShopManagement.create(user_id: 2, shop_id: 2)
+
+
+
+

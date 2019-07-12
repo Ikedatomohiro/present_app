@@ -99,6 +99,10 @@ class ProductsController < ApplicationController
           )
         @purpose_product.save!
       end
+
+    @product_management = ProductManagement.new(
+      stock: params[:product_management][:stock]
+      )
     redirect_to products_index_path
   end
 
@@ -153,6 +157,8 @@ class ProductsController < ApplicationController
     redirect_to("/products/index")
 
   end
+
+
 
 
 end

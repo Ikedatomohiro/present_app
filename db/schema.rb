@@ -178,7 +178,6 @@ ActiveRecord::Schema.define(version: 2019_07_02_111634) do
     t.integer "gender"
     t.date "birthday"
     t.boolean "admin", default: false, null: false
-    t.boolean "shopkeeper", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false

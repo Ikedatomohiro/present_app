@@ -1,0 +1,33 @@
+<div class="container">
+  <% @products.each do |product| %>
+    <%= product.name %>
+    <%= product.price %> 
+    <% if @present_products.where(product_id: product.id).count != nil %>
+      <% array = @product_managements.where(product_id: product.id) %>
+      <% stock_sum = 0 %>
+      <% array.each do |stock| %>
+        <% stock_sum += stock.stock %>
+      <% end %>
+      在庫合計
+      <%= stock_sum - @present_products.where(product_id: product.id).count %>
+      <!-- 「在庫情報」-「購入された数の合計」 -->
+    <% else %>
+      0
+    <% end %>
+    <br>
+      <%= form_for @product, :url => {:action => 'add_stock'} do |f| %>
+        <%= f.number_field :stock %>
+          <%= fields_for @shop_management do |f| %>
+            <%= f.hidden_field :shop_id %>
+          <% end %>
+          <%= fields_for product do |f| %>
+            <%= f.hidden_field :id %>
+          <% end %>
+      <input type="submit" value="補充する">
+    <% end %>
+
+  <% end %>
+
+
+
+</div>

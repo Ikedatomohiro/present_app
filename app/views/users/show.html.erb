@@ -17,8 +17,12 @@
     </div>
   </div>
 
-    <%= link_to "お店情報", shop_path(ShopManagement.find_by(user.id: current_user.id).shop_id) %>
-      <!-- .idは省略される事が多い -->
+    <% if ShopManagement.find_by(user_id: current_user.id) != nil%>
+
+      <%= link_to "お店情報", shop_path(ShopManagement.find_by(user_id: current_user.id).shop_id) %>
+        <!-- .idは省略される事が多い -->
+    <% end %>
+
 
   <div class="menu-title">
     過去のプレゼント

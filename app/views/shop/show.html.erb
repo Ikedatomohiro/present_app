@@ -1,7 +1,12 @@
 <div class="container">
 
-  <p><%= %></p>
+  <p><%= @shop.name%></p>
+  <p><%= @shop.web_site%></p>
+  <p><%= @shop.mail%></p>
 
+  <%= link_to "商品新規登録", products_new_path %>
+  <%= link_to "販売実績", "/shop/sales_results/#{ShopManagement.find_by(user_id: current_user.id).shop_id}" %>
+  <%= link_to "在庫管理", "/shop/stock_management/#{ShopManagement.find_by(user_id: current_user.id).shop_id}"%>
 
 
 

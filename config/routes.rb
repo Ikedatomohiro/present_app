@@ -33,8 +33,10 @@ post "products/user/present"         => "users#present"
 post "products/user/presentopponent" => "users#presentopponent"
 delete "products/user/:id"           => "users#cartitemdelete"
 #post "products/user/settlement"     => "users#settlement"
+get "shop/stock_management/:id" => "shop#stock_management"
+post "shop/add_stock/:id" => "shop#add_stock"
 
-
+get "shop/sales_results/:id" => "shop#sales_results"
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
