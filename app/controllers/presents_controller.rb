@@ -59,7 +59,8 @@ class PresentsController < ApplicationController
         puts cart.product_id
         @present_product = PresentProduct.create(
         present_id: presentlastid,
-        product_id: cart.product_id
+        product_id: cart.product_id,
+        authenticity_token: params[:authenticity_token]
         )
         cart.delete
       end

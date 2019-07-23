@@ -2,10 +2,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    @carts = Cart.all
-      if signed_in?
-        @carts = @carts.get_by_user_id current_user.id
-      end
   
   end
 
@@ -22,20 +18,14 @@ class UsersController < ApplicationController
     @user = current_user
     @users = User.all
     @genders = Gender.all
-    @carts = Cart.all
-      if signed_in?
-        @carts = @carts.get_by_user_id current_user.id
-      end
+
   end
 
   def show
     @users = User.all
     @presents = Present.where(user_id: params[:id]).order(created_at: :desc)
     @preesnt_products = PresentProduct.where(present_id: @presents)
-    @carts = Cart.all
-      if signed_in?
-        @carts = @carts.get_by_user_id current_user.id
-      end
+
   end
 
   def new
@@ -52,9 +42,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-  end
-
-  def basket
   end
 
   def purchase

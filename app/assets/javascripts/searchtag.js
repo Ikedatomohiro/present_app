@@ -8,7 +8,9 @@ $(document).on('turbolinks:load', function() {
     $('.modal').show();
   });
 
-  $('deside-purpose-btn').click(function() {
+
+
+  $('#deside-purpose-btn').click(function() {
     $('.modal').slideUp();
 
     var returnString = "";

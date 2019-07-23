@@ -28,42 +28,23 @@ class ProductsController < ApplicationController
 
     if params[:checkbox].present?
       purpose_products = PurposeProduct.where(purpose_id: params[:checkbox].keys)
-      puts params[:checkbox].keys
-        purpose_products.each do |p|
-          puts p.id
-          puts p.product_id
-        end
       array = [] #空の配列を定義
         purpose_products.each do |purpose_product|
           array.push(purpose_product.product_id)
         end
-      puts array
-      puts array.uniq
       @products = @products.where(id: array.uniq)
     end
 
     @carts = Cart.all.order(created_at: :desc)
-    if signed_in?
-      @carts = @carts.get_by_user_id current_user.id
-    end
   end
 
   def show
     @product = Product.find(params[:id])
     @purposes = Purpose.all
 
-    @carts = Cart.all.order(created_at: :desc)
-      if signed_in?
-        @carts = @carts.get_by_user_id current_user.id
-      end
   end
 
   def new
-    @carts = Cart.all
-      if signed_in?
-        @carts = @carts.get_by_user_id current_user.id
-      end
-
     @product = Product.new(params[:product])
     @purposes = Purpose.all
 
@@ -72,12 +53,9 @@ class ProductsController < ApplicationController
   def edit
     @product = Product.find_by(id: params[:id])
     @purposes = Purpose.all
-
   end
 
   def create
-
-
     @product = Product.new(
       name: params[:product][:name], 
       characteristic: params[:product][:characteristic],

@@ -67,6 +67,11 @@
               <br>
               <%= image_tag("/product_images/#{product.image}", :height => "70") %>
               <br>
+              <%= form_for @presentproduct, :url => {:action => 'update'} do |form| %>%>
+                  <%= form.text_area :コメント %>
+              <% end %>
+              <%= text_area %>
+              <%= '星の数' %>
             <% end %>
           <div>メッセージ</div>
           <%= present.message %>

@@ -1,9 +1,10 @@
 <div class="container">
-sales results  shop_idを使ってproduct_id.keysを作ってPresentモデルからproductをレコードをwhere検索して表示
-
-  
-
-
-
+  ショップ名
+  <%= @shop.name %><br>
+  販売実績<br>
+  <% @products.each do |product| %>
+    <%= product.name %>
+    <%= PresentProduct.where(product_id: product.id).count %><br>
+  <% end %>
 
 </div>

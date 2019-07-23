@@ -1,36 +1,38 @@
-<% @page_title = "商品情報の編集" %>
+<div class="container">
+  <% @page_title = "商品情報の編集" %>
 
-<h2><%= @page_title %></h2>
-<p><%= @product.id %></p>
+  <h2><%= @page_title %></h2>
+  <p><span>商品番号</span><%= @product.id %></p>
 
-<%= form_tag("/products/#{@product.id}/update", {multipart: true}) do %>
+  <%= form_tag("/products/#{@product.id}/update", {multipart: true}) do %>
 
-<p>商品名</p>
-  <textarea name = "name"><%= @product.name %></textarea>
+  <p>商品名</p>
+    <textarea name = "name"><%= @product.name %></textarea>
 
-<p>特徴</p>
-  <textarea name = "characteristic"><%= @product.characteristic %></textarea>
+  <p>特徴</p>
+    <textarea name = "characteristic"><%= @product.characteristic %></textarea>
 
-<p>ホームページ</p>
-  <textarea name = "product_hp"><%= @product.product_hp %></textarea>
+  <p>ホームページ</p>
+    <textarea name = "product_hp"><%= @product.product_hp %></textarea>
 
-<p>価格</p>
-  <input name = "price" value = <%= @product.price %>>円　<br><br>
+  <p>価格</p>
+    <input name = "price" value = <%= @product.price %>>円　<br><br>
 
-<p>目的</p>
-    <% @purposes.each do |purpose| %>
-      <%= check_box_tag "checkbox[#{purpose.id}]" %>
-      <%= label_tag "checkbox[#{purpose.id}]", "#{purpose.purpose}" %>
-    <% end %>
+  <p>目的</p>
+      <% @purposes.each do |purpose| %>
+        <%= check_box_tag "checkbox[#{purpose.id}]" %>
+        <%= label_tag "checkbox[#{purpose.id}]", "#{purpose.purpose}" %>
+      <% end %>
 
-<p>対象年齢</p>
-	<textarea name = "age_group_number"><%= @product.age_group_number %></textarea>
+  <p>対象年齢</p>
+  	<textarea name = "age_group_number"><%= @product.age_group_number %></textarea>
 
-<p>画像</p>
-  <%= image_tag("/product_images/#{@product.image}", :width => "100") %><br>
-  <input name="image" type="file"><br>
+  <p>画像</p>
+    <%= image_tag("/product_images/#{@product.image}", :width => "100") %><br>
+    <input name="image" type="file"><br>
 
-<input type="submit" value="保存">
+  <input type="submit" value="保存">
 
-<% end %>
+  <% end %>
 
+</div>

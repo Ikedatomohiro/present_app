@@ -93,6 +93,8 @@ ActiveRecord::Schema.define(version: 2019_07_02_111634) do
     t.integer "present_id"
     t.integer "product_id"
     t.float "evaluation"
+    t.string "comment"
+    t.string "authenticity_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["present_id"], name: "index_present_products_on_present_id"
