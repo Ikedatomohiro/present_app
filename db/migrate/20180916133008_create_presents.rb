@@ -8,6 +8,7 @@ class CreatePresents < ActiveRecord::Migration[5.2]
       t.date :purchase_date
       t.integer :budget
       t.text :message
+      t.string :authenticity_token
       t.timestamps
     end
   end

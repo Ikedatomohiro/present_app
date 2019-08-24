@@ -1,0 +1,32 @@
+<div class="container">
+評価ページ
+  <% star = 0 %>
+    <%= form_for @present, :url => {:action => 'update'} do |form| %>
+      <%= form.fields_for :present_products do |present_product|%>
+          <%= present_product.object.product.name %>
+          <%= present_product.object.evaluation %>
+          <%= present_product.text_area :comment %>
+            <p class="star" id="<%= star %>"></p><br>
+            <% star +=1 %>
+      <% end %>
+      <input type="submit" value="送信する">
+
+    <% end %>
+  <script>
+    $(function(){
+      $('.star').raty({
+        size     : 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        scoreName: 'evaluation'
+      });
+      $('input[name="evaluation"]').each( function( index, elem ) {
+          console.log( $(this).parent().attr('id'));
+          var id = $(this).parent().attr('id');
+          string = 'present[present_products_attributes]['+id+'][evaluation]';
+          $(this).attr('name',string);
+        });
+    });
+  </script>
+
+</div>

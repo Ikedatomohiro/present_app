@@ -25,4 +25,6 @@ $(document).on('turbolinks:load', function() {
       $(this).find('#button').css({transform:"rotate(180deg)",transition:"0.5s"});
     }
   });
+
+
 });

@@ -1,4 +1,5 @@
 <div class="container">
+  <%= @shop_management.shop_id %>
   <table>
     <tr>
       <th>商品名</th>
@@ -10,7 +11,7 @@
 
   <% @products.each do |product| %>
     <tr>
-      <td><%= product.name %></td>
+      <td><%= product.name %> <%= product.id %> </td>
     <td><%= image_tag("/product_images/#{product.image}", :width => "100") %></td>
     <td><%= number_to_currency(product.price, :locale => 'jp') %></td>
     <% if @present_products.where(product_id: product.id).count != nil %>

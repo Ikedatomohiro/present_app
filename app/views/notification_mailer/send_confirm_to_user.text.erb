@@ -9,8 +9,9 @@ Present Appがお客様のご注文を承ったことをお知らせいたしま
     ・送った相手：
     ・注文内容 :
               <% @latest_products.each do |present| %>
-              <% product = Product.find(present.product_id) %>
-              <%= product.name %>
-              <%= product.price %>円
+                <% product = Product.find(present.product_id) %>
+                <%= product.name %>
+                <%= product.price %>円
+
               <% end %>
     ・合計金額　：<%= @total_price %>円

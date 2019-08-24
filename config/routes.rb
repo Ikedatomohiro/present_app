@@ -35,6 +35,8 @@ delete "products/user/:id"           => "users#cartitemdelete"
 #post "products/user/settlement"     => "users#settlement"
 get "shop/stock_management/:id" => "shop#stock_management"
 post "shop/add_stock/:id" => "shop#add_stock"
+get "present/:authenticity"  => "presents#raty"
+patch "present/:authenticity"  => "presents#update"
 
 get "shop/sales_results/:id" => "shop#sales_results"
 

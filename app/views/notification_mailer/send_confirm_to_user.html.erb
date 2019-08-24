@@ -26,6 +26,12 @@
           <%= number_to_currency(product.price, :locale => 'jp') %><br>
           <% i += 1 %>
         </p>
+
+        <%= form_for @presentproduct, :url => {:action => 'update'} do |form| %>%>
+          <%= form.text_area :comment %>
+          <%= form.number_field :evaluation %>
+          <input type="submit" value="送信する">
+        <% end %>
       <% end %>
 
 

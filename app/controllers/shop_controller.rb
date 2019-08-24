@@ -11,10 +11,16 @@ before_action :set_shop, only:[:index, :show]
   end
 
   def stock_management
- 
-    shop_management = ShopManagement.find_by(user_id: current_user.id)
-    @product_managements = ProductManagement.where(shop_id: shop_management.shop_id)
-    @products = Product.where(id: @product_managements.ids)
+    # shop = current_user.shop
+    # @products = Product.where(id: shop.)
+
+    # @shop_management = ShopManagement.find_by(user_id: current_user.id)
+    @product_managements = ProductManagement.where(shop: current_user.shop)
+      array_pm = []
+        @product_managements.each do |product_management|
+          array_pm.push(product_management.product_id)
+        end
+    @products = Product.where(id: array_pm)
     # ログインユーザーが持っている商品リストを検索
 
     @present_products = PresentProduct.all

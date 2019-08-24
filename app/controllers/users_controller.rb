@@ -53,10 +53,6 @@ class UsersController < ApplicationController
     @purposes = Purpose.all
     @genders = Gender.all
     @present = Present.new()
-    @carts = Cart.all
-      if signed_in?
-        @carts = @carts.get_by_user_id current_user.id
-      end
     @present.user_id = current_user
   end
 

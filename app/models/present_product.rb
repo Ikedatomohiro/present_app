@@ -5,5 +5,8 @@ class PresentProduct < ApplicationRecord
 
 
   def sum
+
   end
+
+
 end

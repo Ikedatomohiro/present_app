@@ -77,10 +77,13 @@ class ProductsController < ApplicationController
           )
         @purpose_product.save!
       end
-
+puts 'failusjhdfioaj;aj;kfja;j'
     @product_management = ProductManagement.new(
-      stock: params[:product_management][:stock]
+      shop_id: ShopManagement.find_by(user_id: current_user).shop_id,
+      product_id: Product.find_by(name: params[:product][:name]).id,
+      stock: params[:stock]
       )
+    @product_management.save!
     redirect_to products_index_path
   end
 

@@ -12,6 +12,9 @@ class NotificationMailer < ActionMailer::Base
         price += product.price
       end
     @total_price = price
+
+
+    @authenticity_token = Present.find_by(id: @latest_present.id).authenticity_token
     mail(
       subject: "ご購入ありがとうございました。",
       to: user.email
