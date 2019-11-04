@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 devise_for :users, controllers: {
   registrations: 'users/registrations'
 }
+# herokuデプロイ時のトップページ設定
+resources :home
+root 'home#index'
 
 get "/" => "home#index"
 
