@@ -4,16 +4,37 @@
 <% end %>
 <div class="container">
 
-  <% @users.each do |user| %>
-  <%= link_to(user.id, "/users/#{user.id}") %>
-  <%= user.name %>
-  <%= user.email %>
-  <%= user.password %>
-  <%= user.gender %>
-  <%= user.birthday %>
-  <%= user.email %>
-  <br>
-  <% end %>
 
-    
+  <table>
+    <tr>
+      <th>ユーザーID</th>
+      <th>ユーザー名</th>
+      <th>メールアドレス</th>
+      <th>性別</th>
+      <th>誕生日</th>
+    </tr>
+      <% @users.each do |user| %>
+        <tr>
+          <td>
+            <%= link_to(user.id, "/users/#{user.id}") %>
+          </td>
+          <td>
+            <%= user.name %>
+          </td>
+          <td>
+            <%= user.email %>
+          </td>
+          <td>
+            <%= @genders[user['gender']].gender_type %>
+          </td>
+          <td>
+            <%= user.birthday %>
+          </td>
+        </tr>
+      <% end %>
+
+  </table>
+
+
+
 </div>
