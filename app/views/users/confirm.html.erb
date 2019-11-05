@@ -26,8 +26,8 @@
   <p>お名前</p>
     <%= @present_opponent.name %>
   <p>性別</p>
-    <% if params[:present_opponent][:gender].present? %>
-      <% @gender = Gender.find_by gender: params[:present_opponent][:gender] %>
+    <% if params[:present_opponent][:gender_id].present? %>
+      <% @gender = Gender.find_by id: params[:present_opponent][:gender_id] %>
       <%= @gender.gender_type %>
     <% end %>
   <p>お相手メールアドレス</p>

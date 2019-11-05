@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
 
   def index
+    # @users = User.joins(:genders)
+    # @users = Gender.includes(:users)
+
     @users = User.all
-  
+    @genders = Gender.all
+
   end
 
   def create
