@@ -5,7 +5,7 @@ class CreatePresentOpponents < ActiveRecord::Migration[5.2]
       t.integer :gender
       t.integer :age_group_number
       t.string :mail_address
-      t.references :user, foreign_key: true
+      t.integer :user_id, foreign_key: true
       t.timestamps
     end
   end
