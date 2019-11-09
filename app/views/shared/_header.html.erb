@@ -78,7 +78,9 @@
               <div class="subheader-right-cart">
                 <%= link_to image_tag("cart_icon.png", alt:"カート"), carts_path %>
                 <div class="subheader-right-cart-number">
-                    <%= @cartCount %>
+                  <% if @carts %>
+                    <%= @carts.count %>
+                  <% end %>
                 </div>
               </div>
             </div>
