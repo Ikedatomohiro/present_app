@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user = User.create(name: "いけだとも", gender: 1, birthday: "2019-05-01", email: "to.tomo.tomohiro@gmail.com", password: "Tomohir0", admin: "true")
-user = User.create(name: "ともひろ", gender: 1, birthday: "1999-12-31", email: "tomohiro.ikeda@gmail.com", password: "tomohiro", admin: "false")
+user = User.create(name: "いけだとも", birthday: "2019-05-01", email: "to.tomo.tomohiro@gmail.com", password: "Tomohir0", admin: "true")
+user = User.create(name: "ともひろ", birthday: "1999-12-31", email: "tomohiro.ikeda@gmail.com", password: "tomohiro", admin: "false")
 
 Budget.create(budget_min: 500, budget_max: 1000)
 Budget.create(budget_min: 1000, budget_max: 3000)

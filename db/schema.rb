@@ -155,7 +155,7 @@ ActiveRecord::Schema.define(version: 2019_07_02_111634) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.integer "gender"
+    t.integer "gender_id", default: 1, null: false
     t.date "birthday"
     t.boolean "admin", default: false, null: false
     t.datetime "created_at", null: false
