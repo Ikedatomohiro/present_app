@@ -58,7 +58,7 @@ class UsersController < ApplicationController
     @genders = Gender.all
     @present = Present.new()
     @present.user_id = current_user
-    
+
   end
 
   def confirm
@@ -67,6 +67,7 @@ class UsersController < ApplicationController
   end
 
   def thanks
+    
     NotificationMailer.send_confirm_to_user(current_user).deliver
     redirect_to "/"
   end
