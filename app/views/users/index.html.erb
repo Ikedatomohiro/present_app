@@ -25,7 +25,7 @@
             <%= user.email %>
           </td>
           <td>
-            <%= @genders[user['gender']].gender_type %>
+            <%= Gender.find_by(id: user.gender).gender_type %>
           </td>
           <td>
             <%= user.birthday %>

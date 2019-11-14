@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     # @users = Gender.includes(:users)
 
     @users = User.all
-    @genders = Gender.all
+    # @genders = Gender.all
 
   end
 
