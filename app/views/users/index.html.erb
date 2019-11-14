@@ -25,7 +25,7 @@
             <%= user.email %>
           </td>
           <td>
-            <%= Gender.find_by(id: user.gender) %>
+            <%= user.gender.gender_type %>
           </td>
           <td>
             <%= user.birthday %>

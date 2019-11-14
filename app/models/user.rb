@@ -10,4 +10,5 @@ class User < ApplicationRecord
   has_many :products, through: :baskets
   has_one :shop_management, dependent: :destroy
   has_one :shop, through: :shop_management
+  belongs_to :gender
 end
