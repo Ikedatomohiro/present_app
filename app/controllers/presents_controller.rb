@@ -25,8 +25,6 @@ class PresentsController < ApplicationController
   @products = Product.all
   @genders = Gender.all
 
-  @carts = Cart.all
-  @carts = @carts.get_by_user_id current_user.id
   render :template => "users/confirm"
   end
 
