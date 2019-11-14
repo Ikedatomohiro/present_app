@@ -1,6 +1,5 @@
 class CartsController < ApplicationController
   def index
-    @carts = Cart.all.order(created_at: :desc)
     @product = Product.all
     @users = User.all
   end

@@ -58,6 +58,7 @@ class UsersController < ApplicationController
     @genders = Gender.all
     @present = Present.new()
     @present.user_id = current_user
+    
   end
 
   def confirm

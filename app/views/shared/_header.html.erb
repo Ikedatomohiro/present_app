@@ -80,7 +80,10 @@
                 <div class="subheader-right-cart-number">
                   <% if @carts %>
                     <%= @carts.count %>
+                    <% else %>
+                    <%= 0 %>
                   <% end %>
+
                 </div>
               </div>
             </div>
