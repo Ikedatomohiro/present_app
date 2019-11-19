@@ -77,4 +77,10 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'wdm', '>= 0.1.0'
+#WINDOWS Gems That don't play well with nix
+platforms :mswin do 
+  gem "wdm", :group => [:development, :test]
+end
+
+
+
