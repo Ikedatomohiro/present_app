@@ -1,17 +1,14 @@
 class CartsController < ApplicationController
   def index
     @product = Product.all
-    @users = User.all
   end
 
   def show
   end
 
   def create
-    puts params[:user_id]
-    puts "----------------"
     @cart = Cart.new(
-      user_id: params[:cart][:user_id],
+      user_id: current_user.id,
       product_id: params[:cart][:product_id]
       )
     @cart.save

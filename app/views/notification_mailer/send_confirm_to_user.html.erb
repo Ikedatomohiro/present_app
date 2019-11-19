@@ -22,7 +22,6 @@
         <p style="margin-bottom: 20px">
           <% product = Product.find(present.product_id) %>
           <%= "#{i}." %><%= product.name %><br>
-          <%= image_tag("/product_images/#{product.image}", :width => "100px") %><br>
           <%= number_to_currency(product.price, :locale => 'jp') %><br>
           <% i += 1 %>
         </p>
