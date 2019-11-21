@@ -10,9 +10,11 @@
   <%= form.label :お名前 %>
   <%= form.text_area :name %>
   <%= form.label :性別 %>
-    <select name="user[gender]">
+    <select name="user[gender_id]">
       <% @genders.each do |gender| %>
-        <option <% if current_user.gender.present? %><%= "selected" if gender.gender == current_user.gender %><% end %> value = <%= gender.gender %> > <%= gender.gender_type %>
+        <option <% if current_user.gender_id.present? %>
+          <%= "selected" if gender.id == current_user.gender.id %>
+          <% end %> value = <%= gender.id %> > <%= gender.gender_type %>
         </option>
       <% end %>
     </select>
@@ -32,7 +34,7 @@
 名前:<%= current_user.name %>
 eメール:<%= current_user.email %>
 パスワード:<%= current_user.password %>
-性別:<%= current_user.gender %>
+性別:<%= current_user.gender.gender_type %>
 誕生日:<%= current_user.birthday %>
 メール:<%= current_user.email %>
 ID:<%= current_user.id %>

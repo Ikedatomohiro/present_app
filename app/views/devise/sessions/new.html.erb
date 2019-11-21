@@ -1,29 +1,39 @@
 <div class="container">
-  <h2>ログイン</h2>
+  <h2 class="page_title">ログイン</h2>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
-      <%= f.label :Eメール %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
+  <div class="member_log_in">
+    <p class="sub_title">
+      会員の方
+    </p>
+    <p>
+      メールアドレスとパスワードを入力してログインしてください。
+    </p>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="log_in_info">
+        <div class="form_area">
+          <p><%= f.label :メールアドレス： %></p> 
+          <p class="input_field"><%= f.email_field :email, autofocus: true, autocomplete: "emfail" %></p>
+        </div>
 
-    <div class="field">
-      <%= f.label :パスワード %>
-      <%= f.password_field :password, autocomplete: "current-password" %>
-    </div>
+        <div class="form_area">
+          <p><%= f.label :パスワード： %></p> 
+          <p class="input_field"><%= f.password_field :password, autocomplete: "current-password" %></p>
+        </div>
 
-    <% if devise_mapping.rememberable? -%>
-      <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :ログイン状態を保持する %>
+        <% if devise_mapping.rememberable? -%>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :ログイン状態を保持する %>
+          </div>
+        <% end %>
+
+        <div class="log_in">
+          <%= f.submit "ログイン" %>
+        </div>
       </div>
     <% end %>
-
-    <div class="actions">
-      <%= f.submit "ログイン" %>
-    </div>
-  <% end %>
-
-  <%= render "devise/shared/links" %>
-
+  </div>
+  <div class="new_user_registration">
+    <%= render "devise/shared/links" %>
+  </div>
 </div>

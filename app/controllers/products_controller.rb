@@ -34,8 +34,6 @@ class ProductsController < ApplicationController
         end
       @products = @products.where(id: array.uniq)
     end
-
-    @carts = Cart.all.order(created_at: :desc)
   end
 
   def show
@@ -121,7 +119,6 @@ puts 'failusjhdfioaj;aj;kfja;j'
 
       @product.save!
       redirect_to("/products/#{@product.id}")
-
   end
 
   def destroy
@@ -138,8 +135,6 @@ puts 'failusjhdfioaj;aj;kfja;j'
     redirect_to("/products/index")
 
   end
-
-
 
 
 end
