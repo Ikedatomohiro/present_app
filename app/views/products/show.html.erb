@@ -17,23 +17,19 @@
           <% purpose = Purpose.find(purpose_product.purpose_id) %>
           <%= purpose.purpose %>
         <% end %>
-
       <%= form_tag("/carts") do %>
-
         <% @cart = Cart.new(user_id: current_user.id, product_id: @product.id) %>
           <%= hidden_field :cart, :user_id %>
           <%= hidden_field :cart, :product_id %>
-          <%= button_to("カートへ入れる", controller: "carts", action: "create") %>
-
-        <% end %> 
+          <% if signed_in? %>
+            <%= button_to("カートへ入れる", controller: "carts", action: "create") %>
+            <% end %>
+      <% end %> 
     </div>
   </div>
-
-
     <% if signed_in? && current_user.admin == true %>
-    <%= link_to("編集", "/products/#{@product.id}/edit") %>
-    <%= button_to("今は削除だがレコードを見えないようにしたい", "/products/#{@product.id}/destroy", {method: "post", class:"buttonto"}) %>
-  <% end %>
+      <%= link_to("編集", "/products/#{@product.id}/edit") %>
+    <% end %>
 
 
 </div>

@@ -22,14 +22,12 @@ class UsersController < ApplicationController
     @user = current_user
     @users = User.all
     @genders = Gender.all
-
   end
 
   def show
     @users = User.all
     @presents = Present.where(user_id: params[:id]).order(created_at: :desc)
     @preesnt_products = PresentProduct.where(present_id: @presents)
-
   end
 
   def new
@@ -83,7 +81,7 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     # update メソッドで使用
     def user_params
-      params.require(:user).permit(:name, :gender, :birthday)
+      params.require(:user).permit(:name, :gender_id, :birthday)
     end
 
 end

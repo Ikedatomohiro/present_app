@@ -21,7 +21,7 @@
         </div>
         <div class="header-right-inner">
           <div class="header-right-text">
-            <p >全国80店舗展開中！安心と信頼の上場企業日本流通自主管理協会(AACD)の会員企業です</p>
+            <p >全国80店舗展開中！安心と信頼の上場企業<br>日本流通自主管理協会(AACD)の会員企業です</p>
             <div class="shop-info">
               <%= link_to(image_tag("header_right_text_btn.png", alt:"全国の店舗情報はこちら")) %>
               </div>
@@ -77,12 +77,7 @@
               <div class="subheader-right-cart">
                 <%= link_to image_tag("cart_icon.png", alt:"カート"), carts_path %>
                 <div class="subheader-right-cart-number">
-                  <% if @carts %>
                     <%= @carts.count %>
-                    <% else %>
-                    <%= 0 %>
-                  <% end %>
-
                 </div>
               </div>
             </div>

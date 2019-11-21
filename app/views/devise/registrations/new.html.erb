@@ -6,40 +6,49 @@
       <%= devise_error_messages! %>
 
       <div class="field">
-        <%= f.label :email %><br />
+        <%= f.label "名前" %><br />
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label "メールアドレス" %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "Eメール" %>
       </div>
 
       <div class="field">
-        <%= f.label :password %>
+        <%= f.label "パスワード" %>
         <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <em>(<%= @minimum_password_length %> 文字以上で設定してください。)</em>
         <% end %><br />
         <%= f.password_field :password, autocomplete: "new-password" %>
       </div>
 
       <div class="field">
-        <%= f.label :password_confirmation %><br />
+        <%= f.label :パスワード（確認） %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
+      <div>
+        <%= f.label :生年月日 %><br />
+           <p class="input_field">      
+        <%= raw sprintf(
+          f.date_select(
+            :birthday,
+            use_month_numbers: true,
+            start_year: 1930,
+            end_year: (Time.now.year - 18),
+            default: Date.new(1989, 1, 1),
+            date_separator: '%s'),'年 ', '月 ') + '日' %></p>
+     </div>
+      <div>
+        <%= f.label :性別 %><br />
+        <select name="user[gender_id]">
+          <% @genders.each do |gender| %>
+            <option  value = <%= gender.id %> >
+              <%= gender.gender_type %>
+            </option>
+          <% end %>
+        </select>
 
-
-      <div class="field">
-        <%= f.label "ユーザー名" %><br />
-        <%= f.text_field :name %>
       </div>
-
-
-      <%= "店名"%>
-      <%= text_field_tag 'shop[name]' %>
-
-      <%= "Webサイト"%>
-      <%= text_field_tag 'shop[web_site]' %>
-
-      <%= "ショップメールアドレス"%>
-      <%= text_field_tag 'shop[mail]' %>
-
-
       <div class="actions">
         <%= f.submit "登録する" %>
       </div>

@@ -5,44 +5,52 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
+   def new
+    @genders = Gender.all
+     super
 
-  end
+   end
 
   # POST /resource
   def create
-  n = User.last.id
-    super  
-    # superのところでuserが生成する
-    if n != User.last.id
+    @genders = Gender.all
+    super  # superのところでuserが生成する
+    n = User.last.id
+    @user = User.find_by(id: n)
+    @user.update(
+      name:     params[:user][:name],
+      birthday: params[:user][:birthday],
+      gender_id:   params[:user][:gender_id]
+      )
+#    if n != User.last.id
 # ユーザー登録されたときだけshopが作られる
-      @shop = Shop.new(
-        name: params[:shop][:name],
-        web_site: params[:shop][:web_site],
-        mail: params[:shop][:mail]
-        )
-      @shop.save!
+#      @shop = Shop.new(
+#        name: params[:shop][:name],
+#       web_site: params[:shop][:web_site],
+#        mail: params[:shop][:mail]
+#        )
+#      @shop.save!
 
-      @shop_management = ShopManagement.new(
-        shop_id: Shop.last.id,
-        user_id: User.last.id
-        )
-      @shop_management.save!
-
-    end
+#      @shop_management = ShopManagement.new(
+#        shop_id: Shop.last.id,
+#        user_id: User.last.id
+#        )
+#      @shop_management.save!
+#    end
 
   end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+   def edit
+     super
+   end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+   def update
+     super    # password、emailはすでに更新されている
+
+
+   end
 
   # DELETE /resource
   # def destroy
@@ -80,3 +88,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
+end
