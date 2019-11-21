@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(version: 2019_07_02_111634) do
     t.integer "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["age_group_id"], name: "index_age_group_products_on_age_group_id"
+    t.index ["product_id"], name: "index_age_group_products_on_product_id"
   end
 
   create_table "age_groups", force: :cascade do |t|
@@ -25,6 +27,8 @@ ActiveRecord::Schema.define(version: 2019_07_02_111634) do
     t.integer "age_group_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["present_opponent_id"], name: "index_age_groups_on_present_opponent_id"
+    t.index ["product_id"], name: "index_age_groups_on_product_id"
   end
 
   create_table "budgets", force: :cascade do |t|
@@ -39,6 +43,8 @@ ActiveRecord::Schema.define(version: 2019_07_02_111634) do
     t.integer "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_carts_on_product_id"
+    t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -52,6 +58,8 @@ ActiveRecord::Schema.define(version: 2019_07_02_111634) do
     t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_category_controlls_on_category_id"
+    t.index ["product_id"], name: "index_category_controlls_on_product_id"
   end
 
   create_table "genders", force: :cascade do |t|
@@ -78,6 +86,7 @@ ActiveRecord::Schema.define(version: 2019_07_02_111634) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_present_opponents_on_user_id"
   end
 
   create_table "present_products", force: :cascade do |t|
@@ -87,6 +96,8 @@ ActiveRecord::Schema.define(version: 2019_07_02_111634) do
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["present_id"], name: "index_present_products_on_present_id"
+    t.index ["product_id"], name: "index_present_products_on_product_id"
   end
 
   create_table "presents", force: :cascade do |t|
@@ -100,6 +111,8 @@ ActiveRecord::Schema.define(version: 2019_07_02_111634) do
     t.string "authenticity_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["present_opponent_id"], name: "index_presents_on_present_opponent_id"
+    t.index ["user_id"], name: "index_presents_on_user_id"
   end
 
   create_table "product_managements", force: :cascade do |t|
@@ -109,6 +122,8 @@ ActiveRecord::Schema.define(version: 2019_07_02_111634) do
     t.date "derivery_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_product_managements_on_product_id"
+    t.index ["shop_id"], name: "index_product_managements_on_shop_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -129,6 +144,8 @@ ActiveRecord::Schema.define(version: 2019_07_02_111634) do
     t.integer "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_purpose_products_on_product_id"
+    t.index ["purpose_id"], name: "index_purpose_products_on_purpose_id"
   end
 
   create_table "purposes", force: :cascade do |t|
@@ -137,6 +154,8 @@ ActiveRecord::Schema.define(version: 2019_07_02_111634) do
     t.string "purpose"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["present_id"], name: "index_purposes_on_present_id"
+    t.index ["product_id"], name: "index_purposes_on_product_id"
   end
 
   create_table "shop_managements", force: :cascade do |t|
@@ -144,6 +163,8 @@ ActiveRecord::Schema.define(version: 2019_07_02_111634) do
     t.integer "shop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_shop_managements_on_shop_id"
+    t.index ["user_id"], name: "index_shop_managements_on_user_id"
   end
 
   create_table "shops", force: :cascade do |t|
@@ -156,7 +177,7 @@ ActiveRecord::Schema.define(version: 2019_07_02_111634) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.integer "gender_id", default: 1, null: false
+    t.integer "gender"
     t.date "birthday"
     t.boolean "admin", default: false, null: false
     t.datetime "created_at", null: false
