@@ -1,39 +1,60 @@
 <div class="container">
   <h2 class="page_title">ログイン</h2>
 
-  <div class="member_log_in">
-    <p class="sub_title">
-      会員の方
-    </p>
-    <p>
-      メールアドレスとパスワードを入力してログインしてください。
-    </p>
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="log_in_info">
-        <div class="form_area">
-          <p><%= f.label :メールアドレス： %></p> 
-          <p class="input_field"><%= f.email_field :email, autofocus: true, autocomplete: "emfail" %></p>
-        </div>
+  <div class="item_field">
+    <div class="item_block">
+      <p class="sub_title">
+        会員の方
+      </p>
+      <p>
+        メールアドレスとパスワードを入力してログインしてください。
+      </p>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <table class="input_table">
+        <tr>
+          <td class="label_name" align="right"><%= f.label :メールアドレス： %></td>
+          <td class="input_field"><%= f.email_field :email, autofocus: true, autocomplete: "emfail" %></td>
+        </tr>
+        <tr>
+          <td class="label_name" align="right"><%= f.label :パスワード： %></td>
+          <td class="input_field"><%= f.password_field :password, autocomplete: "current-password" %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+          <% if devise_mapping.rememberable? -%>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :ログイン状態を保持する %>
+            </div>
+          <% end %>
+          </td>
+        </tr>
+      </table>
 
-        <div class="form_area">
-          <p><%= f.label :パスワード： %></p> 
-          <p class="input_field"><%= f.password_field :password, autocomplete: "current-password" %></p>
-        </div>
-
-        <% if devise_mapping.rememberable? -%>
-          <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :ログイン状態を保持する %>
+          <div class="submit_btn">
+            <%= f.submit "ログイン" %>
           </div>
-        <% end %>
-
-        <div class="log_in">
-          <%= f.submit "ログイン" %>
-        </div>
+      <% end %>
+      <p class="forget_pass">
+        <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+          <%= link_to "パスワードをお忘れの方はこちら", new_password_path(resource_name) %><br />
+        <% end -%>
+      </p>
+    </div>
+    <div class="item_block">
+      <p class="sub_title">
+        初めてご利用の方
+      </p>
+      <p>
+        初めてご利用のお客様は、こちらから会員登録を行って下さい。<br>
+        メールアドレスとパスワードを登録しておくと便利にお買い物ができるようになります。
+      </p>
+      <div class="submit_btn">
+        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+          <%= link_to "新規登録", new_registration_path(resource_name) %><br />
+        <% end -%>
       </div>
-    <% end %>
-  </div>
-  <div class="new_user_registration">
-    <%= render "devise/shared/links" %>
+    </div>
   </div>
 </div>
