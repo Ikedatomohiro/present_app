@@ -42,12 +42,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
    def edit
+    @genders = Gender.all
      super
    end
 
   # PUT /resource
    def update
+    @genders = Gender.all
      super    # password、emailはすでに更新されている
+    # n = User.current_user.id
+    # @user = User.find_by(id: n)
+    # @user.update(
+    #   name:     params[:user][:name],
+    #   birthday: params[:user][:birthday],
+    #   gender_id:   params[:user][:gender_id]
+    #   )
 
 
    end

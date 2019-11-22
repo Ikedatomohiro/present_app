@@ -2,9 +2,10 @@
   <%= current_user.name %> 様のマイページ
 <% end %>
 <div class="container">
-  <h1 id="page-comment">
-    マイページ
-  </h1>
+    <h2 class="page_title">マイページ</h2>
+    <div class="item_field">
+      <div class="item_block">
+
   <div class= "logout">
     <%= button_to "Log out", destroy_user_session_path, method: :delete %>
   </div>
@@ -22,7 +23,6 @@
       <%= link_to "お店情報", shop_path(ShopManagement.find_by(user_id: current_user.id).shop_id) %>
         <!-- .idは省略される事が多い -->
     <% end %>
-
 
   <div class="menu-title">
     過去のプレゼント
@@ -75,5 +75,6 @@
       </div>
     <% end %>
 </div>
-
+</div>
+</div>
 
