@@ -5,7 +5,8 @@ devise_for :users, controllers: {
   registrations: 'users/registrations'
 }
 # herokuデプロイ時のトップページ設定
-resources :home
+
+get "/introduction"        => "home#introduction"
 root 'home#index'
 
 get "/" => "home#index"

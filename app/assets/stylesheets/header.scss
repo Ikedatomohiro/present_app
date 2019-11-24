@@ -14,6 +14,10 @@ header:before {
   top: 122px;
 }
 
+a .intro {
+  border-top: 1px, solid, #F9F9F9;
+}
+
 .header-top-wrapper {
   height: 124.734px;
   padding-top: 7px;
@@ -47,17 +51,11 @@ header:before {
   align-items: flex-end;
 }
 
-#logo {
+#logo img{
   width: 190px;
   height: 55px;
   margin-right: 28px;
   margin-top: 15px;
-  color: #2a000c;
-  font-family: "Hannotate SC";
-  font-size: 24px;
-  letter-spacing: 2px;
-  line-height: 20px;
-  text-decoration: none;
 }
 
 .free-info {
