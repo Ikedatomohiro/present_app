@@ -6,48 +6,11 @@
   <%= devise_error_messages! %>
 
             <table class="input_table">
-              <tr>
-                <td class="label_name" align="right"><%= f.label :お名前： %></td>
-                <td class="input_field"><%= f.text_field :name %></td>
-              </tr>
-              <tr>
-                <td class="label_name" align="right"><%= f.label :性別： %></td>
-                <td class="input_field">
-                  <select name="user[gender_id]">
-                    <% @genders.each do |gender| %>
-                      <option <% if current_user.gender_id.present? %>
-                        <%= "selected" if gender.id == current_user.gender.id %>
-                        <% end %> value = <%= gender.id %> > <%= gender.gender_type %>
-                      </option>
-                    <% end %>
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <td class="label_name" align="right"><%= f.label :誕生日： %></td>
-                <td class="input_field">
-                  <%= raw sprintf(
-                                f.date_select(
-                                  :birthday,
-                                  use_month_numbers: true,
-                                  start_year: 1930,
-                                  date_separator: '%s'),
-                                '年 ', '月 ') + '日' %>
-                </td>
-              </tr>
 
-
-
-
-
-
-
-
-
-              <tr>
+<!--               <tr>
                 <td class="label_name" align="right"><%= f.label :メールアドレス： %></td>
                 <td class="input_field"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-              </tr>
+              </tr> -->
               <tr>
                 <td class="label_name" align="right"><%= f.label :パスワード： %></td>
                 <td class="input_field"><%= f.password_field :password, autocomplete: "new-password" %></td>

@@ -81,7 +81,7 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     # update メソッドで使用
     def user_params
-      params.require(:user).permit(:name, :gender_id, :birthday)
+      params.require(:user).permit(:name, :gender_id, :birthday, :email)
     end
 
 end

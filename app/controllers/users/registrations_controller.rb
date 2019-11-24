@@ -18,9 +18,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     n = User.last.id
     @user = User.find_by(id: n)
     @user.update(
-      name:     params[:user][:name],
-      birthday: params[:user][:birthday],
-      gender_id:   params[:user][:gender_id]
+      name:      params[:user][:name],
+      birthday:  params[:user][:birthday],
+      gender_id: params[:user][:gender_id]
       )
 #    if n != User.last.id
 # ユーザー登録されたときだけshopが作られる
@@ -50,15 +50,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
    def update
     @genders = Gender.all
      super    # password、emailはすでに更新されている
-    # n = User.current_user.id
-    # @user = User.find_by(id: n)
-    # @user.update(
-    #   name:     params[:user][:name],
-    #   birthday: params[:user][:birthday],
-    #   gender_id:   params[:user][:gender_id]
-    #   )
-
-
    end
 
   # DELETE /resource

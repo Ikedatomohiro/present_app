@@ -1,14 +1,14 @@
 <% content_for :title do %>
-  User information
+  ユーザー情報
 <% end %>
 
 <div id="page-comment">
-  User information
+  ユーザー情報
 </div>
 
 <%= form_for @user, :url => {:action => 'update'} do |form| %>
   <%= form.label :お名前 %>
-  <%= form.text_area :name %>
+  <%= form.text_field :name %>
   <%= form.label :性別 %>
     <select name="user[gender_id]">
       <% @genders.each do |gender| %>
@@ -18,16 +18,20 @@
         </option>
       <% end %>
     </select>
-      <%= form.label :誕生日 %>
-      <%= raw sprintf(
-        form.date_select(
-          :birthday,
-          use_month_numbers: true,
-          start_year: 1930,
-          end_year: (Time.now.year - 18),
-          default: Date.new(1989, 1, 1),
-          date_separator: '%s'),
-        '年 ', '月 ') + '日' %>
+    <%= form.label :誕生日 %>
+    <%= raw sprintf(
+      form.date_select(
+        :birthday,
+        use_month_numbers: true,
+        start_year: 1930,
+        end_year: (Time.now.year - 18),
+        default: Date.new(2000, 1, 1),
+        date_separator: '%s'),
+      '年 ', '月 ') + '日' %>
+
+  <%= form.label :メールアドレス： %>
+  <%= form.text_field :email %>
+
 
 	<input type = "submit" value ="ユーザー情報を変更する">
 <% end %>
