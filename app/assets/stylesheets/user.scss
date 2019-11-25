@@ -37,7 +37,6 @@
     .presentpurpose {
       width: 150px;
     }
-
   }
 }
 .purchaselog-header-value {
@@ -80,6 +79,15 @@ span {
 .total-fee {
   font-size: 16px;
   font-weight: bold;
+  text-align: center;
 }
 
+.user_menu_icon {
+  display: flex;
+}
+
+.user_menu_info {
+  padding-left: 20px;
+  line-height: 32px;
+}
 

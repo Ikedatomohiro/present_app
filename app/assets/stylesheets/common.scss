@@ -65,6 +65,7 @@ body {
   margin: 0 auto;
 }
 
+
 .submit_btn input{
   color :#ffffff;
   font-size: 16px;
@@ -87,9 +88,33 @@ body {
   border-radius: 5px;
 }
 
+.submit_btn_small {
+  width: 80px;
+  margin: 0 auto;
+}
 
+.submit_btn_small input{
+  color :#ffffff;
+  font-size: 12px;
+  width: 100px;
+  height: 30px;
+  background-color: #91092F;
+  border-radius: 5px;
+}
 
+.input_field textarea {
+  width: 300px;
+  margin: 5px 0;
+  line-height: 2em;
+  border: 1px solid #999;
+  border-radius: 5px;
+}
 
+.input_field_conf {
+  width: 300px;
+  margin: 5px 0;
+  line-height: 2em;
+}
 
 
 

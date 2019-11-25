@@ -1,84 +1,84 @@
 <% content_for :title do %>
-  <%= current_user.name %> 様のマイページ
+<%= current_user.name %> 様のマイページ
 <% end %>
 <div class="container">
     <h2 class="page_title">マイページ</h2>
     <div class="item_field">
-      <div class="item_block">
-
-  <div class= "logout">
-    <%= button_to "Log out", destroy_user_session_path, method: :delete %>
-  </div>
-  <div id="user-menu">
-    <div class="link-to-cart">
-      <%= link_to "カート", carts_path %>
-    </div>
-    <div class="link-to-useredit">
-      <%= link_to "ユーザー情報の変更", edit_user_path %>
-    </div>
-    <div class="link-to-useredit">
-      <%= link_to "パスワードの変更", edit_user_registration_path %>
-    </div>
-
-  </div>
-
-    <% if ShopManagement.find_by(user_id: current_user.id) != nil%>
-
-      <%= link_to "お店情報", shop_path(ShopManagement.find_by(user_id: current_user.id).shop_id) %>
-        <!-- .idは省略される事が多い -->
-    <% end %>
-
-  <div class="menu-title">
-    過去のプレゼント
-  </div>
-    <% @presents.each do |present| %>
-        <% presentopponent = PresentOpponent.find(present.present_opponent_id) %>
-        <% purpose = Purpose.find_by(id: present.purpose_number) %>
-        <% presentproducts = PresentProduct.where(present_id: present.id) %>
-      <div class = "purchaselog">
-        <div class = "purchaselogheader">
-          <div class = "purchasedate">
-            <div class ="purchaselog-header-value">
-              <%= label :present, :注文日 %>
+        <div class="item_block">
+            <p class="sub_title">ユーザーメニュー</p>
+            <div class="user_menu_icon">
+                <%= link_to(image_tag("mypage_icon_shop.png", alt:"商品を探す"), products_index_path) %> <p class="user_menu_info">商品を探す</p>
             </div>
-            <p><%= present.purchase_date %></p>
-          </div>
-            <div class = "presentopponent">
-              <div class ="purchaselog-header-value">
-                <%= label :present, :送ったお相手 %>
-              </div>
-            <p><%= presentopponent.name %></p>
+            <div class="user_menu_icon">
+                <%= link_to(image_tag("cart.png", alt:"カートを見る"), carts_path) %><p class="user_menu_info">カートを見る</p>
             </div>
-            <div class = "presentpurpose">
-              <div class ="purchaselog-header-value">
-                <%= label :present, :目的 %>
-              </div>
-              <% if purpose %>
-                <p><%= purpose.purpose %></p>
-              <% else %>
-                <p>プレゼントしたいから</p>
-              <% end %>
+            <div class="user_menu_icon">
+                <%= link_to(image_tag("mypage_icon_lout.png", alt:"ログアウトする"), destroy_user_session_path, method: :delete) %><p class="user_menu_info">ログアウトする</p>
             </div>
-            <div class="open-items-button">
-              <%= image_tag("under.svg", alt:"オープン",id: "button") %>
+            <div class="user_menu_icon">
+                <%= link_to(image_tag("mypage_icon_info.png", alt:"ユーザー情報を変更する"), edit_user_path) %><p class="user_menu_info">ユーザー情報を変更する</p>
             </div>
-        </div>
-          <div class="purchaseitems">
-            <% presentproducts.each do |presentproduct| %>
-              <% product = Product.find(presentproduct.product_id) %>
-              <%= product.name %>
-              <%= number_to_currency(product.price, :locale => 'jp') %>
-              <br>
-              <%= image_tag("/product_images/#{product.image}", :height => "70") %>
-              <br>
+            <div class="user_menu_icon">
+                <%= link_to(image_tag("mypage_icon_pwrd.png", alt:"パスワードを変更する"), edit_user_registration_path) %><p class="user_menu_info">パスワードを変更する
+                （退会はこちらから）</p>
+            </div>
+            <% if ShopManagement.find_by(user_id: current_user.id) != nil%>
+            <%= link_to "お店情報", shop_path(ShopManagement.find_by(user_id: current_user.id).shop_id) %>
+            <!-- .idは省略される事が多い -->
             <% end %>
-          <div>メッセージ</div>
-          <%= present.message %>
+            <p class="sub_title"> 過去のプレゼント</p>
+            <div class="purchaselog">
+                <% @presents.each do |present| %>
+                <% presentopponent = PresentOpponent.find(present.present_opponent_id) %>
+                <% purpose = Purpose.find_by(id: present.purpose_number) %>
+                <% presentproducts = PresentProduct.where(present_id: present.id) %>
+                <div class="purchaselogheader">
+                    <div class="purchasedate">
+                        <div class="purchaselog-header-value">
+                            <%= label :present, :注文日 %>
+                        </div>
+                        <p>
+                            <%= present.purchase_date %>
+                        </p>
+                    </div>
+                    <div class="presentopponent">
+                        <div class="purchaselog-header-value">
+                            <%= label :present, :送ったお相手 %>
+                        </div>
+                        <p>
+                            <%= presentopponent.name %>
+                        </p>
+                    </div>
+                    <div class="presentpurpose">
+                        <div class="purchaselog-header-value">
+                            <%= label :present, :目的 %>
+                        </div>
+                        <% if purpose %>
+                        <p>
+                            <%= purpose.purpose %>
+                        </p>
+                        <% else %>
+                        <p>プレゼントしたいから</p>
+                        <% end %>
+                    </div>
+                    <div class="open-items-button">
+                        <%= image_tag("under.svg", alt:"オープン",id: "button") %>
+                    </div>
+                </div>
+                <div class="purchaseitems">
+                    <% presentproducts.each do |presentproduct| %>
+                    <% product = Product.find(presentproduct.product_id) %>
+                    <%= product.name %>
+                    <%= number_to_currency(product.price, :locale => 'jp') %>
+                    <br>
+                    <%= image_tag("/product_images/#{product.image}", :height => "70") %>
+                    <br>
+                    <% end %>
+                    <div>メッセージ</div>
+                    <%= present.message %>
+                </div>
+                <% end %>
+            </div>
         </div>
-
-      </div>
-    <% end %>
+    </div>
 </div>
-</div>
-</div>
-

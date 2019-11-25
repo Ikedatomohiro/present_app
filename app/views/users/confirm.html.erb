@@ -1,68 +1,116 @@
 <div class="container">
+    <h2 class="page_title">入力情報の確認</h2>
+    <div class="item_field">
+        <div class="item_block">
+            <table class="input_table">
+                <tr>
+                    <td class="label_name" align="center">
+                        <p>お名前</p>
+                    </td>
+                    <td class="input_field_conf">
+                        <%= @present_opponent.name %>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label_name" align="center">
+                        <p>性別</p>
+                    </td>
+                    <td class="input_field_conf">
+                        <% if params[:present_opponent][:gender_id].present? %>
+                        <% @gender = Gender.find_by id: params[:present_opponent][:gender_id] %>
+                        <%= @gender.gender_type %>
+                        <% end %>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label_name" align="center">
+                        <p>メールアドレス</p>
+                    </td>
+                    <td class="input_field_conf">
+                        <%= @present_opponent.mail_address %>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label_name" align="center">
+                        <p>贈る目的</p>
+                    </td>
+                    <td class="input_field_conf">
+                        <% if params[:present][:purpose_number].present? %>
+                        <% @purpose = Purpose.find(params[:present][:purpose_number]) %>
+                        <%= @purpose.purpose %>
+                        <% else %>
+                        <%= "贈りたいから" %>
+                        <% end %>
+                    </td>
+                </tr>
+                <td class="label_name" align="center">
+                    <p>メッセージ</p>
+                </td>
+                <td class="input_field_conf">
+                    <%= @present.message %>
+                </td>
+                </tr>
+            </table>
+            <table class="input_table">
+                <thead>
+                    <tr>
+                        <th>商品名</th>
+                        <th>価格</th>
+                    </tr>
+                </thead>
+                <% total_price = 0 %>
+                <tbody>
+                    <% @carts.each do |cart| %>
+                    <% @users = User.find(cart.user_id) %>
+                    <% @product = Product.find(cart.product_id) %>
+                    <tr>
+                        <td>
+                            <%= link_to(@product.name, "/products/#{@product.id}") %>
+                        </td>
+                        <td>
+                            <%= number_to_currency(@product.price, :locale => 'jp') %>
+                        </td>
+                    </tr>
+                    <% total_price += @product.price %>
+                    <% end %>
+                </tbody>
+            </table>
+            <p class="total-fee">合計金額は
+                <%= number_to_currency(total_price, :locale => 'jp') %>です。</p>
 
-  <%= form_for @present, :url => {:action => 'set_present'} do |form| %>
-    <%= form.hidden_field :message %>
-    <%= form.hidden_field :purpose_number %>
-    <%= form.hidden_field :purchase_date, :value => Date.today %>
-      <%= fields_for @present_opponent do |f| %>
-        <%= f.hidden_field :name %>
-        <%= f.hidden_field :gender %>
-        <%= f.hidden_field :mail_address %>
-      <% end %>
-    <input type = "submit" value ="以下の内容で購入する">
-  <% end %>
+            <div class="settlement-btn">
 
-  <%= form_tag ("/products/user/settlement") do %>
-    <%= hidden_field :present, :message %>
-    <%= hidden_field :present, :purpose_number %>
-    <%= hidden_field :present_opponent, :gender %>
-    <%= hidden_field :present_opponent, :name %>
-    <%= hidden_field :present_opponent, :mail_address %>
+            <%= form_tag ("/products/user/settlement") do %>
+            <%= hidden_field :present, :message %>
+            <%= hidden_field :present, :purpose_number %>
+            <%= hidden_field :present_opponent, :gender %>
+            <%= hidden_field :present_opponent, :name %>
+            <%= hidden_field :present_opponent, :mail_address %>
+            <input type="submit" value="内容を修正する" id="back-button">
+            <% end %>
 
-    <input type = "submit" value ="内容を修正する">
-  <% end %>
+                <div class="submit_btn_small">
 
-  <p>贈るお相手</p>
-  <p>お名前</p>
-    <%= @present_opponent.name %>
-  <p>性別</p>
-    <% if params[:present_opponent][:gender_id].present? %>
-      <% @gender = Gender.find_by id: params[:present_opponent][:gender_id] %>
-      <%= @gender.gender_type %>
-    <% end %>
-  <p>お相手メールアドレス</p>
-    <%= @present_opponent.mail_address %><br>
 
-  <p>贈る目的</p>
-    <% if params[:present][:purpose_number].present? %>
-      <% @purpose = Purpose.find(params[:present][:purpose_number]) %>
-      <%= @purpose.purpose %>
-    <% else %>
-      <%= "目的未選択" %>
-    <% end %>
-  <p>メッセージ</p>
-    <%= @present.message %> <br>
+            <%= form_for @present, :url => {:action => 'set_present'} do |form| %>
+            <%= form.hidden_field :message %>
+            <%= form.hidden_field :purpose_number %>
+            <%= form.hidden_field :purchase_date, :value => Date.today %>
+            <%= fields_for @present_opponent do |f| %>
+            <%= f.hidden_field :name %>
+            <%= f.hidden_field :gender %>
+            <%= f.hidden_field :mail_address %>
+            <% end %>
+            <input type="submit" value="以下の内容で購入する" >
+            <% end %>
 
-    <table class="cart_list">
-      <thead>
-      <tr>
-        <th>商品名</th>
-        <th>価格</th>
-      </tr>
-      </thead>
-    <% total_price = 0 %>
-      <tbody>
-        <% @carts.each do |cart| %>
-        <% @users = User.find(cart.user_id) %>
-        <% @product = Product.find(cart.product_id) %>
-        <tr>
-          <td><%= link_to(@product.name, "/products/#{@product.id}") %></td>
-          <td><%= number_to_currency(@product.price, :locale => 'jp') %></td>
-        </tr>
-          <% total_price += @product.price %>
-        <% end %>
-      </tbody>
-    </table>
-  <p class="total-fee">合計金額は<%= number_to_currency(total_price, :locale => 'jp') %>です。</p>
-  <p>お届け希望日</p>
+            </div>
+
+
+
+
+
+
+        </div>
+    </div>
 </div>
