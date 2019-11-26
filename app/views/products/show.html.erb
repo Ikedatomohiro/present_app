@@ -4,43 +4,53 @@
             <%= @product.name %>
         </h2>
         <div class="item_field">
-    <div class="item_block">
-            <div id="product-infromation">
-                <div id="product-information-left">
-                    <p>
-                        <%= image_tag("/product_images/#{@product.image}", :width => "300") %>
-                    </p>
+            <div class="item_block">
+                <div id="product-infromation">
+                    <div id="product-information-left">
+                        <p>
+                            <%= image_tag("/product_images/#{@product.image}", :width => "300") %>
+                        </p>
+                    </div>
+                    <div id="product-infromation-right">
+                        <p>
+                            <%= @product.characteristic %>
+                        </p>
+                        <p>
+                            <%= link_to(@product.product_hp, "#{@product.product_hp}", href:"javascript:viod(0)") %>
+                        </p>
+                        <p>当店販売価格：
+                            <%= number_to_currency(@product.price, :locale => 'jp') %>
+                        </p>
+                        <p>おすすめの用途</p>
+                        <% purpose_products = PurposeProduct.where(product_id: @product.id) %>
+                        <% purpose_products.each do |purpose_product| %>
+                        <% purpose = Purpose.find(purpose_product.purpose_id) %>
+                        <%= purpose.purpose %>
+                        <% end %>
+                    </div>
                 </div>
-                <div id="product-infromation-right">
-                    <p>
-                        <%= @product.characteristic %>
-                    </p>
-                    <p>
-                        <%= link_to(@product.product_hp, "#{@product.product_hp}", href:"javascript:viod(0)") %>
-                    </p>
-                    <p>当店販売価格：
-                        <%= number_to_currency(@product.price, :locale => 'jp') %>
-                    </p>
-                    <p>おすすめの用途</p>
-                    <% purpose_products = PurposeProduct.where(product_id: @product.id) %>
-                    <% purpose_products.each do |purpose_product| %>
-                    <% purpose = Purpose.find(purpose_product.purpose_id) %>
-                    <%= purpose.purpose %>
-                    <% end %>
-                    <%= form_tag("/carts") do %>
-                    <% @cart = Cart.new(user_id: current_user.id, product_id: @product.id) %>
-                    <%= hidden_field :cart, :user_id %>
-                    <%= hidden_field :cart, :product_id %>
-                    <div class="submit_btn_small">
                     <% if signed_in? %>
-                    <%= button_to("カートへ入れる", controller: "carts", action: "create") %></div>
+                      <%= form_tag("/carts") do %>
+                      <% @cart = Cart.new(user_id: current_user.id, product_id: @product.id) %>
+                      <%= hidden_field :cart, :user_id %>
+                      <%= hidden_field :cart, :product_id %>
+                      <div class="submit_btn_small">
+                          <%= button_to("カートに入れる", controller: "carts", action: "create") %>
+                      </div>
+                      <% end %>
                     <% end %>
+                    <% if !signed_in? %>
+                      <div class="submit_btn">
+                          <%= link_to "ログインして購入する", new_user_session_path %>
+                      </div>
                     <% end %>
-                </div>
+                <% if signed_in? && current_user.admin == true %>
+                <%= link_to("編集", "/products/#{@product.id}/edit") %>
+                <% end %>
+                    <div class="submit_btn_small">
+                        <%= button_to "商品ページへ", products_index_path %>
+                    </div>
             </div>
-            <% if signed_in? && current_user.admin == true %>
-            <%= link_to("編集", "/products/#{@product.id}/edit") %>
-            <% end %>
         </div>
-    </div></div>
+    </div>
 </div>
