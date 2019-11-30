@@ -48,7 +48,7 @@
                 <%= link_to("編集", "/products/#{@product.id}/edit") %>
                 <% end %>
                     <div class="submit_btn_small">
-                        <%= button_to "商品ページへ", products_index_path %>
+                        <%= button_to "商品ページへ", products_index_path, method: :get %>
                     </div>
             </div>
         </div>

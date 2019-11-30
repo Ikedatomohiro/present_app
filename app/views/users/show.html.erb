@@ -27,58 +27,59 @@
             <!-- .idは省略される事が多い -->
             <% end %>
             <p class="sub_title"> 過去のプレゼント</p>
-            <div class="purchaselog">
                 <% @presents.each do |present| %>
-                <% presentopponent = PresentOpponent.find(present.present_opponent_id) %>
-                <% purpose = Purpose.find_by(id: present.purpose_number) %>
-                <% presentproducts = PresentProduct.where(present_id: present.id) %>
-                <div class="purchaselogheader">
-                    <div class="purchasedate">
-                        <div class="purchaselog-header-value">
-                            <%= label :present, :注文日 %>
+                    <% presentopponent = PresentOpponent.find(present.present_opponent_id) %>
+                    <% purpose = Purpose.find_by(id: present.purpose_number) %>
+                    <% presentproducts = PresentProduct.where(present_id: present.id) %>
+            <div class="purchaselog">
+                    <div class="purchaselogheader">
+                        <div class="purchasedate">
+                            <div class="purchaselog-header-value">
+                                <%= label :present, :注文日 %>
+                            </div>
+                            <p>
+                                <%= present.purchase_date %>
+                            </p>
                         </div>
-                        <p>
-                            <%= present.purchase_date %>
-                        </p>
+                        <div class="presentopponent">
+                            <div class="purchaselog-header-value">
+                                <%= label :present, :送ったお相手 %>
+                            </div>
+                            <p>
+                                <%= presentopponent.name %>
+                            </p>
+                        </div>
+                        <div class="presentpurpose">
+                            <div class="purchaselog-header-value">
+                                <%= label :present, :目的 %>
+                            </div>
+                            <% if purpose %>
+                            <p>
+                                <%= purpose.purpose %>
+                            </p>
+                            <% else %>
+                            <p>プレゼントしたいから</p>
+                            <% end %>
+                        </div>
+                        <div class="open-items-button">
+                            <%= image_tag("under.svg", alt:"オープン",id: "button") %>
+                        </div>
                     </div>
-                    <div class="presentopponent">
-                        <div class="purchaselog-header-value">
-                            <%= label :present, :送ったお相手 %>
-                        </div>
-                        <p>
-                            <%= presentopponent.name %>
-                        </p>
-                    </div>
-                    <div class="presentpurpose">
-                        <div class="purchaselog-header-value">
-                            <%= label :present, :目的 %>
-                        </div>
-                        <% if purpose %>
-                        <p>
-                            <%= purpose.purpose %>
-                        </p>
-                        <% else %>
-                        <p>プレゼントしたいから</p>
+                    <div class="purchaseitems">
+                        <% presentproducts.each do |presentproduct| %>
+                        <% product = Product.find(presentproduct.product_id) %>
+                        <%= product.name %>
+                        <%= number_to_currency(product.price, :locale => 'jp') %>
+                        <br>
+                        <%= image_tag("/product_images/#{product.image}", :height => "70") %>
+                        <br>
                         <% end %>
+                        <div>メッセージ</div>
+                        <%= present.message %>
                     </div>
-                    <div class="open-items-button">
-                        <%= image_tag("under.svg", alt:"オープン",id: "button") %>
-                    </div>
-                </div>
-                <div class="purchaseitems">
-                    <% presentproducts.each do |presentproduct| %>
-                    <% product = Product.find(presentproduct.product_id) %>
-                    <%= product.name %>
-                    <%= number_to_currency(product.price, :locale => 'jp') %>
-                    <br>
-                    <%= image_tag("/product_images/#{product.image}", :height => "70") %>
-                    <br>
-                    <% end %>
-                    <div>メッセージ</div>
-                    <%= present.message %>
-                </div>
-                <% end %>
+                    <%= link_to "プレゼントを評価する", "/present/#{present.authenticity_token}" %>
             </div>
+                <% end %>
         </div>
     </div>
 </div>
