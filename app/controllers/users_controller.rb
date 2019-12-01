@@ -3,9 +3,13 @@ class UsersController < ApplicationController
   def index
     # @users = User.joins(:genders)
     # @users = Gender.includes(:users)
-
-    @users = User.all
-    # @genders = Gender.all
+    # ユーザー一覧は管理者権限でログインしたときだけ表示できる。
+    if signed_in? && current_user.admin === true
+      @users = User.all
+      # @genders = Gender.all
+    else
+      redirect_to '/'
+    end
 
   end
 
@@ -25,9 +29,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @users = User.all
-    @presents = Present.where(user_id: params[:id]).order(created_at: :desc)
-    @preesnt_products = PresentProduct.where(present_id: @presents)
+      @users = User.all
+      @presents = Present.where(user_id: params[:id]).order(created_at: :desc)
+      @preesnt_products = PresentProduct.where(present_id: @presents)
   end
 
   def new

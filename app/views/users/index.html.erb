@@ -4,6 +4,7 @@
 <% end %>
 <div class="container">
 
+<% if signed_in? && current_user.admin === true  %>
 
   <table>
     <tr>
@@ -35,6 +36,9 @@
 
   </table>
 
+<% else %>
 
+
+<% end %>
 
 </div>
