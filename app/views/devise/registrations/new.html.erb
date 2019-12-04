@@ -16,15 +16,7 @@
           </tr>
           <tr>
             <td class="label_name" align="right"><%= f.label :パスワード： %></td>
-            <td class="input_field"><%= f.password_field :password, autocomplete: "new-password" %></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>
-              <% if @minimum_password_length %>
-                <em>(<%= @minimum_password_length %> 文字以上で設定してください。)</em>
-              <% end %>
-            </td>
+            <td class="input_field"><%= f.password_field :password, autocomplete: "new-password", placeholder: "  #{@minimum_password_length}文字以上で設定してください。" %></td>
           </tr>
           <tr>
             <td class="label_name" align="right"><%= f.label :パスワード（確認） %></td>
@@ -40,16 +32,14 @@
                   start_year: 1930,
                   default: Date.new(2000, 1, 1),
                   #end_year: (Time.now.year - 18),
-                  date_separator: '%s',
-                  class: "date"
-                  ),'年 ', '月 ') + '日'
-                  %>
+                  date_separator: '%s'
+                  ),'年 ', '月 ') + '日' %>
               </td>
           </tr>
           <tr>
             <td class="label_name" align="right"><%= f.label :性別 %></td>
             <td class="input_field">
-              <select name="user[gender_id]">
+              <select name="user[gender_id]" class="select_box">
                 <% @genders.each do |gender| %>
                   <option  value = <%= gender.id %> >
                     <%= gender.gender_type %>

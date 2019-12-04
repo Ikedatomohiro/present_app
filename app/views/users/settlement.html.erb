@@ -19,7 +19,7 @@ Settlment page
                     <td class="label_name" align="right">
                         <p>性別</p>
                     </td>
-                    <td class="input_field"><select name="present_opponent[gender_id]">
+                    <td class="input_field"><select name="present_opponent[gender_id]" class="select_box">
                             <% @genders.each do |gender| %>
                             <option <% if params[:present_opponent].present? %>
                                 <%= "selected" if gender.id == params[:present_opponent][:gender_id].to_i %>
@@ -42,7 +42,7 @@ Settlment page
                     <td class="label_name" align="right">
                         <%= "プレゼントの目的" %>
                     </td>
-                    <td class="input_field"> <select name="present[purpose_number]">
+                    <td class="input_field"> <select name="present[purpose_number]" class="select_box">
                             <option value="">選択してください</option>
                             <% @purposes.each do |purpose| %>
                             <option <% if params[:present].present? %>
